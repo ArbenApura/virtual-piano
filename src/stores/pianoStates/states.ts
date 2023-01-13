@@ -131,7 +131,7 @@ export const isPressed = {
 	B6,
 	C7
 };
-export const pianoStates = { piano, isPressed };
+export const pianoStates = { piano, time, isPressed };
 
 // SUBSCRIPTIONS
 Object.keys(isPressed).map((key) => {

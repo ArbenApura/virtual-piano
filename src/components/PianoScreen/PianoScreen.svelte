@@ -6,6 +6,7 @@
 </script>
 
 <div class="screen">
+	<div class="shader" />
 	<div class="brand">
 		<img src="piano.svg" alt="Logo" />
 		<div class="text">
@@ -22,9 +23,12 @@
 <style lang="scss">
 	@import '$styles';
 	.screen {
-		@apply w-full h-full;
+		@apply w-full h-full relative;
+		.shader {
+			@apply absolute h-full w-full bg-gradient-to-t from-transparent to-gray-800 opacity-75 z-30;
+		}
 		.brand {
-			@apply absolute z-20 p-2;
+			@apply absolute z-30 p-2;
 			@include flex-center;
 			img {
 				@apply w-[40px] mr-2;

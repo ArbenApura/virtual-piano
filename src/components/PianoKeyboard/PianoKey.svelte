@@ -7,9 +7,6 @@
 	// PROPS
 	export let key: PianoKey, isPointerDown: boolean;
 
-	// REFS
-	let keyEl: HTMLButtonElement;
-
 	// STATES
 	let note = key.note.replace('#', 'S');
 
@@ -40,7 +37,6 @@
 <button
 	class={`key ${key.type}-key ${key.note}`}
 	data-is-active={$isActive}
-	bind:this={keyEl}
 	on:pointerenter={handlePointerEnter}
 	on:pointerleave={handlePointerLeave}
 	on:pointerdown={handlePress}
@@ -65,7 +61,7 @@
 	.key {
 		@apply mr-[.1vw] rounded-[.2vw] overflow-hidden cursor-pointer last:mr-0;
 		&[data-is-active='true'] {
-			@apply brightness-75;
+			@apply brightness-90;
 		}
 		.content {
 			@apply h-full flex flex-col text-center;

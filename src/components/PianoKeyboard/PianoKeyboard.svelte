@@ -10,10 +10,8 @@
 
 <div
 	class="keyboard"
-	on:mousedown={() => (isPointerDown = true)}
-	on:mouseup={() => (isPointerDown = false)}
-	on:touchstart={() => (isPointerDown = true)}
-	on:touchend={() => (isPointerDown = false)}
+	on:pointerdown={() => (isPointerDown = true)}
+	on:pointerup={() => (isPointerDown = false)}
 >
 	{#each pianoKeys as key}
 		<PianoKey {...{ key, isPointerDown }} />
