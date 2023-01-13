@@ -117,7 +117,7 @@
 			@apply flex-grow -mb-1;
 		}
 		.bottom {
-			@apply z-20;
+			@apply z-50;
 		}
 	}
 </style>

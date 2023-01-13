@@ -7,129 +7,68 @@ import { writable, get } from 'svelte/store';
 // STATES
 export const piano = writable<Sampler>();
 export const time = writable<Time>('1n');
-export const C2 = writable<boolean>(false);
-export const CS2 = writable<boolean>(false);
-export const D2 = writable<boolean>(false);
-export const DS2 = writable<boolean>(false);
-export const E2 = writable<boolean>(false);
-export const F2 = writable<boolean>(false);
-export const FS2 = writable<boolean>(false);
-export const G2 = writable<boolean>(false);
-export const GS2 = writable<boolean>(false);
-export const A2 = writable<boolean>(false);
-export const AS2 = writable<boolean>(false);
-export const B2 = writable<boolean>(false);
-export const C3 = writable<boolean>(false);
-export const CS3 = writable<boolean>(false);
-export const D3 = writable<boolean>(false);
-export const DS3 = writable<boolean>(false);
-export const E3 = writable<boolean>(false);
-export const F3 = writable<boolean>(false);
-export const FS3 = writable<boolean>(false);
-export const G3 = writable<boolean>(false);
-export const GS3 = writable<boolean>(false);
-export const A3 = writable<boolean>(false);
-export const AS3 = writable<boolean>(false);
-export const B3 = writable<boolean>(false);
-export const C4 = writable<boolean>(false);
-export const CS4 = writable<boolean>(false);
-export const D4 = writable<boolean>(false);
-export const DS4 = writable<boolean>(false);
-export const E4 = writable<boolean>(false);
-export const F4 = writable<boolean>(false);
-export const FS4 = writable<boolean>(false);
-export const G4 = writable<boolean>(false);
-export const GS4 = writable<boolean>(false);
-export const A4 = writable<boolean>(false);
-export const AS4 = writable<boolean>(false);
-export const B4 = writable<boolean>(false);
-export const C5 = writable<boolean>(false);
-export const CS5 = writable<boolean>(false);
-export const D5 = writable<boolean>(false);
-export const DS5 = writable<boolean>(false);
-export const E5 = writable<boolean>(false);
-export const F5 = writable<boolean>(false);
-export const FS5 = writable<boolean>(false);
-export const G5 = writable<boolean>(false);
-export const GS5 = writable<boolean>(false);
-export const A5 = writable<boolean>(false);
-export const AS5 = writable<boolean>(false);
-export const B5 = writable<boolean>(false);
-export const C6 = writable<boolean>(false);
-export const CS6 = writable<boolean>(false);
-export const D6 = writable<boolean>(false);
-export const DS6 = writable<boolean>(false);
-export const E6 = writable<boolean>(false);
-export const F6 = writable<boolean>(false);
-export const FS6 = writable<boolean>(false);
-export const G6 = writable<boolean>(false);
-export const GS6 = writable<boolean>(false);
-export const A6 = writable<boolean>(false);
-export const AS6 = writable<boolean>(false);
-export const B6 = writable<boolean>(false);
-export const C7 = writable<boolean>(false);
 export const isPressed = {
-	C2,
-	CS2,
-	D2,
-	DS2,
-	E2,
-	F2,
-	FS2,
-	G2,
-	GS2,
-	A2,
-	AS2,
-	B2,
-	C3,
-	CS3,
-	D3,
-	DS3,
-	E3,
-	F3,
-	FS3,
-	G3,
-	GS3,
-	A3,
-	AS3,
-	B3,
-	C4,
-	CS4,
-	D4,
-	DS4,
-	E4,
-	F4,
-	FS4,
-	G4,
-	GS4,
-	A4,
-	AS4,
-	B4,
-	C5,
-	CS5,
-	D5,
-	DS5,
-	E5,
-	F5,
-	FS5,
-	G5,
-	GS5,
-	A5,
-	AS5,
-	B5,
-	C6,
-	CS6,
-	D6,
-	DS6,
-	E6,
-	F6,
-	FS6,
-	G6,
-	GS6,
-	A6,
-	AS6,
-	B6,
-	C7
+	C2: writable<boolean>(false),
+	CS2: writable<boolean>(false),
+	D2: writable<boolean>(false),
+	DS2: writable<boolean>(false),
+	E2: writable<boolean>(false),
+	F2: writable<boolean>(false),
+	FS2: writable<boolean>(false),
+	G2: writable<boolean>(false),
+	GS2: writable<boolean>(false),
+	A2: writable<boolean>(false),
+	AS2: writable<boolean>(false),
+	B2: writable<boolean>(false),
+	C3: writable<boolean>(false),
+	CS3: writable<boolean>(false),
+	D3: writable<boolean>(false),
+	DS3: writable<boolean>(false),
+	E3: writable<boolean>(false),
+	F3: writable<boolean>(false),
+	FS3: writable<boolean>(false),
+	G3: writable<boolean>(false),
+	GS3: writable<boolean>(false),
+	A3: writable<boolean>(false),
+	AS3: writable<boolean>(false),
+	B3: writable<boolean>(false),
+	C4: writable<boolean>(false),
+	CS4: writable<boolean>(false),
+	D4: writable<boolean>(false),
+	DS4: writable<boolean>(false),
+	E4: writable<boolean>(false),
+	F4: writable<boolean>(false),
+	FS4: writable<boolean>(false),
+	G4: writable<boolean>(false),
+	GS4: writable<boolean>(false),
+	A4: writable<boolean>(false),
+	AS4: writable<boolean>(false),
+	B4: writable<boolean>(false),
+	C5: writable<boolean>(false),
+	CS5: writable<boolean>(false),
+	D5: writable<boolean>(false),
+	DS5: writable<boolean>(false),
+	E5: writable<boolean>(false),
+	F5: writable<boolean>(false),
+	FS5: writable<boolean>(false),
+	G5: writable<boolean>(false),
+	GS5: writable<boolean>(false),
+	A5: writable<boolean>(false),
+	AS5: writable<boolean>(false),
+	B5: writable<boolean>(false),
+	C6: writable<boolean>(false),
+	CS6: writable<boolean>(false),
+	D6: writable<boolean>(false),
+	DS6: writable<boolean>(false),
+	E6: writable<boolean>(false),
+	F6: writable<boolean>(false),
+	FS6: writable<boolean>(false),
+	G6: writable<boolean>(false),
+	GS6: writable<boolean>(false),
+	A6: writable<boolean>(false),
+	AS6: writable<boolean>(false),
+	B6: writable<boolean>(false),
+	C7: writable<boolean>(false)
 };
 export const pianoStates = { piano, time, isPressed };
 

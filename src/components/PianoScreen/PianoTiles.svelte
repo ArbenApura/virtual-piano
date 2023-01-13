@@ -50,28 +50,15 @@
 	class="highlight-tile {type}-tile"
 	style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
 	data-is-active={$isActive}
->
-	<div class="shader" />
-</div>
+/>
 
 <style lang="scss">
 	@import '$styles';
-	.tile,
-	.sealer-tile,
-	.highlight-tile {
-		background-image: url('$assets/bg-1.png');
-		background-attachment: fixed;
-		background-size: cover;
-		background-position: bottom;
-	}
 	.tile {
 		@apply relative;
 		&.white-tile {
 			@apply h-full opacity-50 mr-[.1vw] last:mr-0;
 			width: calc((100vw - (35 * 0.1vw)) / 36);
-			&[data-is-active='true'] {
-				@apply opacity-100;
-			}
 		}
 		&.black-tile {
 			--tiles-width: 1.75vw;
@@ -80,19 +67,28 @@
 			transform: translate(calc(var(--tiles-width) / 2), -0.15vw);
 			margin-left: calc(((var(--tiles-width) / 1) / -1) - 0.1vw);
 		}
-	}
-	.sealer-tile {
-		@apply absolute opacity-100;
+		&[data-is-active='true'] {
+			@apply opacity-100;
+		}
 	}
 	.highlight-tile {
 		@apply absolute opacity-0;
-		.shader {
-			@apply absolute w-full h-full opacity-50;
+		&::before {
+			@apply absolute w-full h-full opacity-75 z-20;
+			content: '';
+		}
+		&::after {
+			@apply absolute w-full h-full opacity-100 z-10;
+			content: '';
+			background-image: url('$assets/bg-1.png');
+			background-attachment: fixed;
+			background-size: cover;
+			background-position: bottom;
 		}
 		&.white-tile {
 			@apply z-10;
-			.shader {
-				@apply bg-slate-50;
+			&::before {
+				background-color: rgba(255, 255, 255, 0.4);
 				background-image: linear-gradient(
 					to top,
 					transparent,
@@ -105,9 +101,9 @@
 			}
 		}
 		&.black-tile {
-			@apply z-20 border-x-[.1vw] border-gray-900;
-			.shader {
-				@apply bg-gray-600;
+			@apply z-20 border-x-[.1vw] border-transparent;
+			&::before {
+				background-color: rgba(55, 65, 81, 0.4);
 				background-image: linear-gradient(
 					to top,
 					transparent,
@@ -121,7 +117,7 @@
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;
-			.shader {
+			&::before {
 				@apply bg-transparent;
 				transition: background-color 0.5s;
 			}
