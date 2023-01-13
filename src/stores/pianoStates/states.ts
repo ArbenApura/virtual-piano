@@ -1,10 +1,12 @@
 // IMPORTED TYPES
 import type { Sampler } from 'tone';
+import type { Time } from 'tone/build/esm/core/type/Units';
 // IMPORTED LIB-UTILS
 import { writable, get } from 'svelte/store';
 
 // STATES
 export const piano = writable<Sampler>();
+export const time = writable<Time>('1n');
 export const C2 = writable<boolean>(false);
 export const CS2 = writable<boolean>(false);
 export const D2 = writable<boolean>(false);
@@ -138,7 +140,9 @@ Object.keys(isPressed).map((key) => {
 		try {
 			const piano = get(pianoStates.piano);
 			const note = key.replace('S', '#');
-			if (piano && isPressed) piano.triggerAttackRelease(note, '2n');
+			if (piano && isPressed) {
+				piano.triggerAttackRelease(note, get(time));
+			}
 		} catch {}
 	});
 });

@@ -5,7 +5,10 @@
 	import { isPressed } from '$stores/pianoStates';
 
 	// PROPS
-	export let key: PianoKey, isMouseDown: boolean;
+	export let key: PianoKey, isPointerDown: boolean;
+
+	// REFS
+	let keyEl: HTMLButtonElement;
 
 	// STATES
 	let note = key.note.replace('#', 'S');
@@ -25,11 +28,11 @@
 		// @ts-ignore
 		isPressed[note].set(false);
 	};
-	const handleMouseEnter = () => {
-		if (!isMouseDown) return;
+	const handlePointerEnter = () => {
+		if (!isPointerDown) return;
 		handlePress();
 	};
-	const handleMouseLeave = () => {
+	const handlePointerLeave = () => {
 		handleRelease();
 	};
 </script>
@@ -37,10 +40,11 @@
 <button
 	class={`key ${key.type}-key ${key.note}`}
 	data-is-active={$isActive}
-	on:mouseenter={handleMouseEnter}
-	on:mouseleave={handleMouseLeave}
-	on:mousedown={handlePress}
-	on:mouseup={handleRelease}
+	bind:this={keyEl}
+	on:pointerenter={handlePointerEnter}
+	on:pointerleave={handlePointerLeave}
+	on:pointerdown={handlePress}
+	on:pointerup={handleRelease}
 >
 	<div class="content">
 		<span class="bind">
@@ -60,6 +64,9 @@
 	@import '$styles';
 	.key {
 		@apply mr-[.1vw] rounded-[.2vw] overflow-hidden cursor-pointer last:mr-0;
+		&[data-is-active='true'] {
+			@apply brightness-75;
+		}
 		.content {
 			@apply h-full flex flex-col text-center;
 			font-size: 0.5vw;
@@ -89,7 +96,7 @@
 	}
 	.black-key {
 		--key-width: 1.75vw;
-		@apply bg-gray-800 p-[.1vw];
+		@apply bg-gray-800 p-[.1vw] z-10;
 		width: var(--key-width);
 		height: 70%;
 		transform: translate(calc(var(--key-width) / 2), -0.15vw);

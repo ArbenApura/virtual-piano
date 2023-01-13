@@ -2,6 +2,7 @@
 import { writable } from 'svelte/store';
 
 // STATES
+export const isMobile = writable<boolean>(false);
 export const isXS = writable<boolean>(false);
 export const isSM = writable<boolean>(false);
 export const isMD = writable<boolean>(false);
@@ -18,6 +19,7 @@ export const isMDUp = writable<boolean>(false);
 export const isLGUp = writable<boolean>(false);
 export const isXLUp = writable<boolean>(false);
 export const mediaStates = {
+	isMobile,
 	isXS,
 	isSM,
 	isMD,

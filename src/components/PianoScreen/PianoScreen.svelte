@@ -14,6 +14,6 @@
 <style lang="scss">
 	@import '$styles';
 	.screen {
-		@apply w-full h-full flex -mb-1;
+		@apply w-full h-full flex relative;
 	}
 </style>

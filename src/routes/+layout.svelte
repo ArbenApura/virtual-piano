@@ -11,7 +11,10 @@
 	Tone.loaded().then(() => {
 		// REMOVE LOADING STATE
 		const loadingEl = document.querySelector('.loading');
-		if (loadingEl) document.body.removeChild(loadingEl);
+		if (loadingEl) {
+			loadingEl.classList.add('opacity-0');
+			setTimeout(() => document.body.removeChild(loadingEl), 500);
+		}
 	});
 
 	// LIFECYCLES

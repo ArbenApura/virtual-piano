@@ -39,7 +39,8 @@ export const initializePianoStates = () => {
 				C8: 'C8.mp3'
 			},
 			release: 1,
-			baseUrl: 'https://tonejs.github.io/audio/salamander/'
+			baseUrl: 'https://tonejs.github.io/audio/salamander/',
+			volume: 1
 		}).toDestination()
 	);
 };

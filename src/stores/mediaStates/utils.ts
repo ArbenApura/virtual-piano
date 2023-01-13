@@ -1,11 +1,13 @@
 // IMPORTED UTILS
 import { breakpoints } from '$utils/breakpoints';
 // IMPORTED STATES
-import { mediaStates } from './states';
+import { mediaStates, isMobile } from './states';
 
 // UTILS
 export const updateMedia = () => {
 	try {
+		detectMobile();
+
 		const winWidth = window.innerWidth;
 
 		mediaStates.isXS.set(winWidth < breakpoints.sm);
@@ -27,6 +29,14 @@ export const updateMedia = () => {
 		mediaStates.isXLUp.set(winWidth > breakpoints['2xl']);
 	} catch {}
 };
+export const detectMobile = () => {
+	try {
+		if (!navigator) return false;
+		if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/gi))
+			isMobile.set(true);
+	} catch {}
+};
 export const initializeMediaStates = () => {
 	updateMedia();
+	detectMobile();
 };

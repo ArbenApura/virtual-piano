@@ -13,10 +13,47 @@
 	let isShift = false;
 
 	// UTILS
+	const getKeyCode = (key: string) => {
+		let keyCode = key.toUpperCase();
+		switch (key) {
+			case '!':
+				keyCode = '1';
+				break;
+			case '@':
+				keyCode = '2';
+				break;
+			case '#':
+				keyCode = '3';
+				break;
+			case '$':
+				keyCode = '4';
+				break;
+			case '%':
+				keyCode = '5';
+				break;
+			case '^':
+				keyCode = '6';
+				break;
+			case '&':
+				keyCode = '7';
+				break;
+			case '*':
+				keyCode = '8';
+				break;
+			case '(':
+				keyCode = '9';
+				break;
+			case ')':
+				keyCode = '0';
+				break;
+		}
+		return keyCode;
+	};
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === 'Shift') isShift = true;
+		let keyCode = getKeyCode(event.key);
 		pianoKeys.map((key) => {
-			if (key.bind === event.key.toUpperCase()) {
+			if (key.bind === keyCode) {
 				const note = key.note.replace('#', 'S');
 				if (!key.haveSharp) {
 					// @ts-ignore
@@ -38,16 +75,15 @@
 	};
 	const handleKeyUp = (event: KeyboardEvent) => {
 		if (event.key === 'Shift') isShift = false;
+		let keyCode = getKeyCode(event.key);
 		pianoKeys.map((key) => {
-			if (key.bind === event.key.toUpperCase()) {
-				const note = !isShift ? key.note : key.note[0] + 'S' + key.note[1];
+			if (key.bind === keyCode) {
 				try {
 					// @ts-ignore
-					isPressed[note].set(false);
-				} catch {
+					isPressed[key.note.replace(/#|S/g, '')].set(false);
 					// @ts-ignore
 					isPressed[key.note.replace('#', 'S')].set(false);
-				}
+				} catch {}
 				return;
 			}
 		});
@@ -78,9 +114,10 @@
 	.page {
 		@apply fixed w-full h-full bg-gray-800 flex flex-col;
 		.top {
-			@apply flex-grow;
+			@apply flex-grow -mb-1;
 		}
 		.bottom {
+			@apply z-20;
 		}
 	}
 </style>
