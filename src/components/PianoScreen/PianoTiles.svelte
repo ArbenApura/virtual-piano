@@ -2,18 +2,13 @@
 	// IMPORTED LIB-UTILS
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
-	import { isPressed, time } from '$stores/pianoStates';
+	import { isPressed } from '$stores/pianoStates';
 
 	// PROPS
 	export let type: string, note: string;
 
 	// REFS
 	let tileEl: HTMLDivElement;
-
-	// STATES
-	let blackTileX = 0;
-	let ripples: number[] = [];
-	let count = 0;
 
 	// REACTIVE STATES
 	$: tile = (() => {
@@ -26,41 +21,18 @@
 		if (!tileEl) return tile;
 		const { x, y, width, height } = tileEl.getBoundingClientRect();
 		tile.x = x;
-		tile.y = y + height;
+		tile.y = y;
 		tile.width = width;
-		switch ($time) {
-			case '2n':
-				tile.height = height;
-				break;
-			case '4n':
-				tile.height = height * 0.75;
-				break;
-			case '8n':
-				tile.height = height * 0.5;
-				break;
-			case '16n':
-				tile.height = height * 0.25;
-				break;
-			default:
-				tile.height = height * 1.25;
-		}
+		tile.height = height;
 		return tile;
 	})();
 	$: isActive = (() => {
 		// @ts-ignore
 		return isPressed[note.replace('#', 'S')];
 	})();
-	$: if ($isActive) {
-		ripples = [...ripples, count++];
-		const id = ripples[ripples.length - 1];
-		setTimeout(() => {
-			ripples = ripples.filter((value) => value !== id);
-		}, 2000);
-	}
 
 	// UTILS
 	const handleResize = () => {
-		if (tileEl) blackTileX = tileEl.getBoundingClientRect().x;
 		tileEl = tileEl;
 	};
 
@@ -72,85 +44,87 @@
 
 <svelte:window on:resize={handleResize} />
 
-{#each ripples as _}
-	<div
-		class="ripple {type}-ripple"
-		style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
-	/>
-{/each}
-
 <div class="tile {type}-tile" data-is-active={$isActive} bind:this={tileEl} />
 
-{#if type === 'black' && tileEl}
-	<div class="tile floating-tile" data-is-active={$isActive} style="left: {blackTileX}px" />
-{/if}
+<div
+	class="highlight-tile {type}-tile"
+	style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
+	data-is-active={$isActive}
+>
+	<div class="shader" />
+</div>
 
 <style lang="scss">
 	@import '$styles';
-	@keyframes ripple {
-		0% {
-			transform: translateY(0);
-		}
-		100% {
-			transform: translateY(-200vh);
-		}
-	}
-	.ripple {
-		@apply absolute w-full h-full rounded-[.2vw];
-		transform: translateY(100vh);
-		animation: ripple 1s forwards ease;
-		&.white-ripple {
-			@apply z-10 opacity-50;
-			background-image: linear-gradient(
-				to top,
-				transparent,
-				rgba(255, 255, 255, 0.2),
-				rgba(255, 255, 255, 0.4),
-				rgba(255, 255, 255, 0.6),
-				rgba(255, 255, 255, 0.8),
-				#f8fafc
-			);
-		}
-		&.black-ripple {
-			@apply z-20 opacity-75;
-			background-image: linear-gradient(
-				to top,
-				transparent,
-				rgba(17, 24, 39, 0.2),
-				rgba(17, 24, 39, 0.4),
-				rgba(17, 24, 39, 0.6),
-				rgba(17, 24, 39, 0.8),
-				rgba(17, 24, 39, 1)
-			);
-		}
-	}
-	.tile {
-		@apply mr-[.1vw] last:mr-0 bg-gray-900 relative;
+	.tile,
+	.sealer-tile,
+	.highlight-tile {
 		background-image: url('$assets/bg-1.png');
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: bottom;
-		&[data-is-active='true'] {
-			&.white-tile,
-			&.floating-tile {
-				@apply opacity-80;
+	}
+	.tile {
+		@apply relative;
+		&.white-tile {
+			@apply h-full opacity-50 mr-[.1vw] last:mr-0;
+			width: calc((100vw - (35 * 0.1vw)) / 36);
+			&[data-is-active='true'] {
+				@apply opacity-100;
 			}
 		}
+		&.black-tile {
+			--tiles-width: 1.75vw;
+			@apply p-[.1vw] pt-0 -z-10 mr-[.1vw] last:mr-0 opacity-0;
+			width: var(--tiles-width);
+			transform: translate(calc(var(--tiles-width) / 2), -0.15vw);
+			margin-left: calc(((var(--tiles-width) / 1) / -1) - 0.1vw);
+		}
 	}
-	.white-tile {
-		@apply h-full opacity-50;
-		width: calc((100vw - (35 * 0.1vw)) / 36);
+	.sealer-tile {
+		@apply absolute opacity-100;
 	}
-	.black-tile {
-		--tiles-width: 1.75vw;
-		@apply p-[.1vw] pt-0 -z-10 opacity-0;
-		width: var(--tiles-width);
-		transform: translate(calc(var(--tiles-width) / 2), -0.15vw);
-		margin-left: calc(((var(--tiles-width) / 1) / -1) - 0.1vw);
-	}
-	.floating-tile {
-		--tiles-width: 1.75vw;
-		@apply bg-black h-full mr-0 absolute z-10 opacity-0 border-x-[.1vw] border-gray-800;
-		width: var(--tiles-width);
+	.highlight-tile {
+		@apply absolute opacity-0;
+		.shader {
+			@apply absolute w-full h-full opacity-50;
+		}
+		&.white-tile {
+			@apply z-10;
+			.shader {
+				@apply bg-slate-50;
+				background-image: linear-gradient(
+					to top,
+					transparent,
+					rgba(255, 255, 255, 0.2),
+					rgba(255, 255, 255, 0.4),
+					rgba(255, 255, 255, 0.6),
+					rgba(255, 255, 255, 0.8),
+					#f8fafc
+				);
+			}
+		}
+		&.black-tile {
+			@apply z-20 border-x-[.1vw] border-gray-900;
+			.shader {
+				@apply bg-gray-600;
+				background-image: linear-gradient(
+					to top,
+					transparent,
+					rgba(55, 65, 81, 0.2),
+					rgba(55, 65, 81, 0.4),
+					rgba(55, 65, 81, 0.6),
+					rgba(55, 65, 81, 0.8),
+					rgba(55, 65, 81, 1)
+				);
+			}
+		}
+		&[data-is-active='true'] {
+			@apply opacity-100;
+			.shader {
+				@apply bg-transparent;
+				transition: background-color 0.5s;
+			}
+		}
 	}
 </style>

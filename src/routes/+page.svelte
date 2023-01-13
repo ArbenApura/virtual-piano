@@ -112,7 +112,7 @@
 <style lang="scss">
 	@import '$styles';
 	.page {
-		@apply fixed w-full h-full bg-gray-800 flex flex-col;
+		@apply fixed w-full h-full bg-gray-900 flex flex-col;
 		.top {
 			@apply flex-grow -mb-1;
 		}

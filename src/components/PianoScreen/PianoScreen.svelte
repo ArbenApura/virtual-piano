@@ -25,7 +25,7 @@
 	.screen {
 		@apply w-full h-full relative;
 		.shader {
-			@apply absolute h-full w-full bg-gradient-to-t from-transparent to-gray-800 opacity-75 z-30;
+			@apply absolute h-full w-full bg-gradient-to-t from-transparent to-gray-900 opacity-75 z-30;
 		}
 		.brand {
 			@apply absolute z-30 p-2;
