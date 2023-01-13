@@ -17,18 +17,19 @@
 		if (event.key === 'Shift') isShift = true;
 		pianoKeys.map((key) => {
 			if (key.bind === event.key.toUpperCase()) {
+				const note = key.note.replace('#', 'S');
 				if (!key.haveSharp) {
 					// @ts-ignore
-					isPressed[key.note].set(true);
+					isPressed[note].set(true);
 					return;
 				}
 				try {
 					if (!isShift && key.type === 'white') {
 						// @ts-ignore
-						isPressed[key.note].set(true);
+						isPressed[note].set(true);
 					} else if (isShift && key.type === 'black') {
 						// @ts-ignore
-						isPressed[key.note].set(true);
+						isPressed[note].set(true);
 					}
 				} catch {}
 				return;
@@ -39,13 +40,13 @@
 		if (event.key === 'Shift') isShift = false;
 		pianoKeys.map((key) => {
 			if (key.bind === event.key.toUpperCase()) {
-				const note = !isShift ? key.note : key.note[0] + '#' + key.note[1];
+				const note = !isShift ? key.note : key.note[0] + 'S' + key.note[1];
 				try {
 					// @ts-ignore
 					isPressed[note].set(false);
 				} catch {
 					// @ts-ignore
-					isPressed[key.note].set(false);
+					isPressed[key.note.replace('#', 'S')].set(false);
 				}
 				return;
 			}

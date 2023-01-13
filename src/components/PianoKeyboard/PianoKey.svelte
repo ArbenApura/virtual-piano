@@ -7,14 +7,23 @@
 	// PROPS
 	export let key: PianoKey, isMouseDown: boolean;
 
+	// STATES
+	let note = key.note.replace('#', 'S');
+
+	// REACTIVE STATES
+	$: isActive = (() => {
+		// @ts-ignore
+		return isPressed[note];
+	})();
+
 	// UTILS
 	const handlePress = () => {
 		// @ts-ignore
-		isPressed[key.note].set(true);
+		isPressed[note].set(true);
 	};
 	const handleRelease = () => {
 		// @ts-ignore
-		isPressed[key.note].set(false);
+		isPressed[note].set(false);
 	};
 	const handleMouseEnter = () => {
 		if (!isMouseDown) return;
@@ -27,6 +36,7 @@
 
 <button
 	class={`key ${key.type}-key ${key.note}`}
+	data-is-active={$isActive}
 	on:mouseenter={handleMouseEnter}
 	on:mouseleave={handleMouseLeave}
 	on:mousedown={handlePress}
@@ -65,8 +75,17 @@
 		}
 	}
 	.white-key {
-		@apply bg-slate-50 hover:bg-slate-300 text-gray-700 h-full;
+		@apply bg-slate-50 text-gray-700 h-full;
 		width: calc((100vw - (35 * 0.1vw)) / 36);
+		&:hover,
+		&[data-is-active='true'] {
+			@apply bg-slate-300;
+		}
+		.content {
+			.note {
+				font-size: 0.8vw;
+			}
+		}
 	}
 	.black-key {
 		--key-width: 1.75vw;
@@ -75,6 +94,11 @@
 		height: 70%;
 		transform: translate(calc(var(--key-width) / 2), -0.15vw);
 		margin-left: calc((var(--key-width) / -1) - 0.1vw);
+		&[data-is-active='true'] {
+			.content {
+				@apply bg-gray-700;
+			}
+		}
 		.content {
 			@apply bg-gray-900 hover:bg-gray-700 text-slate-300 rounded-[.2vw] overflow-hidden;
 		}

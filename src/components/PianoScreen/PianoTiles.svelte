@@ -8,7 +8,7 @@
 	// REACTIVE STATES
 	$: isActive = (() => {
 		// @ts-ignore
-		return isPressed[note];
+		return isPressed[note.replace('#', 'S')];
 	})();
 </script>
 
