@@ -1,0 +1,12 @@
+@mixin lock-width($size) {
+	min-width: $size;
+	max-width: $size;
+}
+@mixin lock-height($size) {
+	min-height: $size;
+	max-height: $size;
+}
+@mixin box($size) {
+	@include lock-width($size);
+	@include lock-height($size);
+}
