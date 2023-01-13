@@ -126,7 +126,7 @@
 	}
 	.tile {
 		@apply mr-[.1vw] last:mr-0 bg-gray-900 relative;
-		background-image: url('$assets/bg-5.png');
+		background-image: url('$assets/bg-1.png');
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: bottom;
