@@ -2,12 +2,10 @@
 import type { Note } from '$stores/pianoStates';
 
 // TYPES
-export type NoteItem = {
-	note: Note;
-	duration?: number;
+export type NoteItem = [Note, number?] | Note;
+export type SongItem = [NoteItem[], number?] | number | ((interval: number) => number);
+export type Song = {
+	name: string;
+	interval: number;
+	items: SongItem[];
 };
-export type SongItem = {
-	notes: NoteItem[];
-	wait?: number;
-};
-export type Song = SongItem[];
