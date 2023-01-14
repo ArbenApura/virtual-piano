@@ -6,12 +6,12 @@
 </script>
 
 <div class="screen">
-	<div class="brand">
+	<button class="brand">
 		<img src="piano.svg" alt="Logo" />
 		<div class="text">
 			<p>Virtual Piano</p>
 		</div>
-	</div>
+	</button>
 	<div class="tiles">
 		{#each pianoKeys as key}
 			<PianoTiles type={key.type} note={key.note} />
@@ -41,7 +41,7 @@
 			content: '';
 		}
 		.brand {
-			@apply absolute z-40 p-2;
+			@apply absolute z-50 p-2;
 			@include flex-center;
 			img {
 				@apply w-[40px] mr-2;

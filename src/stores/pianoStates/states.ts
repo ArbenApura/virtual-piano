@@ -1,4 +1,6 @@
 // IMPORTED TYPES
+import type { Note, IsPressed } from './types';
+// IMPORTED LIB-TYPES
 import type { Sampler } from 'tone';
 import type { Time } from 'tone/build/esm/core/type/Units';
 // IMPORTED LIB-UTILS
@@ -6,8 +8,8 @@ import { writable, get } from 'svelte/store';
 
 // STATES
 export const piano = writable<Sampler>();
-export const time = writable<Time>('1n');
-export const isPressed = {
+export const time = writable<Time>('2n');
+export const isPressed: IsPressed = {
 	C2: writable<boolean>(false),
 	CS2: writable<boolean>(false),
 	D2: writable<boolean>(false),
@@ -68,20 +70,17 @@ export const isPressed = {
 	A6: writable<boolean>(false),
 	AS6: writable<boolean>(false),
 	B6: writable<boolean>(false),
-	C7: writable<boolean>(false)
+	C7: writable<boolean>(false),
 };
 export const pianoStates = { piano, time, isPressed };
 
 // SUBSCRIPTIONS
 Object.keys(isPressed).map((key) => {
-	// @ts-ignore
-	isPressed[key].subscribe((isPressed) => {
+	isPressed[key as Note].subscribe((isPressed) => {
 		try {
 			const piano = get(pianoStates.piano);
 			const note = key.replace('S', '#');
-			if (piano && isPressed) {
-				piano.triggerAttackRelease(note, get(time));
-			}
+			if (piano && isPressed) piano.triggerAttackRelease(note, get(time));
 		} catch {}
 	});
 });

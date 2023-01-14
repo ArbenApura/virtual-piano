@@ -7,24 +7,12 @@
 	// PROPS
 	export let key: PianoKey, isPointerDown: boolean;
 
-	// STATES
-	let note = key.note.replace('#', 'S');
-
 	// REACTIVE STATES
-	$: isActive = (() => {
-		// @ts-ignore
-		return isPressed[note];
-	})();
+	$: isActive = isPressed[key.note];
 
 	// UTILS
-	const handlePress = () => {
-		// @ts-ignore
-		isPressed[note].set(true);
-	};
-	const handleRelease = () => {
-		// @ts-ignore
-		isPressed[note].set(false);
-	};
+	const handlePress = () => isPressed[key.note].set(true);
+	const handleRelease = () => isPressed[key.note].set(false);
 	const handlePointerEnter = () => {
 		if (!isPointerDown) return;
 		handlePress();
@@ -51,7 +39,7 @@
 			{/if}
 		</span>
 		<span class="note">
-			{key.note}
+			{key.note.replace('S', '#')}
 		</span>
 	</div>
 </button>

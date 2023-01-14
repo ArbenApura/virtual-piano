@@ -10,7 +10,7 @@ const config: UserConfig = {
 			$components: path.resolve('./src/components'),
 			$utils: path.resolve('./src/utils'),
 			$stores: path.resolve('./src/stores'),
-			$types: path.resolve('./src/types'),
+			$songs: path.resolve('./src/songs'),
 			$assets: path.resolve('./src/assets')
 		}
 	}

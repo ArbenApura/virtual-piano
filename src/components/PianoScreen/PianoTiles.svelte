@@ -1,16 +1,19 @@
 <script lang="ts">
+	// IMPORTED TYPES
+	import type { Note } from '$stores/pianoStates';
 	// IMPORTED LIB-UTILS
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
 
 	// PROPS
-	export let type: string, note: string;
+	export let type: string, note: Note;
 
 	// REFS
 	let tileEl: HTMLDivElement;
 
 	// REACTIVE STATES
+	$: isActive = isPressed[note];
 	$: tile = (() => {
 		const tile = {
 			x: 0,
@@ -25,10 +28,6 @@
 		tile.width = width;
 		tile.height = height;
 		return tile;
-	})();
-	$: isActive = (() => {
-		// @ts-ignore
-		return isPressed[note.replace('#', 'S')];
 	})();
 
 	// UTILS

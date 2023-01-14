@@ -3,8 +3,8 @@
 	import { onMount } from 'svelte';
 	import * as Tone from 'tone';
 	// IMPORTED UTILS
-	import { isPressed } from '$stores/pianoStates';
 	import { pianoKeys } from '$utils/pianoKeys';
+	import { isPressed } from '$stores/pianoStates';
 	// IMPORTED COMPONENTS
 	import PianoScreen from '$components/PianoScreen/PianoScreen.svelte';
 	import PianoKeyboard from '$components/PianoKeyboard';
@@ -54,19 +54,15 @@
 		let keyCode = getKeyCode(event.key);
 		pianoKeys.map((key) => {
 			if (key.bind === keyCode) {
-				const note = key.note.replace('#', 'S');
 				if (!key.haveSharp) {
-					// @ts-ignore
-					isPressed[note].set(true);
+					isPressed[key.note].set(true);
 					return;
 				}
 				try {
 					if (!isShift && key.type === 'white') {
-						// @ts-ignore
-						isPressed[note].set(true);
+						isPressed[key.note].set(true);
 					} else if (isShift && key.type === 'black') {
-						// @ts-ignore
-						isPressed[note].set(true);
+						isPressed[key.note].set(true);
 					}
 				} catch {}
 				return;
@@ -79,10 +75,8 @@
 		pianoKeys.map((key) => {
 			if (key.bind === keyCode) {
 				try {
-					// @ts-ignore
-					isPressed[key.note.replace(/#|S/g, '')].set(false);
-					// @ts-ignore
-					isPressed[key.note.replace('#', 'S')].set(false);
+					isPressed[key.note].set(false);
+					isPressed[key.note].set(false);
 				} catch {}
 				return;
 			}
