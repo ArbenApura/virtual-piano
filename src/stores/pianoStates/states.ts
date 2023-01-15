@@ -86,7 +86,7 @@ Object.keys(isPressed).map((key) => {
 			const note = key.replace('S', '#');
 			if (!piano) return;
 			if (get(isSustain)) {
-				if (isPressed) piano.triggerAttackRelease(note, '1n');
+				if (isPressed) piano.triggerAttackRelease(note, '2n');
 			} else {
 				if (isPressed) {
 					piano.triggerAttack(note);

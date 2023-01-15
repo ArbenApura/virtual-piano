@@ -51,10 +51,13 @@
 <style lang="scss">
 	@import '$styles';
 	.keyboard {
-		@apply relative aspect-[14/2] flex pt-[.6vw] border-t-[.2vw];
+		@apply relative h-[14vw] flex pt-[1vw] border-t-[.2vw] border-[#160801];
+		background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
+			url('$assets/bg-wood.png');
 		&::before {
-			@apply absolute top-[-.2vw] w-full h-full bg-gray-50 opacity-50 -z-10;
+			@apply bg-slate-50 absolute top-[1.1vw] w-full h-full z-0;
 			content: '';
+			height: calc(100% - 1.2vw);
 		}
 	}
 </style>

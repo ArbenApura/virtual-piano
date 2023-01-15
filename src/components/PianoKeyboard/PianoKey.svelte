@@ -74,7 +74,7 @@
 			}
 		}
 		&.white-key {
-			@apply border-l border-b border-slate-200;
+			@apply border-l border-b border-slate-200 z-10;
 			width: calc(100vw / 35);
 			background-image: linear-gradient(
 				to bottom,
@@ -101,7 +101,7 @@
 		}
 		&.black-key {
 			--key-width: 1.75vw;
-			@apply z-10 h-4/6;
+			@apply h-[65%] z-20;
 			width: var(--key-width);
 			background-image: linear-gradient(45deg, #222 0%, #555 100%);
 			box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
