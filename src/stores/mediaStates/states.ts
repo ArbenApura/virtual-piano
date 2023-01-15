@@ -5,6 +5,7 @@ import { updateMedia } from './utils';
 // STATES
 export const resizeCount = writable<number>(0);
 export const isMobile = writable<boolean>(false);
+export const isTouchScreen = writable<boolean>(false);
 export const isXS = writable<boolean>(false);
 export const isSM = writable<boolean>(false);
 export const isMD = writable<boolean>(false);
@@ -23,6 +24,7 @@ export const isXLUp = writable<boolean>(false);
 export const mediaStates = {
 	resizeCount,
 	isMobile,
+	isTouchScreen,
 	isXS,
 	isSM,
 	isMD,

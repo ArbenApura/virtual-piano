@@ -1,12 +1,19 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$utils/pianoKeys';
+	import type { Pointer } from './types';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
 	import { visibility } from '$stores/settingStates';
+	import { isTouchScreen } from '$stores/mediaStates';
+	// IMPORTED COMPONENTS
+	import TouchScreenConfig from './TouchScreenConfig.svelte';
 
 	// PROPS
-	export let key: PianoKey, pointerIsDown: boolean;
+	export let key: PianoKey, pointer: Pointer;
+
+	// REFS
+	let keyEl: HTMLButtonElement;
 
 	// REACTIVE STATES
 	$: isActive = isPressed[key.note];
@@ -14,16 +21,22 @@
 	// UTILS
 	const handlePress = () => isPressed[key.note].set(true);
 	const handleRelease = () => isPressed[key.note].set(false);
-	const handlePointerEnter = () => pointerIsDown && handlePress();
+	const handlePointerOver = () => !$isTouchScreen && pointer.isDown && handlePress();
 </script>
+
+{#if $isTouchScreen}
+	<TouchScreenConfig {...{ keyEl, pointer, handlePress, handleRelease }} />
+{/if}
 
 <button
 	class={`key ${key.type}-key ${key.note}`}
 	data-is-active={$isActive}
-	on:pointerenter={handlePointerEnter}
-	on:pointerleave={handleRelease}
+	bind:this={keyEl}
+	on:touchstart={handlePress}
 	on:pointerdown={handlePress}
 	on:pointerup={handleRelease}
+	on:pointerover={handlePointerOver}
+	on:pointerout={handleRelease}
 >
 	<div class="content">
 		<span class="bind">
