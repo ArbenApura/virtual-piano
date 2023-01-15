@@ -6,7 +6,7 @@
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { isPressed } from '$stores/pianoStates';
 	// IMPORTED COMPONENTS
-	import PianoScreen from '$components/PianoScreen/PianoScreen.svelte';
+	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
 
 	// STATES
@@ -105,13 +105,20 @@
 
 <style lang="scss">
 	@import '$styles';
+	:root {
+		--bg-image: url('$assets/bg-1.png');
+	}
 	.page {
 		@apply fixed w-full h-full bg-gray-900 flex flex-col;
+		background-image: var(--bg-image);
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: bottom;
 		.top {
-			@apply flex-grow -mb-1;
+			@apply flex-grow;
 		}
 		.bottom {
-			@apply z-50;
+			@apply z-[100];
 		}
 	}
 </style>

@@ -47,10 +47,7 @@
 <style lang="scss">
 	@import '$styles';
 	.key {
-		@apply mr-[.1vw] rounded-[.2vw] overflow-hidden cursor-pointer last:mr-0;
-		&[data-is-active='true'] {
-			@apply brightness-90;
-		}
+		@apply rounded-[.1vw] overflow-hidden;
 		.content {
 			@apply h-full flex flex-col text-center;
 			font-size: 0.5vw;
@@ -64,34 +61,49 @@
 				}
 			}
 		}
-	}
-	.white-key {
-		@apply bg-slate-50 text-gray-700 h-full;
-		width: calc((100vw - (35 * 0.1vw)) / 36);
-		&:hover,
-		&[data-is-active='true'] {
-			@apply bg-slate-300;
-		}
-		.content {
-			.note {
-				font-size: 0.8vw;
-			}
-		}
-	}
-	.black-key {
-		--key-width: 1.75vw;
-		@apply bg-gray-800 p-[.1vw] z-10;
-		width: var(--key-width);
-		height: 70%;
-		transform: translate(calc(var(--key-width) / 2), -0.15vw);
-		margin-left: calc((var(--key-width) / -1) - 0.1vw);
-		&[data-is-active='true'] {
+		&.white-key {
+			@apply border-l border-b border-slate-200;
+			width: calc(100vw / 35);
+			background-image: linear-gradient(
+				to bottom,
+				theme('colors.slate.50'),
+				theme('colors.slate.100')
+			);
+			box-shadow: -1px 0 0 rgba(255, 255, 255, 0.8) inset, 0 0 5px #ccc inset,
+				0 0 3px rgba(0, 0, 0, 0.2);
 			.content {
-				@apply bg-gray-700;
+				.note {
+					font-size: 0.8vw;
+				}
+			}
+			&[data-is-active='true'] {
+				@apply border-slate-300;
+				background-image: linear-gradient(
+					to bottom,
+					theme('colors.slate.50'),
+					theme('colors.slate.200')
+				);
+				box-shadow: 2px 0 3px rgba(0, 0, 0, 0.01) inset,
+					-5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
 			}
 		}
-		.content {
-			@apply bg-gray-900 hover:bg-gray-700 text-slate-300 rounded-[.2vw] overflow-hidden;
+		&.black-key {
+			--key-width: 1.75vw;
+			@apply z-10 h-4/6;
+			width: var(--key-width);
+			background-image: linear-gradient(45deg, #222 0%, #555 100%);
+			box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
+				0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
+			transform: translate(calc(var(--key-width) / 2), -0.15vw);
+			margin-left: calc((var(--key-width) / -1));
+			.content {
+				@apply text-slate-300 rounded-[.2vw] overflow-hidden;
+			}
+			&[data-is-active='true'] {
+				box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
+					0 -2px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+				background: linear-gradient(to right, #444 0%, #222 100%);
+			}
 		}
 	}
 </style>

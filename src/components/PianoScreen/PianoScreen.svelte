@@ -13,8 +13,8 @@
 		</div>
 	</button>
 	<div class="tiles">
-		{#each pianoKeys as key}
-			<PianoTiles type={key.type} note={key.note} />
+		{#each pianoKeys as pianoKey}
+			<PianoTiles {pianoKey} />
 		{/each}
 	</div>
 	<div class="lines">
@@ -27,21 +27,22 @@
 <style lang="scss">
 	@import '$styles';
 	.screen {
-		@apply w-full h-full relative;
-		&::before {
-			@apply absolute w-full h-full opacity-50;
+		@apply w-full h-full relative border-b-[.2vw] border-gray-900;
+		.lines,
+		&::before,
+		&::after {
+			@apply absolute top-0 w-full;
 			content: '';
-			background-image: url('$assets/bg-1.png');
-			background-attachment: fixed;
-			background-size: cover;
-			background-position: bottom;
+			height: calc(100% + 0.2vw);
+		}
+		&::before {
+			@apply opacity-50 bg-gray-900;
 		}
 		&::after {
-			@apply absolute top-0 h-full w-full bg-gradient-to-t from-transparent to-gray-900 z-30 opacity-75;
-			content: '';
+			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-75 z-50;
 		}
 		.brand {
-			@apply absolute z-50 p-2;
+			@apply absolute z-[100] p-2;
 			@include flex-center;
 			img {
 				@apply w-[40px] mr-2;
@@ -55,12 +56,13 @@
 			}
 		}
 		.tiles {
-			@apply w-full h-full flex relative;
+			@apply relative w-full flex;
+			height: calc(100% + 0.05vw);
 		}
 		.lines {
-			@apply absolute w-full h-full top-0 flex items-stretch z-40 opacity-100;
+			@apply flex items-stretch z-40;
 			div {
-				@apply border-r-[.2vw] border-gray-900 w-[50px];
+				@apply border-r-[.2vw] border-gray-900;
 				&:nth-child(2n + 1) {
 					width: 8.35vw;
 				}

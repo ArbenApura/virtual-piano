@@ -1,13 +1,15 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { Note } from '$stores/pianoStates';
+	import type { PianoKey } from '$utils/pianoKeys';
 	// IMPORTED LIB-UTILS
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
 
 	// PROPS
-	export let type: string, note: Note;
+	export let pianoKey: PianoKey;
+	const { note, type, bind } = pianoKey;
 
 	// REFS
 	let tileEl: HTMLDivElement;
@@ -19,7 +21,7 @@
 			x: 0,
 			y: 0,
 			width: 0,
-			height: 0
+			height: 0,
 		};
 		if (!tileEl) return tile;
 		const { x, y, width, height } = tileEl.getBoundingClientRect();
@@ -43,7 +45,7 @@
 
 <svelte:window on:resize={handleResize} />
 
-<div class="tile {type}-tile" data-is-active={$isActive} bind:this={tileEl} />
+<div class="tile {type}-tile" bind:this={tileEl} />
 
 <div
 	class="highlight-tile {type}-tile"
@@ -51,68 +53,73 @@
 	data-is-active={$isActive}
 />
 
+{#if type === 'white' && false}
+	<div
+		class="info-tile"
+		style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
+	>
+		<small>{note}</small>
+		<hr />
+		<small>{bind}</small>
+	</div>
+{/if}
+
 <style lang="scss">
 	@import '$styles';
 	.tile {
-		@apply relative;
+		@apply relative h-full;
 		&.white-tile {
-			@apply h-full opacity-50 mr-[.1vw] last:mr-0;
-			width: calc((100vw - (35 * 0.1vw)) / 36);
+			width: calc(100vw / 35);
 		}
 		&.black-tile {
-			--tiles-width: 1.75vw;
-			@apply p-[.1vw] pt-0 -z-10 mr-[.1vw] last:mr-0 opacity-0;
-			width: var(--tiles-width);
-			transform: translate(calc(var(--tiles-width) / 2), -0.15vw);
-			margin-left: calc(((var(--tiles-width) / 1) / -1) - 0.1vw);
+			--key-width: 1.75vw;
+			width: var(--key-width);
+			transform: translateX(calc(var(--key-width) / 2));
+			margin-left: calc((var(--key-width) / -1));
 		}
-		&[data-is-active='true'] {
-			@apply opacity-100;
+	}
+	.info-tile {
+		@apply absolute opacity-40 flex-col z-[100];
+		@include flex-center;
+		small {
+			@apply text-slate-50 text-[.7vw] text-center;
+		}
+		hr {
+			@apply w-[30%] my-[.2vw];
 		}
 	}
 	.highlight-tile {
 		@apply absolute opacity-0;
-		&::before {
-			@apply absolute w-full h-full opacity-75 z-20;
+		&::before,
+		&::after {
+			@apply absolute w-full h-full opacity-0;
 			content: '';
 		}
+		&::before {
+			@apply opacity-75 z-20;
+			background-color: rgba(255, 255, 255, 0.4);
+			background-image: linear-gradient(
+				to top,
+				transparent,
+				rgba(255, 255, 255, 0.2),
+				rgba(255, 255, 255, 0.4),
+				rgba(255, 255, 255, 0.6),
+				rgba(255, 255, 255, 0.8),
+				#f8fafc
+			);
+		}
 		&::after {
-			@apply absolute w-full h-full opacity-100 z-10;
-			content: '';
-			background-image: url('$assets/bg-1.png');
+			@apply opacity-100 z-10;
+			background-image: var(--bg-image);
 			background-attachment: fixed;
 			background-size: cover;
 			background-position: bottom;
 		}
 		&.white-tile {
 			@apply z-10;
-			&::before {
-				background-color: rgba(255, 255, 255, 0.4);
-				background-image: linear-gradient(
-					to top,
-					transparent,
-					rgba(255, 255, 255, 0.2),
-					rgba(255, 255, 255, 0.4),
-					rgba(255, 255, 255, 0.6),
-					rgba(255, 255, 255, 0.8),
-					#f8fafc
-				);
-			}
 		}
 		&.black-tile {
-			@apply z-20 border-x-[.1vw] border-transparent;
-			&::before {
-				background-color: rgba(55, 65, 81, 0.4);
-				background-image: linear-gradient(
-					to top,
-					transparent,
-					rgba(55, 65, 81, 0.2),
-					rgba(55, 65, 81, 0.4),
-					rgba(55, 65, 81, 0.6),
-					rgba(55, 65, 81, 0.8),
-					rgba(55, 65, 81, 1)
-				);
-			}
+			@apply z-20;
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;

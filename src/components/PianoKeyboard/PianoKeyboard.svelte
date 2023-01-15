@@ -21,6 +21,10 @@
 <style lang="scss">
 	@import '$styles';
 	.keyboard {
-		@apply aspect-[14/2] flex;
+		@apply relative aspect-[14/2] flex pt-[.6vw] border-t-[.2vw];
+		&::before {
+			@apply absolute top-[-.2vw] w-full h-full bg-gray-50 opacity-50 -z-10;
+			content: '';
+		}
 	}
 </style>
