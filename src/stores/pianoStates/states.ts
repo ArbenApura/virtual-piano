@@ -7,7 +7,7 @@ import { writable, get } from 'svelte/store';
 
 // DEFAULT STATES
 export const BPM: number = 200;
-export const IS_SUSTAIN: boolean = false;
+export const IS_SUSTAIN: boolean = true;
 
 // STATES
 export const piano = writable<Sampler>();
@@ -86,7 +86,7 @@ Object.keys(isPressed).map((key) => {
 			const note = key.replace('S', '#');
 			if (!piano) return;
 			if (get(isSustain)) {
-				if (isPressed) piano.triggerAttackRelease(note, '2n');
+				if (isPressed) piano.triggerAttackRelease(note, '1n');
 			} else {
 				if (isPressed) {
 					piano.triggerAttack(note);
