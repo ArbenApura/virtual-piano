@@ -1,11 +1,10 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$utils/pianoKeys';
-	// IMPORTED LIB-UTILS
-	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
 	import { visibility } from '$stores/settingStates';
+	import { resizeCount } from '$stores/mediaStates';
 
 	// PROPS
 	export let pianoKey: PianoKey;
@@ -16,6 +15,7 @@
 
 	// REACTIVE STATES
 	$: isActive = isPressed[note];
+	$: $resizeCount && (tileEl = tileEl);
 	$: tile = (() => {
 		const tile = {
 			x: 0,
@@ -25,25 +25,9 @@
 		};
 		if (!tileEl) return tile;
 		const { x, y, width, height } = tileEl.getBoundingClientRect();
-		tile.x = x;
-		tile.y = y;
-		tile.width = width;
-		tile.height = height;
-		return tile;
+		return { x, y, width, height };
 	})();
-
-	// UTILS
-	const handleResize = () => {
-		tileEl = tileEl;
-	};
-
-	// LIFECYCLES
-	onMount(() => {
-		handleResize();
-	});
 </script>
-
-<svelte:window on:resize={handleResize} />
 
 <div class="tile {type}-tile" bind:this={tileEl} />
 
@@ -53,11 +37,11 @@
 	data-is-active={$isActive}
 />
 
-{#if type === 'white'}
-	<div
-		class="info-tile"
-		style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
-	>
+<div
+	class="info-tile"
+	style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
+>
+	{#if type === 'white'}
 		{#if $visibility.screenHint.note}
 			<small>{note}</small>
 		{/if}
@@ -67,8 +51,11 @@
 		{#if $visibility.screenHint.bind}
 			<small>{bind}</small>
 		{/if}
-	</div>
-{/if}
+	{/if}
+	{#if $visibility.screenHint.dot}
+		<span class="{type}-dot" />
+	{/if}
+</div>
 
 <style lang="scss">
 	@import '$styles';
@@ -85,13 +72,23 @@
 		}
 	}
 	.info-tile {
-		@apply absolute opacity-40 flex-col z-[100];
+		@apply absolute flex-col z-[100] opacity-40;
 		@include flex-center;
 		small {
 			@apply text-slate-50 text-[.7vw] text-center;
 		}
 		hr {
 			@apply w-[30%] my-[.2vw];
+		}
+		span {
+			@apply absolute bottom-[1vw] rounded-full;
+			@include box(0.4vw);
+			&.white-dot {
+				@apply bg-slate-50;
+			}
+			&.black-dot {
+				@apply bg-gray-500;
+			}
 		}
 	}
 	.highlight-tile {

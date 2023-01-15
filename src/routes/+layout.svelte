@@ -4,7 +4,7 @@
 	import * as Tone from 'tone';
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
-	import { updateMedia } from '$stores/mediaStates';
+	import { resizeCount } from '$stores/mediaStates';
 	// IMPORTED STYLES
 	import '$styles/tailwind.scss';
 
@@ -18,11 +18,9 @@
 	});
 
 	// LIFECYCLES
-	onMount(() => {
-		initializeStores();
-	});
+	onMount(initializeStores);
 </script>
 
-<svelte:window on:resize={updateMedia} />
+<svelte:window on:resize={() => resizeCount.update((v) => ++v)} />
 
 <slot />

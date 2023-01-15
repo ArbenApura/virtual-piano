@@ -1,12 +1,13 @@
 <script lang="ts">
 	// IMPORTED UTILS
 	import { pianoKeys } from '$utils/pianoKeys';
+	import { togglePlaySong } from '$stores/playerStates';
 	// IMPORTED COMPONENTS
 	import PianoTiles from './PianoTiles.svelte';
 </script>
 
 <div class="screen">
-	<button class="brand">
+	<button class="brand" on:click={() => false && togglePlaySong()}>
 		<img src="piano.svg" alt="Logo" />
 		<div class="text">
 			<p>Virtual Piano</p>
@@ -42,7 +43,7 @@
 			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-75 z-50;
 		}
 		.brand {
-			@apply absolute z-[100] p-2;
+			@apply absolute z-[200] p-2;
 			@include flex-center;
 			img {
 				@apply w-[40px] mr-2;

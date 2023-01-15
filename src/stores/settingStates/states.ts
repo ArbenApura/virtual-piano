@@ -6,7 +6,7 @@ import { writable } from 'svelte/store';
 // DEFAULT STATES
 export const DEFAULT_VISIBILITY: Visibility = {
 	keyboardHint: { note: true, bind: true },
-	screenHint: { note: false, bind: false },
+	screenHint: { note: false, bind: false, dot: false },
 };
 
 // STATES

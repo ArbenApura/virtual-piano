@@ -3,7 +3,7 @@ import type { Song } from '$stores/playerStates';
 
 const song: Song = {
 	name: 'Flight Of The Bumblebee',
-	interval: 160,
+	interval: 100,
 	items: [
 		[['A2', 'CS2', 'E3', 'A3', 'A5']],
 		[['GS5']],

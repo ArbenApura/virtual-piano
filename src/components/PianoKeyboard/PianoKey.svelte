@@ -6,7 +6,7 @@
 	import { visibility } from '$stores/settingStates';
 
 	// PROPS
-	export let key: PianoKey, isPointerDown: boolean;
+	export let key: PianoKey, pointerIsDown: boolean;
 
 	// REACTIVE STATES
 	$: isActive = isPressed[key.note];
@@ -14,20 +14,14 @@
 	// UTILS
 	const handlePress = () => isPressed[key.note].set(true);
 	const handleRelease = () => isPressed[key.note].set(false);
-	const handlePointerEnter = () => {
-		if (!isPointerDown) return;
-		handlePress();
-	};
-	const handlePointerLeave = () => {
-		handleRelease();
-	};
+	const handlePointerEnter = () => pointerIsDown && handlePress();
 </script>
 
 <button
 	class={`key ${key.type}-key ${key.note}`}
 	data-is-active={$isActive}
 	on:pointerenter={handlePointerEnter}
-	on:pointerleave={handlePointerLeave}
+	on:pointerleave={handleRelease}
 	on:pointerdown={handlePress}
 	on:pointerup={handleRelease}
 >

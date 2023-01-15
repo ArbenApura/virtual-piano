@@ -1,7 +1,9 @@
 // IMPORTED LIB-UTILS
 import { writable } from 'svelte/store';
+import { updateMedia } from './utils';
 
 // STATES
+export const resizeCount = writable<number>(0);
 export const isMobile = writable<boolean>(false);
 export const isXS = writable<boolean>(false);
 export const isSM = writable<boolean>(false);
@@ -19,6 +21,7 @@ export const isMDUp = writable<boolean>(false);
 export const isLGUp = writable<boolean>(false);
 export const isXLUp = writable<boolean>(false);
 export const mediaStates = {
+	resizeCount,
 	isMobile,
 	isXS,
 	isSM,
@@ -34,5 +37,8 @@ export const mediaStates = {
 	isSMUp,
 	isMDUp,
 	isLGUp,
-	isXLUp
+	isXLUp,
 };
+
+// SUBSCRIPTIONS
+resizeCount.subscribe(updateMedia);

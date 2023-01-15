@@ -69,5 +69,5 @@ export let pianoKeys: PianoKey[] = [
 	{ type: 'white', note: 'A6', bind: 'B', haveSharp: true },
 	{ type: 'black', note: 'AS6', bind: 'B', haveSharp: true },
 	{ type: 'white', note: 'B6', bind: 'N', haveSharp: false },
-	{ type: 'white', note: 'C7', bind: 'M', haveSharp: true }
+	{ type: 'white', note: 'C7', bind: 'M', haveSharp: false },
 ];

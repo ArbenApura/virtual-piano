@@ -5,16 +5,17 @@
 	import PianoKey from './PianoKey.svelte';
 
 	// STATES
-	let isPointerDown = false;
+	let pointerIsDown = false;
 </script>
 
 <div
 	class="keyboard"
-	on:pointerdown={() => (isPointerDown = true)}
-	on:pointerup={() => (isPointerDown = false)}
+	on:pointerdown={() => (pointerIsDown = true)}
+	on:pointerup={() => (pointerIsDown = false)}
+	on:pointerleave={() => (pointerIsDown = false)}
 >
 	{#each pianoKeys as key}
-		<PianoKey {...{ key, isPointerDown }} />
+		<PianoKey {...{ key, pointerIsDown }} />
 	{/each}
 </div>
 
