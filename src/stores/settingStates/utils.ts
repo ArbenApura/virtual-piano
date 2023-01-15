@@ -1,0 +1,2 @@
+// UTILS
+export const initializeSettingStates = () => {};

@@ -5,6 +5,7 @@
 	// IMPORTED UTILS
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { isPressed } from '$stores/pianoStates';
+	import { togglePlaySong } from '$stores/playerStates';
 	// IMPORTED COMPONENTS
 	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
@@ -88,6 +89,7 @@
 		Tone.start();
 		Tone.loaded().then(() => {
 			console.log('Tone loaded!');
+			if (false) togglePlaySong();
 		});
 	});
 </script>

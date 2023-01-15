@@ -4,7 +4,8 @@ import { writable } from 'svelte/store';
 import { mediaStates, initializeMediaStates } from './mediaStates';
 import { pianoStates, initializePianoStates } from './pianoStates';
 import { playerStates, initializePlayerStates } from './playerStates';
-export { mediaStates, pianoStates, playerStates };
+import { settingStates, initializeSettingStates } from './settingStates';
+export { mediaStates, pianoStates, playerStates, settingStates };
 
 // STATES
 export const isInitialized = writable<boolean>(false);
@@ -15,5 +16,6 @@ export const initializeStores = () => {
 	initializeMediaStates();
 	initializePianoStates();
 	initializePlayerStates();
+	initializeSettingStates();
 	isInitialized.set(true);
 };

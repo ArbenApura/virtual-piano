@@ -206,7 +206,7 @@ const song: Song = {
 
 		12,
 
-		(interval) => increaseInterval(interval, 0.2),
+		(interval) => increaseInterval(interval, 0.1),
 
 		...RepeatableB,
 		...PartB,

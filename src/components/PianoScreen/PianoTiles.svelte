@@ -1,11 +1,11 @@
 <script lang="ts">
 	// IMPORTED TYPES
-	import type { Note } from '$stores/pianoStates';
 	import type { PianoKey } from '$utils/pianoKeys';
 	// IMPORTED LIB-UTILS
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
+	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let pianoKey: PianoKey;
@@ -53,14 +53,20 @@
 	data-is-active={$isActive}
 />
 
-{#if type === 'white' && false}
+{#if type === 'white'}
 	<div
 		class="info-tile"
 		style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
 	>
-		<small>{note}</small>
-		<hr />
-		<small>{bind}</small>
+		{#if $visibility.screenHint.note}
+			<small>{note}</small>
+		{/if}
+		{#if $visibility.screenHint.note && $visibility.screenHint.bind}
+			<hr />
+		{/if}
+		{#if $visibility.screenHint.bind}
+			<small>{bind}</small>
+		{/if}
 	</div>
 {/if}
 

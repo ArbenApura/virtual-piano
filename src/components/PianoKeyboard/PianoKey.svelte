@@ -3,6 +3,7 @@
 	import type { PianoKey } from '$utils/pianoKeys';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
+	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let key: PianoKey, isPointerDown: boolean;
@@ -32,14 +33,18 @@
 >
 	<div class="content">
 		<span class="bind">
-			{key.bind}
-			{#if key.type === 'black'}
-				<i class="ti ti-plus" />
-				<i class="ti ti-arrow-big-top" />
+			{#if $visibility.keyboardHint.bind}
+				{key.bind}
+				{#if key.type === 'black'}
+					<i class="ti ti-plus" />
+					<i class="ti ti-arrow-big-top" />
+				{/if}
 			{/if}
 		</span>
 		<span class="note">
-			{key.note.replace('S', '#')}
+			{#if $visibility.keyboardHint.note}
+				{key.note.replace('S', '#')}
+			{/if}
 		</span>
 	</div>
 </button>
