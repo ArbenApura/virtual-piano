@@ -1,0 +1,17 @@
+{
+	"short_name": "virtual-piano",
+	"name": "Virtual Piano By Arben",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "piano.svg",
+			"type": "image/svg+xml",
+			"sizes": "800x800"
+		}
+	],
+	"background_color": "#111827",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#111827",
+	"description": "A virtual piano simulator developed by Arben Apura."
+}
