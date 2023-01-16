@@ -7,13 +7,13 @@
 	// PROPS
 	export let keyEl: HTMLButtonElement,
 		pointer: Pointer,
+		isSwiping: boolean,
 		handleRelease: () => void,
 		handlePress: () => void;
 
 	// REACTIVE STATEMENTS
 	$: (() => {
-		if (!$isTouchScreen) return;
-		if (!pointer.isSwiping || !pointer.isDown || !keyEl) return handleRelease();
+		if (!isSwiping || !$isTouchScreen || !keyEl) return;
 		const { x, y, width, height } = keyEl.getBoundingClientRect();
 		if (pointer.x > x && pointer.x < x + width && pointer.y > y && pointer.y < y + height)
 			handlePress();

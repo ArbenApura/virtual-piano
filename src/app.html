@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/piano.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<title>Virtual Piano</title>
 		<!-- CDN -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,6 +31,7 @@
 				text-decoration: none;
 				transition: none;
 				touch-action: none;
+				overscroll-behavior-x: none;
 				-webkit-tap-highlight-color: transparent;
 			}
 			.loading {
