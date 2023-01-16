@@ -5,10 +5,13 @@
 	import { isFullScreen, toggleFullScreen } from '$stores/settingStates';
 	// IMPORTED COMPONENTS
 	import PianoTiles from './PianoTiles.svelte';
+
+	// STATES
+	let isTogglePlaySong = false;
 </script>
 
 <div class="screen">
-	<button class="brand" on:click={() => false && togglePlaySong()}>
+	<button class="brand" on:click={() => isTogglePlaySong && togglePlaySong()}>
 		<img src="piano.svg" alt="Logo" />
 		<div class="text">
 			<p>Virtual Piano</p>

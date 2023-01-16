@@ -10,9 +10,6 @@
 	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
 
-	// REFS
-	let pageEl: HTMLDivElement;
-
 	// STATES
 	let isShift = false;
 
@@ -92,14 +89,14 @@
 		Tone.start();
 		Tone.loaded().then(() => {
 			console.log('Tone loaded!');
-			if (false) togglePlaySong();
+			if (false) setTimeout(togglePlaySong, 1000);
 		});
 	});
 </script>
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
-<div class="page" bind:this={pageEl}>
+<div class="page">
 	<div class="top">
 		<PianoScreen />
 	</div>

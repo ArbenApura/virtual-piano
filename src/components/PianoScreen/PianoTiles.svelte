@@ -52,8 +52,8 @@
 			<small>{bind}</small>
 		{/if}
 	{/if}
-	{#if $visibility.screenHint.dot}
-		<span class="{type}-dot" />
+	{#if $visibility.screenHint.dot || $isActive}
+		<span class="{type}-dot" data-is-active={$isActive} />
 	{/if}
 </div>
 
@@ -72,8 +72,13 @@
 		}
 	}
 	.info-tile {
-		@apply absolute flex-col z-[100] opacity-40;
+		@apply absolute flex-col z-[100];
 		@include flex-center;
+		small,
+		hr,
+		span {
+			@apply opacity-40;
+		}
 		small {
 			@apply text-slate-50 text-[.7vw] text-center;
 		}
@@ -88,6 +93,12 @@
 			}
 			&.black-dot {
 				@apply bg-gray-500;
+			}
+			&[data-is-active='true'] {
+				@apply opacity-100;
+				&.black-dot {
+					@apply bg-gray-900;
+				}
 			}
 		}
 	}

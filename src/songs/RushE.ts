@@ -37,23 +37,23 @@ const RepeatableB: SongItem[] = [
 	[['GS2'], -4],
 ];
 const PartA: SongItem[] = [
-	[['E5']],
-	[['F5']],
-	[['E5']],
-	[['DS5']],
-	[['E5']],
-	[['F5']],
-	[['E5']],
-	[['DS5']],
+	// [['E5']],
+	// [['F5']],
+	// [['E5']],
+	// [['DS5']],
+	// [['E5']],
+	// [['F5']],
+	// [['E5']],
+	// [['DS5']],
 
-	[['E4']],
-	[['F4']],
-	[['E4']],
-	[['DS4']],
-	[['E4']],
-	[['F4']],
-	[['E4']],
-	[['DS4']],
+	// [['E4']],
+	// [['F4']],
+	// [['E4']],
+	// [['DS4']],
+	// [['E4']],
+	// [['F4']],
+	// [['E4']],
+	// [['DS4']],
 
 	[['E5']],
 	[['F5']],
@@ -196,24 +196,8 @@ const PartC: SongItem[] = [
 
 const song: Song = {
 	name: 'Rush E',
-	interval: 160,
-	items: [
-		...PartA,
-		...PartB,
-
-		...RepeatableB,
-		...PartC,
-
-		12,
-
-		(interval) => increaseInterval(interval, 0.1),
-
-		...RepeatableB,
-		...PartB,
-
-		...RepeatableB,
-		...PartC,
-	],
+	interval: 150,
+	items: [...PartA, ...PartB, ...RepeatableB, ...PartC],
 };
 
 export default song;

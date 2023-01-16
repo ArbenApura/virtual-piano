@@ -71,7 +71,7 @@
 					theme('colors.slate.200')
 				);
 				box-shadow: 2px 0 3px rgba(0, 0, 0, 0.01) inset,
-					-5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.2);
+					-5px 5px 20px rgba(0, 0, 0, 0.2) inset, 0 0 3px rgba(0, 0, 0, 0.4);
 			}
 		}
 		&.black-key {
