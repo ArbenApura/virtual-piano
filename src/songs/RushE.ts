@@ -196,7 +196,7 @@ const PartC: SongItem[] = [
 
 const song: Song = {
 	name: 'Rush E',
-	interval: 180,
+	interval: 160,
 	items: [
 		...PartA,
 		...PartB,

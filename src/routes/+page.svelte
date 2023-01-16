@@ -10,6 +10,9 @@
 	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
 
+	// REFS
+	let pageEl: HTMLDivElement;
+
 	// STATES
 	let isShift = false;
 
@@ -96,7 +99,7 @@
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
-<div class="page">
+<div class="page" bind:this={pageEl}>
 	<div class="top">
 		<PianoScreen />
 	</div>

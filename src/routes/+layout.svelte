@@ -5,6 +5,8 @@
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
 	import { resizeCount } from '$stores/mediaStates';
+	// IMPORTED COMPONENTS
+	import FullScreen from '$components/FullScreen.svelte';
 	// IMPORTED STYLES
 	import '$styles/tailwind.scss';
 
@@ -23,4 +25,6 @@
 
 <svelte:window on:resize={() => resizeCount.update((v) => ++v)} />
 
-<slot />
+<FullScreen>
+	<slot />
+</FullScreen>

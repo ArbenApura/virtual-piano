@@ -2,6 +2,7 @@
 	// IMPORTED UTILS
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { togglePlaySong } from '$stores/playerStates';
+	import { isFullScreen, toggleFullScreen } from '$stores/settingStates';
 	// IMPORTED COMPONENTS
 	import PianoTiles from './PianoTiles.svelte';
 </script>
@@ -12,6 +13,9 @@
 		<div class="text">
 			<p>Virtual Piano</p>
 		</div>
+	</button>
+	<button class="fullscreen-toggler" on:click={toggleFullScreen}>
+		<i class="ti ti-{$isFullScreen ? 'minimize' : 'maximize'}" />
 	</button>
 	<div class="tiles">
 		{#each pianoKeys as pianoKey}
@@ -54,6 +58,12 @@
 				p {
 					@apply text-slate-50 text-base;
 				}
+			}
+		}
+		.fullscreen-toggler {
+			@apply absolute top-4 right-4 z-[200];
+			.ti {
+				@apply text-slate-50 text-[25px];
 			}
 		}
 		.tiles {
