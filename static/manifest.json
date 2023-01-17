@@ -11,6 +11,7 @@
 	],
 	"background_color": "#111827",
 	"display": "standalone",
+	"orientation": "landscape",
 	"scope": "/",
 	"theme_color": "#111827",
 	"description": "A virtual piano simulator developed by Arben Apura."
