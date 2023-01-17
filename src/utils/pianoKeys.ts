@@ -1,12 +1,5 @@
 // IMPORTED TYPES
-import type { Note } from '$stores/pianoStates';
-
-export type PianoKey = {
-	type: 'white' | 'black';
-	note: Note;
-	bind: string;
-	haveSharp: boolean;
-};
+import type { PianoKey } from '$stores/pianoStates';
 
 export let pianoKeys: PianoKey[] = [
 	{ type: 'white', note: 'C2', bind: '1', haveSharp: true },

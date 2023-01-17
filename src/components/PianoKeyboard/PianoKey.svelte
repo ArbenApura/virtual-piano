@@ -34,8 +34,8 @@
 		on:touchcancel|preventDefault={handleRelease}
 	>
 		<PianoKeyContent {key} />
+		<TouchScreenConfig {...{ keyEl, pointer, handlePress, handleRelease, isSwiping }} />
 	</button>
-	<TouchScreenConfig {...{ keyEl, pointer, handlePress, handleRelease, isSwiping }} />
 {:else}
 	<button
 		class="key {key.type}-key"

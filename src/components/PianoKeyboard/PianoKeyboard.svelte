@@ -49,7 +49,7 @@
 	.keyboard {
 		@apply relative h-[14vw] flex pt-[1vw] border-t-[.2vw] border-[#160801];
 		background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
-			url('$assets/bg-wood.png');
+			url('$assets/images/bg-wood.png');
 		&::before {
 			@apply bg-slate-50 absolute top-[1.1vw] left-0 w-full z-0;
 			content: '';

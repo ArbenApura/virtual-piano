@@ -1,48 +1,53 @@
+// IMPORTED LIB-TYPES
+import type { Track } from '@tonejs/midi';
+// IMPORTED TYPES
+import type { Note } from '$stores/pianoStates';
+import type { Score, DifficultySource } from './types';
 // IMPORTED LIB-UTILS
 import { get } from 'svelte/store';
+import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
-import { sleep } from '$utils/sleep';
-import { isPressed } from '$stores/pianoStates';
-import { playerStates } from './states';
-// IMPORTED SONGS
-import song from '$songs/RushE';
+import { isPressed } from '$stores/pianoStates/states';
+import { playerStates, timeouts, name, difficulty, isPlaying } from './states';
+import { sleep } from '$utils/helpers';
+import { scores } from '$utils/scores';
 
 // UTILS
-export const initializePlayerStates = () => {};
-export const togglePlaySong = () => playerStates.isPlaying.update((value) => !value);
-export const calculateInterval = (interval: number, value: number) =>
-	value >= 0 ? interval * value : interval / value;
-export const increaseInterval = (interval: number, value: number) => interval - interval * value;
-export const playSong = async () => {
-	await sleep(1000);
-	const { items } = song;
-	let interval = song.interval;
-	for (let i = 0; i < items.length; i++) {
-		const isPlaying = get(playerStates.isPlaying);
-		if (!isPlaying) return;
-		const item = items[i];
-		if (typeof item === 'number') {
-			await sleep(calculateInterval(interval, item));
-			continue;
-		} else if (typeof item === 'function') {
-			interval = item(song.interval);
-			continue;
-		}
-		for (let n_i = 0; n_i < item[0].length; n_i++) {
-			const n_item = item[0][n_i];
-			const note = typeof n_item === 'string' ? n_item : n_item[0];
-			isPressed[note].set(true);
-			setTimeout(
-				() => isPressed[note].set(false),
-				typeof n_item === 'string'
-					? 100
-					: typeof n_item[1] === 'number'
-					? calculateInterval(interval, n_item[1])
-					: 100,
-			);
-		}
-		if (item[1]) await sleep(calculateInterval(interval, item[1]));
-		else await sleep(interval);
-	}
-	playerStates.isPlaying.set(false);
+export const clearTimeouts = () => {
+	get(timeouts).map(clearTimeout);
+	timeouts.set([]);
+	isPlaying.set(false);
 };
+export const addTimeout = (timeout: NodeJS.Timeout) =>
+	timeouts.update((timeouts) => [...timeouts, timeout]);
+export const getScore = (name: string) => {
+	for (let score of scores) if (score.name === name) return score;
+	throw new Error('Score was not found!');
+};
+export const getDifficulty = (score: Score) => {
+	if (!(get(difficulty) in score.difficulty)) throw new Error('Difficulty was not found!');
+	return score.difficulty[get(difficulty)] as DifficultySource;
+};
+export const playTrack = (track: Track) => {
+	const speed = 1000 / get(playerStates.speed);
+	track.notes.map((note) => {
+		const timeout = setTimeout(() => {
+			const name = note.name.replace('#', 'S') as Note;
+			if (name in isPressed) {
+				isPressed[name].set(true);
+				setTimeout(() => isPressed[name].set(false), note.duration * speed);
+			}
+		}, note.time * speed);
+		addTimeout(timeout);
+	});
+};
+export const playScore = async () => {
+	await sleep(1000);
+	const score = getScore(get(name));
+	const difficulty = getDifficulty(score);
+	const midi = await Midi.fromUrl(difficulty.url);
+	midi.tracks.map(playTrack);
+	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000));
+};
+export const toggleIsPlaying = () => isPlaying.update((v) => !v);
+export const initializePlayerStates = () => {};

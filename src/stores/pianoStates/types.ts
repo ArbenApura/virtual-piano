@@ -64,6 +64,12 @@ export type Note =
 	| 'AS6'
 	| 'B6'
 	| 'C7';
+export type PianoKey = {
+	type: 'white' | 'black';
+	note: Note;
+	bind: string;
+	haveSharp: boolean;
+};
 export type IsPressed = {
 	[K in Note]: Writable<boolean>;
 };

@@ -4,15 +4,12 @@ import type { Note, IsPressed } from './types';
 import type { Sampler } from 'tone';
 // IMPORTED LIB-UTILS
 import { writable, get } from 'svelte/store';
-
-// DEFAULT STATES
-export const BPM: number = 200;
-export const IS_SUSTAIN: boolean = true;
+// IMPORTED UTILS
+import { isPlaying } from '$stores/playerStates';
 
 // STATES
 export const piano = writable<Sampler>();
-export const bpm = writable<number>(BPM);
-export const isSustain = writable<boolean>(IS_SUSTAIN);
+export const isSustain = writable<boolean>();
 export const isPressed: IsPressed = {
 	C2: writable<boolean>(false),
 	CS2: writable<boolean>(false),
@@ -76,22 +73,15 @@ export const isPressed: IsPressed = {
 	B6: writable<boolean>(false),
 	C7: writable<boolean>(false),
 };
-export const pianoStates = { piano, bpm, isSustain, isPressed };
+export const pianoStates = { piano, isSustain, isPressed };
 
 // SUBSCRIPTIONS
 Object.keys(isPressed).map((key) => {
 	isPressed[key as Note].subscribe((isPressed) => {
-		try {
-			const piano = get(pianoStates.piano);
-			const note = key.replace('S', '#');
-			if (!piano) return;
-			if (get(isSustain)) {
-				if (isPressed) piano.triggerAttackRelease(note, '2n');
-			} else {
-				if (isPressed) {
-					piano.triggerAttack(note);
-				} else piano.triggerRelease(note, '+16n');
-			}
-		} catch {}
+		const piano = get(pianoStates.piano);
+		const note = key.replace('S', '#');
+		if (!piano) return;
+		if (isPressed) piano.triggerAttack(note);
+		else piano.triggerRelease(note, get(isSustain) || !get(isPlaying) ? '+2n' : '+16n');
 	});
 });

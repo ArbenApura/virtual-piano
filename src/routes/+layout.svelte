@@ -5,11 +5,11 @@
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
 	import { resizeCount } from '$stores/mediaStates';
-	// IMPORTED COMPONENTS
-	import FullScreen from '$components/FullScreen.svelte';
+	import { observeFullScreen } from '$stores/settingStates';
 	// IMPORTED STYLES
 	import '$styles/tailwind.scss';
 
+	// EVENTS
 	Tone.loaded().then(() => {
 		// REMOVE LOADING STATE
 		const loadingEl = document.querySelector('.loading');
@@ -23,8 +23,9 @@
 	onMount(initializeStores);
 </script>
 
-<svelte:window on:resize={() => resizeCount.update((v) => ++v)} />
+<svelte:window
+	on:resize={() => resizeCount.update((v) => ++v)}
+	on:fullscreenchange={observeFullScreen}
+/>
 
-<FullScreen>
-	<slot />
-</FullScreen>
+<slot />

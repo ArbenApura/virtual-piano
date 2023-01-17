@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tonejs/midi": "^2.0.28",
 		"svelte-gestures": "^1.4.1",
 		"tailwindcss": "^3.2.4",
 		"tone": "^14.7.77"

@@ -36,11 +36,10 @@ export const initializePianoStates = () => {
 				'D#7': 'Ds7.mp3',
 				'F#7': 'Fs7.mp3',
 				A7: 'A7.mp3',
-				C8: 'C8.mp3'
+				C8: 'C8.mp3',
 			},
 			release: 1,
 			baseUrl: 'https://tonejs.github.io/audio/salamander/',
-			volume: 1
-		}).toDestination()
+		}).toDestination(),
 	);
 };

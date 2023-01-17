@@ -5,7 +5,7 @@
 	// IMPORTED UTILS
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { isPressed } from '$stores/pianoStates';
-	import { togglePlaySong } from '$stores/playerStates';
+	import { filterKey } from '$utils/helpers';
 	// IMPORTED COMPONENTS
 	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
@@ -14,84 +14,29 @@
 	let isShift = false;
 
 	// UTILS
-	const getKeyCode = (key: string) => {
-		let keyCode = key.toUpperCase();
-		switch (key) {
-			case '!':
-				keyCode = '1';
-				break;
-			case '@':
-				keyCode = '2';
-				break;
-			case '#':
-				keyCode = '3';
-				break;
-			case '$':
-				keyCode = '4';
-				break;
-			case '%':
-				keyCode = '5';
-				break;
-			case '^':
-				keyCode = '6';
-				break;
-			case '&':
-				keyCode = '7';
-				break;
-			case '*':
-				keyCode = '8';
-				break;
-			case '(':
-				keyCode = '9';
-				break;
-			case ')':
-				keyCode = '0';
-				break;
-		}
-		return keyCode;
-	};
 	const handleKeyDown = (event: KeyboardEvent) => {
 		if (event.key === 'Shift') isShift = true;
-		let keyCode = getKeyCode(event.key);
+		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
-			if (key.bind === keyCode) {
-				if (!key.haveSharp) {
-					isPressed[key.note].set(true);
-					return;
-				}
-				try {
-					if (!isShift && key.type === 'white') {
-						isPressed[key.note].set(true);
-					} else if (isShift && key.type === 'black') {
-						isPressed[key.note].set(true);
-					}
-				} catch {}
+			if (key.bind !== eventKey || !(key.note in isPressed)) return;
+			if (!key.haveSharp) {
+				isPressed[key.note].set(true);
 				return;
 			}
+			if (!isShift && key.type === 'white') isPressed[key.note].set(true);
+			else if (isShift && key.type === 'black') isPressed[key.note].set(true);
 		});
 	};
 	const handleKeyUp = (event: KeyboardEvent) => {
 		if (event.key === 'Shift') isShift = false;
-		let keyCode = getKeyCode(event.key);
+		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
-			if (key.bind === keyCode) {
-				try {
-					isPressed[key.note].set(false);
-					isPressed[key.note].set(false);
-				} catch {}
-				return;
-			}
+			if (key.bind === eventKey && key.note in isPressed) isPressed[key.note].set(false);
 		});
 	};
 
 	// LIFECYCLES
-	onMount(() => {
-		Tone.start();
-		Tone.loaded().then(() => {
-			console.log('Tone loaded!');
-			if (false) setTimeout(togglePlaySong, 1000);
-		});
-	});
+	onMount(Tone.start);
 </script>
 
 <svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
@@ -108,7 +53,7 @@
 <style lang="scss">
 	@import '$styles';
 	:root {
-		--bg-image: url('$assets/bg-1.png');
+		--bg-image: url('$assets/images/bg-1.png');
 	}
 	.page {
 		@apply fixed w-full h-full bg-gray-900 flex flex-col;

@@ -1,23 +1,20 @@
 <script lang="ts">
 	// IMPORTED UTILS
 	import { pianoKeys } from '$utils/pianoKeys';
-	import { togglePlaySong } from '$stores/playerStates';
-	import { isFullScreen, toggleFullScreen } from '$stores/settingStates';
+	import { isFullScreen, toggleIsFullScreen } from '$stores/settingStates';
+	import { toggleIsPlaying } from '$stores/playerStates';
 	// IMPORTED COMPONENTS
 	import PianoTiles from './PianoTiles.svelte';
-
-	// STATES
-	let isTogglePlaySong = false;
 </script>
 
 <div class="screen">
-	<button class="brand" on:click={() => isTogglePlaySong && togglePlaySong()}>
+	<button class="brand" on:dblclick={toggleIsPlaying}>
 		<img src="piano.svg" alt="Logo" />
 		<div class="text">
 			<p>Virtual Piano</p>
 		</div>
 	</button>
-	<button class="fullscreen-toggler" on:click={toggleFullScreen}>
+	<button class="fullscreen-toggler" on:click={toggleIsFullScreen}>
 		<i class="ti ti-{$isFullScreen ? 'minimize' : 'maximize'}" />
 	</button>
 	<div class="tiles">
