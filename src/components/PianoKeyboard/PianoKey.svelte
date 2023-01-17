@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED TYPES
-	import type { PianoKey } from '$utils/pianoKeys';
+	import type { PianoKey } from '$stores/pianoStates';
 	import type { Pointer } from './types';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
