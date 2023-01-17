@@ -52,4 +52,36 @@ export const scores: Score[] = [
 			},
 		},
 	},
+	{
+		name: 'Flight of the Bumblebee',
+		composer: 'Nikolai Rimsky-Korsakov',
+		difficulty: {
+			beginner: {
+				url: 'scores/FlightOfTheBumblebee/beginner.mid',
+				musescoreUrl: 'https://musescore.com/user/1235971/scores/5687765',
+			},
+			intermediate: {
+				url: 'scores/FlightOfTheBumblebee/intermediate.mid',
+				musescoreUrl: 'https://musescore.com/nicolas/scores/437',
+			},
+			advanced: {
+				url: 'scores/FlightOfTheBumblebee/advanced.mid',
+				musescoreUrl: 'https://musescore.com/user/2673691/scores/2597411',
+			},
+		},
+	},
+	{
+		name: 'Habanera from Carmen',
+		composer: 'Georges Bizet',
+		difficulty: {
+			beginner: {
+				url: 'scores/HabaneraFromCarmen/beginner.mid',
+				musescoreUrl: 'https://musescore.com/user/29111008/scores/6796042',
+			},
+			intermediate: {
+				url: 'scores/HabaneraFromCarmen/intermediate.mid',
+				musescoreUrl: 'https://musescore.com/user/65436/scores/440201',
+			},
+		},
+	},
 ];
