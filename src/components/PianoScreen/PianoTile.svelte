@@ -1,34 +1,43 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$stores/pianoStates';
+	// LIB-UTILS
+	import { resizeCount } from '$stores/mediaStates';
 	// IMPORTED UTILS
 	import { isPressed } from '$stores/pianoStates';
 	import { visibility } from '$stores/settingStates';
-	import { resizeCount } from '$stores/mediaStates';
+	import { onMount } from 'svelte';
 
 	// PROPS
 	export let pianoKey: PianoKey;
 	const { note, type, bind } = pianoKey;
 
+	// STATES
+	const tile = {
+		x: 0,
+		width: 0,
+	};
+
 	// REACTIVE STATES
 	$: isActive = isPressed[note];
-	$: tile = (() => {
+
+	// REACTIVE STATEMENTS
+	$: {
 		$resizeCount;
-		const tile = {
-			x: 0,
-			y: 0,
-			width: 0,
-			height: 0,
-		};
-		try {
-			const tileEl = document.querySelector(`#${note}-key`);
-			if (!tileEl) return tile;
-			const { x, y, width, height } = tileEl.getBoundingClientRect();
-			return { x, y, width, height };
-		} catch {
-			return tile;
-		}
-	})();
+		updateTile();
+	}
+
+	// UTILS
+	const updateTile = () => {
+		const tileEl = document.querySelector(`#${note}-key`);
+		if (!tileEl) return tile;
+		const { x, width } = tileEl.getBoundingClientRect();
+		tile.x = x;
+		tile.width = width;
+	};
+
+	// LIFECYCLES
+	onMount(updateTile);
 </script>
 
 <div
