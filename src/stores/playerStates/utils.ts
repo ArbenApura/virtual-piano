@@ -11,6 +11,7 @@ import { isPressed } from '$stores/pianoStates/states';
 import { playerStates, timeouts, name, difficulty, isPlaying } from './states';
 import { sleep } from '$utils/helpers';
 import { scores } from '$utils/scores';
+import { pianoStates } from '../pianoStates/states';
 
 // UTILS
 export const clearTimeouts = () => {
@@ -36,6 +37,10 @@ export const playTrack = (track: Track) => {
 			if (name in isPressed) {
 				isPressed[name].set(true);
 				setTimeout(() => isPressed[name].set(false), note.duration * speed);
+			} else {
+				const piano = get(pianoStates.piano);
+				piano.triggerAttack(note.name);
+				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
 			}
 		}, note.time * speed);
 		addTimeout(timeout);
@@ -69,6 +74,9 @@ export const toggleIsPlaying = () =>
 					difficulty.set('intermediate');
 					break;
 				case 'Habanera from Carmen':
+					name.set('Dance of the sugar plum fairy');
+					break;
+				case 'Dance of the sugar plum fairy':
 					name.set('Moonlight Sonata (3rdMovement)');
 					break;
 				default:

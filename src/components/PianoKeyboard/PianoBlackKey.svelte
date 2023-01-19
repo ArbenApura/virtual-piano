@@ -53,7 +53,7 @@
 		.key-body {
 			@apply w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.1vw];
 			font-size: 0.5vw;
-			background-image: linear-gradient(to bottom, #000, #000, #222, #333, #222);
+			background-image: linear-gradient(to bottom, #000, #000, #000, #222, #333, #222);
 			span {
 				@apply py-[.2vw];
 			}

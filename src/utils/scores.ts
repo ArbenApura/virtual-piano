@@ -84,4 +84,22 @@ export const scores: Score[] = [
 			},
 		},
 	},
+	{
+		name: 'Dance of the sugar plum fairy',
+		composer: 'Pyotr Ilyich Tchaikovsky',
+		difficulty: {
+			beginner: {
+				url: 'scores/DanceOfTheSugarPlumFairy/beginner.mid',
+				musescoreUrl: 'https://musescore.com/user/3335456/scores/5889240',
+			},
+			intermediate: {
+				url: 'scores/DanceOfTheSugarPlumFairy/intermediate.mid',
+				musescoreUrl: 'https://musescore.com/user/4541811/scores/1270291',
+			},
+			advanced: {
+				url: 'scores/DanceOfTheSugarPlumFairy/advanced.mid',
+				musescoreUrl: 'https://musescore.com/user/3435661/scores/2899321',
+			},
+		},
+	},
 ];
