@@ -10,37 +10,34 @@
 	export let pianoKey: PianoKey;
 	const { note, type, bind } = pianoKey;
 
-	// REFS
-	let tileEl: HTMLDivElement;
-
 	// REACTIVE STATES
 	$: isActive = isPressed[note];
-	$: $resizeCount && (tileEl = tileEl);
 	$: tile = (() => {
+		$resizeCount;
 		const tile = {
 			x: 0,
 			y: 0,
 			width: 0,
 			height: 0,
 		};
-		if (!tileEl) return tile;
-		const { x, y, width, height } = tileEl.getBoundingClientRect();
-		return { x, y, width, height };
+		try {
+			const tileEl = document.querySelector(`#${note}-key`);
+			if (!tileEl) return tile;
+			const { x, y, width, height } = tileEl.getBoundingClientRect();
+			return { x, y, width, height };
+		} catch {
+			return tile;
+		}
 	})();
 </script>
 
-<div class="tile {type}-tile" bind:this={tileEl} />
-
 <div
 	class="highlight-tile {type}-tile"
-	style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
+	style="width: {tile.width}px; left: {tile.x}px"
 	data-is-active={$isActive}
 />
 
-<div
-	class="info-tile"
-	style="width: {tile.width}px; height: {tile.height}px; left: {tile.x}px; top: {tile.y}px"
->
+<div class="info-tile" style="width: {tile.width}px; left: {tile.x}px;">
 	{#if type === 'white'}
 		{#if $visibility.screenHint.note}
 			<small>{note}</small>
@@ -59,20 +56,12 @@
 
 <style lang="scss">
 	@import '$styles';
-	.tile {
-		@apply relative h-full;
-		&.white-tile {
-			width: calc(100vw / 35);
-		}
-		&.black-tile {
-			--key-width: 1.75vw;
-			width: var(--key-width);
-			transform: translateX(calc(var(--key-width) / 2));
-			margin-left: calc((var(--key-width) / -1));
-		}
+	.highlight-tile,
+	.info-tile {
+		@apply absolute top-0 h-full;
 	}
 	.info-tile {
-		@apply absolute flex-col z-[100];
+		@apply flex-col z-[100];
 		@include flex-center;
 		small,
 		hr,
@@ -87,7 +76,13 @@
 		}
 		span {
 			@apply absolute bottom-[1vw] rounded-full;
-			@include box(0.4vw);
+			@include box(5px);
+			@include screen-down('md') {
+				@include box(4px);
+			}
+			@include screen-down('sm') {
+				@include box(3px);
+			}
 			&.white-dot {
 				@apply bg-slate-50;
 			}
@@ -103,7 +98,7 @@
 		}
 	}
 	.highlight-tile {
-		@apply absolute opacity-0;
+		@apply opacity-0;
 		&::before,
 		&::after {
 			@apply absolute w-full h-full opacity-0;

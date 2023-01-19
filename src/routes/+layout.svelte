@@ -61,4 +61,12 @@
 	on:fullscreenchange={observeFullScreen}
 />
 
-<slot />
+<main>
+	<slot />
+</main>
+
+<style lang="scss">
+	main {
+		@apply fixed w-full h-full overflow-hidden;
+	}
+</style>

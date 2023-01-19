@@ -10,10 +10,10 @@ const config: UserConfig = {
 			$components: path.resolve('./src/components'),
 			$utils: path.resolve('./src/utils'),
 			$stores: path.resolve('./src/stores'),
-			$songs: path.resolve('./src/songs'),
-			$assets: path.resolve('./src/assets')
-		}
-	}
+			$assets: path.resolve('./src/assets'),
+			$sketches: path.resolve('./src/sketches'),
+		},
+	},
 };
 
 export default config;

@@ -70,6 +70,7 @@ export type PianoKey = {
 	bind: string;
 	haveSharp: boolean;
 };
+export type PianoCluster = PianoKey[];
 export type IsPressed = {
 	[K in Note]: Writable<boolean>;
 };

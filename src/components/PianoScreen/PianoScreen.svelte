@@ -4,7 +4,7 @@
 	import { isFullScreen, toggleIsFullScreen } from '$stores/settingStates';
 	import { toggleIsPlaying } from '$stores/playerStates';
 	// IMPORTED COMPONENTS
-	import PianoTiles from './PianoTiles.svelte';
+	import PianoTile from './PianoTile.svelte';
 </script>
 
 <div class="screen">
@@ -19,7 +19,7 @@
 	</button>
 	<div class="tiles">
 		{#each pianoKeys as pianoKey}
-			<PianoTiles {pianoKey} />
+			<PianoTile {pianoKey} />
 		{/each}
 	</div>
 	<div class="lines">
@@ -32,13 +32,13 @@
 <style lang="scss">
 	@import '$styles';
 	.screen {
-		@apply w-full h-full relative border-b-[.2vw] border-gray-900;
+		@apply w-full h-full relative border-b-[1px] border-gray-900;
 		.lines,
 		&::before,
 		&::after {
 			@apply absolute top-0 w-full;
 			content: '';
-			height: calc(100% + 0.2vw);
+			height: calc(100%);
 		}
 		&::before {
 			@apply opacity-50 bg-gray-900;
@@ -68,17 +68,17 @@
 		}
 		.tiles {
 			@apply relative w-full flex;
-			height: calc(100% + 0.05vw);
+			height: calc(100%);
 		}
 		.lines {
 			@apply flex items-stretch z-40;
 			div {
-				@apply border-r-[.2vw] border-gray-900;
+				@apply border-r-[1px] border-gray-900;
 				&:nth-child(2n + 1) {
-					width: 8.35vw;
+					width: 8.65vw;
 				}
 				&:nth-child(2n) {
-					width: 11.1vw;
+					width: 10.77vw;
 				}
 			}
 		}
