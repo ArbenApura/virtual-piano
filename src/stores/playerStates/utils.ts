@@ -49,5 +49,32 @@ export const playScore = async () => {
 	midi.tracks.map(playTrack);
 	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000));
 };
-export const toggleIsPlaying = () => isPlaying.update((v) => !v);
+export const toggleIsPlaying = () =>
+	isPlaying.update((isPlaying) => {
+		if (!isPlaying) {
+			difficulty.set('advanced');
+			switch (get(name)) {
+				case 'Moonlight Sonata (3rdMovement)':
+					name.set('Nocturne Op.9 No.2');
+					break;
+				case 'Nocturne Op.9 No.2':
+					name.set('Turkish March (Ronda Alla Turca)');
+					difficulty.set('intermediate');
+					break;
+				case 'Turkish March (Ronda Alla Turca)':
+					name.set('Flight of the Bumblebee');
+					break;
+				case 'Flight of the Bumblebee':
+					name.set('Habanera from Carmen');
+					difficulty.set('intermediate');
+					break;
+				case 'Habanera from Carmen':
+					name.set('Moonlight Sonata (3rdMovement)');
+					break;
+				default:
+					name.set('Moonlight Sonata (3rdMovement)');
+			}
+		}
+		return !isPlaying;
+	});
 export const initializePlayerStates = () => {};
