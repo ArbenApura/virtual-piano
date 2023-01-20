@@ -7,6 +7,11 @@
 			"src": "piano.svg",
 			"type": "image/svg+xml",
 			"sizes": "800x800"
+		},
+		{
+			"src": "piano.png",
+			"type": "image/png",
+			"sizes": "800x800"
 		}
 	],
 	"background_color": "#111827",
