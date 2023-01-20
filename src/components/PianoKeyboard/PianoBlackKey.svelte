@@ -47,7 +47,7 @@
 
 <style lang="scss">
 	.key {
-		@apply bg-[#111] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#333];
+		@apply bg-[#111] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#222];
 		height: calc(100% + 0.3vw);
 		box-shadow: 0.6vw -0.1vw 0.6vw rgb(0, 0, 0, 0.3);
 		.key-body {
@@ -61,11 +61,6 @@
 				@apply flex flex-col flex-grow;
 				.ti {
 					@apply py-[.1vw];
-				}
-			}
-			&.white-key {
-				.note {
-					font-size: 0.8vw;
 				}
 			}
 			&.black-key {
