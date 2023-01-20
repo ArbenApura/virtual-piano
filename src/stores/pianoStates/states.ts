@@ -14,6 +14,7 @@ export const isSustain = writable<boolean>();
 export const noteList: NoteList = {} as NoteList;
 pianoKeys.map((key) => {
 	noteList[key.note] = {
+		...key,
 		isPressing: writable<boolean>(),
 		boundaries: writable<Boundary[]>([]),
 	};

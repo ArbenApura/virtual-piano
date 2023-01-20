@@ -7,7 +7,7 @@
 	import PianoWhiteKeyFiller from './PianoWhiteKeyFiller.svelte';
 
 	// PROPS
-	export let cluster: PianoCluster;
+	export let cluster: PianoCluster, isSwiping: boolean;
 
 	// REACTIVE STATES
 	$: clusterType = (() => {
@@ -26,7 +26,7 @@
 	<div class="black-keys">
 		{#each cluster as key}
 			{#if key.type === 'black'}
-				<PianoBlackKey {key} />
+				<PianoBlackKey {key} {isSwiping} />
 			{:else}
 				<PianoWhiteKeyFiller {key} />
 			{/if}
@@ -35,7 +35,7 @@
 	<div class="white-keys">
 		{#each cluster as key}
 			{#if key.type === 'white'}
-				<PianoWhiteKey {key} />
+				<PianoWhiteKey {key} {isSwiping} />
 			{/if}
 		{/each}
 	</div>

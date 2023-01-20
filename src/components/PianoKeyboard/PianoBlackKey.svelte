@@ -9,7 +9,7 @@
 	import { visibility } from '$stores/settingStates';
 
 	// PROPS
-	export let key: PianoKey;
+	export let key: PianoKey, isSwiping: boolean;
 
 	// REFS
 	let keyEl: HTMLButtonElement;
@@ -29,8 +29,8 @@
 			return boundaries;
 		});
 	};
-	const handlePress = () => isPressing.set(true);
-	const handleRelease = () => isPressing.set(false);
+	const handlePress = () => !isSwiping && isPressing.set(true);
+	const handleRelease = () => !isSwiping && isPressing.set(false);
 
 	// LIFECYCLES
 	onMount(handleBoundary);
