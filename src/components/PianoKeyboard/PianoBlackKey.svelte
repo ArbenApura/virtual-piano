@@ -49,11 +49,11 @@
 	.key {
 		@apply bg-[#111] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#333];
 		height: calc(100% + 0.3vw);
-		box-shadow: 0.7vw 0.5vw 0.6vw rgb(0, 0, 0, 0.3);
+		box-shadow: 0.6vw -0.1vw 0.6vw rgb(0, 0, 0, 0.3);
 		.key-body {
 			@apply w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.1vw];
 			font-size: 0.5vw;
-			background-image: linear-gradient(to bottom, #000, #000, #000, #222, #333, #222);
+			background-image: linear-gradient(to bottom, #000, #000, #000, #222, #222);
 			span {
 				@apply py-[.2vw];
 			}
@@ -73,14 +73,14 @@
 			}
 		}
 		.key-bottom {
-			@apply w-full h-[8%] rounded-t-[.5vw] bg-[#000];
+			@apply w-full h-[8%] rounded-t-[.2vw] bg-[#000];
 		}
 		.wrapper {
 			@apply absolute w-full h-full;
 		}
 		&[data-is-active='true'] {
 			@apply h-full mt-0;
-			box-shadow: 0.7vw 0.5vw 0.6vw rgb(0, 0, 0, 0.2);
+			box-shadow: none;
 			.key-bottom {
 				@apply h-[0%];
 			}

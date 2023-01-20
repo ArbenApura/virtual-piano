@@ -19,12 +19,16 @@
 
 <style lang="scss">
 	.filler {
-		@apply -mb-[4px];
 		.filler-inner {
 			@apply bg-slate-50 w-full h-full rounded-t-[.2vw] overflow-hidden border-x-[.1vw] border-slate-300 pt-[.2vw] text-[0.5vw] text-center;
+			height: calc(100% + 0.1vw);
 		}
 		&[data-is-active='true'] {
-			@apply pt-[.2vw];
+			@apply pt-[.3vw];
+			.filler-inner {
+				height: calc(100% + 0.4vw);
+				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
+			}
 		}
 	}
 </style>

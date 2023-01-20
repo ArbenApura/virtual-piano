@@ -52,8 +52,10 @@
 	on:touchstart={() => $isTouchScreen && handlePress()}
 	on:touchend={() => $isTouchScreen && handleRelease()}
 >
-	<span class="flex-grow" />
-	<span>{key.note}</span>
+	<div class="key-inner">
+		<span class="flex-grow" />
+		<span>{key.note}</span>
+	</div>
 	<div
 		class="filler"
 		style="left: {filler.x}px; width: {filler.width}px; height: {filler.height}px"
@@ -62,13 +64,19 @@
 
 <style lang="scss">
 	.key {
-		@apply bg-slate-50 w-full h-full rounded-b-[.2vw] overflow-hidden flex flex-col items-center border-x-[.1vw] border-b-[.1vw] border-slate-300;
-		font-size: 0.7vw;
+		@apply bg-slate-50  w-full h-full rounded-b-[.2vw] overflow-hidden border-x-[.1vw] border-b-[.1vw] border-gray-300;
+		.key-inner {
+			@apply h-full flex flex-col items-center;
+			font-size: 0.7vw;
+		}
 		.filler {
 			@apply absolute bottom-0;
 		}
 		&[data-is-active='true'] {
 			@apply mt-[.2vw];
+			.key-inner {
+				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
+			}
 		}
 	}
 </style>
