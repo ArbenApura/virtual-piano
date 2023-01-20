@@ -22,7 +22,7 @@
 	.page {
 		@apply absolute w-full h-full flex flex-col;
 		.piano-screen {
-			@apply flex-grow;
+			@apply flex-grow relative;
 			background-image: var(--bg-image);
 			background-attachment: fixed;
 			background-size: cover;

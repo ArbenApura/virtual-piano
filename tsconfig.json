@@ -16,7 +16,6 @@
 			"$utils/*": ["src/utils/*"],
 			"$stores/*": ["src/stores/*"],
 			"$assets/*": ["src/assets/*"],
-			"$sketches/*": ["src/sketches/*"]
 		}
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

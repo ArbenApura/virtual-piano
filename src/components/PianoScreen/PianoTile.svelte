@@ -64,14 +64,7 @@
 			@apply w-[30%] my-[.2vw];
 		}
 		span {
-			@apply absolute bottom-[1vw] rounded-full;
-			@include box(5px);
-			@include screen-down('md') {
-				@include box(4px);
-			}
-			@include screen-down('sm') {
-				@include box(3px);
-			}
+			@apply absolute bottom-[1vw] w-[.4vw] h-[.8vw] rounded-full;
 			&.white-dot {
 				@apply bg-slate-50;
 			}
@@ -81,7 +74,7 @@
 			&[data-is-active='true'] {
 				@apply opacity-100;
 				&.black-dot {
-					@apply bg-gray-900;
+					@apply bg-[#000];
 				}
 			}
 		}
