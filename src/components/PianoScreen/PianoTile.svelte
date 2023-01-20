@@ -1,52 +1,32 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$stores/pianoStates';
-	// LIB-UTILS
-	import { resizeCount } from '$stores/mediaStates';
 	// IMPORTED UTILS
-	import { isPressed } from '$stores/pianoStates';
+	import { noteList } from '$stores/pianoStates';
 	import { visibility } from '$stores/settingStates';
-	import { onMount } from 'svelte';
 
 	// PROPS
 	export let pianoKey: PianoKey;
 	const { note, type, bind } = pianoKey;
 
 	// STATES
-	const tile = {
-		x: 0,
-		width: 0,
-	};
+	const { isPressing, boundaries } = noteList[note];
 
 	// REACTIVE STATES
-	$: isActive = isPressed[note];
-
-	// REACTIVE STATEMENTS
-	$: {
-		$resizeCount;
-		updateTile();
-	}
-
-	// UTILS
-	const updateTile = () => {
-		const tileEl = document.querySelector(`#${note}-key`);
-		if (!tileEl) return tile;
-		const { x, width } = tileEl.getBoundingClientRect();
-		tile.x = x;
-		tile.width = width;
-	};
-
-	// LIFECYCLES
-	onMount(updateTile);
+	$: [x, width] = (() => {
+		if (!$boundaries.length) return [0, 0];
+		const { x, width } = $boundaries[0];
+		return [x, width];
+	})();
 </script>
 
 <div
 	class="highlight-tile {type}-tile"
-	style="width: {tile.width}px; left: {tile.x}px"
-	data-is-active={$isActive}
+	style="width: {width}px; left: {x}px"
+	data-is-active={$isPressing}
 />
 
-<div class="info-tile" style="width: {tile.width}px; left: {tile.x}px;">
+<div class="info-tile" style="width: {width}px; left: {x}px;">
 	{#if type === 'white'}
 		{#if $visibility.screenHint.note}
 			<small>{note}</small>
@@ -58,8 +38,8 @@
 			<small>{bind}</small>
 		{/if}
 	{/if}
-	{#if $visibility.screenHint.dot || $isActive}
-		<span class="{type}-dot" data-is-active={$isActive} />
+	{#if $visibility.screenHint.dot || $isPressing}
+		<span class="{type}-dot" data-is-active={$isPressing} />
 	{/if}
 </div>
 

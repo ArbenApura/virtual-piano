@@ -7,7 +7,7 @@ import type { Score, DifficultySource } from './types';
 import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
-import { isPressed } from '$stores/pianoStates/states';
+import { noteList } from '$stores/pianoStates/states';
 import { playerStates, timeouts, name, difficulty, isPlaying } from './states';
 import { sleep } from '$utils/helpers';
 import { scores } from '$utils/scores';
@@ -34,9 +34,9 @@ export const playTrack = (track: Track) => {
 	track.notes.map((note) => {
 		const timeout = setTimeout(() => {
 			const name = note.name.replace('#', 'S') as Note;
-			if (name in isPressed) {
-				isPressed[name].set(true);
-				setTimeout(() => isPressed[name].set(false), note.duration * speed);
+			if (name in noteList) {
+				noteList[name].isPressing.set(true);
+				setTimeout(() => noteList[name].isPressing.set(false), note.duration * speed);
 			} else {
 				const piano = get(pianoStates.piano);
 				piano.triggerAttack(note.name);

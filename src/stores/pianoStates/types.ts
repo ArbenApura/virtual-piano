@@ -71,6 +71,16 @@ export type PianoKey = {
 	haveSharp: boolean;
 };
 export type PianoCluster = PianoKey[];
-export type IsPressed = {
-	[K in Note]: Writable<boolean>;
+export type Boundary = {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+};
+export type NoteState = {
+	isPressing: Writable<boolean>;
+	boundaries: Writable<Boundary[]>;
+};
+export type NoteList = {
+	[K in Note]: NoteState;
 };

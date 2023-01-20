@@ -1,23 +1,42 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$stores/pianoStates';
+	// LIB-UTILS
+	import { onMount } from 'svelte';
 	// IMPORTED UTILS
-	import { isPressed } from '$stores/pianoStates';
-	import { isTouchScreen } from '$stores/mediaStates';
+	import { noteList } from '$stores/pianoStates';
+	import { isTouchScreen, resizeCount } from '$stores/mediaStates';
 	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let key: PianoKey;
 
-	// REACTIVE STATES
-	$: isActive = isPressed[key.note];
+	// REFS
+	let keyEl: HTMLButtonElement;
+
+	// STATES
+	const { isPressing, boundaries } = noteList[key.note];
+
+	// REACTIVE STATEMENTS
+	$: $resizeCount && handleBoundary();
 
 	// UTILS
-	const handlePress = () => isPressed[key.note].set(true);
-	const handleRelease = () => isPressed[key.note].set(false);
+	const handleBoundary = () => {
+		if (!keyEl) return;
+		const { x, y, width, height } = keyEl.getBoundingClientRect();
+		boundaries.update((boundaries) => {
+			boundaries[0] = { x, y, width, height };
+			return boundaries;
+		});
+	};
+	const handlePress = () => isPressing.set(true);
+	const handleRelease = () => isPressing.set(false);
+
+	// LIFECYCLES
+	onMount(handleBoundary);
 </script>
 
-<button id="{key.note}-key" class="key" data-is-active={$isActive}>
+<button id="{key.note}-key" class="key" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="key-body {key.type}-key">
 		<span class="bind">
 			{#if $visibility.keyboardHint.bind}

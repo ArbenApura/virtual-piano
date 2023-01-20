@@ -1,17 +1,39 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { PianoKey } from '$stores/pianoStates';
+	// IMPORTED LIB-UTILS
+	import { onMount } from 'svelte';
 	// IMPORTED UTILS
-	import { isPressed } from '$stores/pianoStates';
+	import { noteList } from '$stores/pianoStates';
+	import { resizeCount } from '$stores/mediaStates';
 
 	// PROPS
 	export let key: PianoKey;
 
-	// REACTIVE STATES
-	$: isActive = isPressed[key.note];
+	// REFS
+	let keyEl: HTMLDivElement;
+
+	// STATES
+	const { isPressing, boundaries } = noteList[key.note];
+
+	// REACTIVE STATEMENTS
+	$: $resizeCount && handleBoundary();
+
+	// UTILS
+	const handleBoundary = () => {
+		if (!keyEl) return;
+		const { x, y, width, height } = keyEl.getBoundingClientRect();
+		boundaries.update((boundaries) => {
+			boundaries[1] = { x, y, width, height };
+			return boundaries;
+		});
+	};
+
+	// LIFECYCLES
+	onMount(handleBoundary);
 </script>
 
-<div id="{key.note}-filler" class="filler" data-is-active={$isActive}>
+<div id="{key.note}-filler" class="filler" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="filler-inner">
 		<span>{key.bind}</span>
 	</div>

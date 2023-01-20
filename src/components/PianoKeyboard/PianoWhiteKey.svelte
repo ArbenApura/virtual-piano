@@ -4,48 +4,61 @@
 	// IMPORTED LIB-UTILS
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
-	import { isPressed } from '$stores/pianoStates';
+	import { noteList } from '$stores/pianoStates';
 	import { isTouchScreen, resizeCount } from '$stores/mediaStates';
 
 	// PROPS
 	export let key: PianoKey;
 
+	// REFS
+	let keyEl: HTMLButtonElement;
+
 	// STATES
-	let filler = {
+	const { isPressing, boundaries } = noteList[key.note];
+	const filler = {
 		x: 0,
 		width: 0,
 		height: 0,
 	};
 
-	// REACTIVE STATES
-	$: isActive = isPressed[key.note];
-
 	// REACTIVE STATEMENTS
-	$: try {
-		$resizeCount;
-		handleFiller();
-	} catch {}
+	$: $resizeCount && handleUpdate();
 
 	// UTILS
 	const handleFiller = () => {
-		const fillerEl = document.querySelector(`#${key.note}-filler`);
-		if (!fillerEl) return;
-		const { x, width, height } = fillerEl.getBoundingClientRect();
-		filler.x = x;
-		filler.width = width;
-		filler.height = height * 1.5;
+		try {
+			const fillerEl = document.querySelector(`#${key.note}-filler`);
+			if (!fillerEl) return;
+			const { x, width, height } = fillerEl.getBoundingClientRect();
+			filler.x = x;
+			filler.width = width;
+			filler.height = height * 1.5;
+		} catch {}
 	};
-	const handlePress = () => isPressed[key.note].set(true);
-	const handleRelease = () => isPressed[key.note].set(false);
+	const handleBoundary = () => {
+		if (!keyEl) return;
+		const { x, y, width, height } = keyEl.getBoundingClientRect();
+		boundaries.update((boundaries) => {
+			boundaries[0] = { x, y, width, height };
+			return boundaries;
+		});
+	};
+	const handleUpdate = () => {
+		handleFiller();
+		handleBoundary();
+	};
+	const handlePress = () => isPressing.set(true);
+	const handleRelease = () => isPressing.set(false);
 
 	// LIFECYCLES
-	onMount(handleFiller);
+	onMount(handleUpdate);
 </script>
 
 <button
 	id="{key.note}-key"
 	class="key"
-	data-is-active={$isActive}
+	data-is-active={$isPressing}
+	bind:this={keyEl}
 	on:pointerdown={() => !$isTouchScreen && handlePress()}
 	on:pointerup={() => !$isTouchScreen && handleRelease()}
 	on:pointerout={() => !$isTouchScreen && handleRelease()}
