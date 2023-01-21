@@ -1,5 +1,5 @@
 // IMPORTED TYPES
-import type { PianoCluster, PianoKey } from '$stores/pianoStates';
+import type { PianoCluster, PianoKey, Note } from '$stores/pianoStates';
 
 export let pianoClusters: PianoCluster[] = [
 	[
@@ -86,3 +86,5 @@ export let pianoClusters: PianoCluster[] = [
 ];
 export let pianoKeys: PianoKey[] = [];
 pianoClusters.map((cluster) => cluster.map((key) => pianoKeys.push(key)));
+export let pianoNotes: Note[] = [];
+pianoKeys.map((key) => pianoNotes.push(key.note));

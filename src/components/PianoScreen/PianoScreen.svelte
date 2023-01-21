@@ -5,7 +5,7 @@
 	import { toggleIsPlaying } from '$stores/playerStates';
 	// IMPORTED COMPONENTS
 	import PianoTile from './PianoTile.svelte';
-	import LineDisplay from './LineDisplay.svelte';
+	import Visualizer from './Visualizer.svelte';
 </script>
 
 <div class="screen">
@@ -28,7 +28,7 @@
 			<div />
 		{/each}
 	</div>
-	<LineDisplay />
+	<Visualizer />
 </div>
 
 <style lang="scss">

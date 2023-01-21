@@ -13,20 +13,16 @@
 	const { isPressing, boundaries } = noteList[note];
 
 	// REACTIVE STATES
-	$: [x, width] = (() => {
-		if (!$boundaries.length) return [0, 0];
-		const { x, width } = $boundaries[0];
-		return [x, width];
-	})();
+	$: boundary = (type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
 </script>
 
 <div
 	class="highlight-tile {type}-tile"
-	style="width: {width}px; left: {x}px"
+	style="width: {boundary.width}px; left: {boundary.x}px"
 	data-is-active={$isPressing}
 />
 
-<div class="info-tile" style="width: {width}px; left: {x}px;">
+<div class="info-tile" style="width: {boundary.width}px; left: {boundary.x}px;">
 	{#if type === 'white'}
 		{#if $visibility.screenHint.note}
 			<small>{note}</small>
