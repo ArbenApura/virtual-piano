@@ -8,7 +8,7 @@
 	let isOpen = false;
 
 	// REACTIVE STATEMENTS
-	$: $orientation === 'portrait' && (isOpen = true);
+	$: $orientation && (isOpen = $orientation === 'portrait');
 </script>
 
 {#if isOpen}
@@ -48,7 +48,6 @@
 	.notice {
 		@apply bg-gray-900 text-slate-50 fixed w-full h-full top-0 left-0 z-[1000];
 		@include flex-center;
-		transition: opacity 0.5s;
 		.content {
 			@apply flex flex-col items-center px-2;
 			svg {
