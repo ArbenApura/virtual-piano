@@ -57,10 +57,11 @@ export const playTrack = (track: Track) => {
 	});
 };
 export const playScore = async () => {
+	const delay = get(playerStates.delay);
 	const midi = await getMidi();
 	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
-	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000));
+	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000 + delay));
 };
 export const changeScore = () => {
 	for (let i = 0; i < scores.length; i++) {
