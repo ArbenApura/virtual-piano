@@ -37,7 +37,7 @@
 	onMount(handleBoundary);
 </script>
 
-<div id="{key.note}-filler" class="filler" data-is-active={$isPressing} bind:this={keyEl}>
+<div class="filler" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="filler-inner">
 		{#if $keyboardBindHint}
 			<span>{key.bind}</span>

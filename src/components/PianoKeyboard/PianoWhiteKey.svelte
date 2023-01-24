@@ -16,29 +16,22 @@
 
 	// STORE STATES
 	const { keyboardNoteHint } = visibility;
-
-	// STATES
 	const { isPressing, boundaries } = noteList[key.note];
-	const filler = {
-		x: 0,
-		width: 0,
-		height: 0,
-	};
+
+	// REACTIVE STATES
+	$: filler =
+		$boundaries.length === 2
+			? $boundaries[1]
+			: {
+					x: 0,
+					width: 0,
+					height: 0,
+			  };
 
 	// REACTIVE STATEMENTS
-	$: $windowWidth && handleUpdate();
+	$: $windowWidth && handleBoundary();
 
 	// UTILS
-	const handleFiller = () => {
-		try {
-			const fillerEl = document.querySelector(`#${key.note}-filler`);
-			if (!fillerEl) return;
-			const { x, width, height } = fillerEl.getBoundingClientRect();
-			filler.x = x;
-			filler.width = width;
-			filler.height = height * 1.5;
-		} catch {}
-	};
 	const handleBoundary = () => {
 		if (!keyEl) return;
 		const { x, y, width, height } = keyEl.getBoundingClientRect();
@@ -47,15 +40,11 @@
 			return boundaries;
 		});
 	};
-	const handleUpdate = () => {
-		handleFiller();
-		handleBoundary();
-	};
 	const handlePress = () => !isSwiping && isPressing.set(true);
 	const handleRelease = () => !isSwiping && isPressing.set(false);
 
 	// LIFECYCLES
-	onMount(handleUpdate);
+	onMount(handleBoundary);
 </script>
 
 <button
@@ -83,13 +72,13 @@
 
 <style lang="scss">
 	.key {
-		@apply bg-slate-50 relative w-full h-full rounded-b-[.2vw] overflow-hidden border-x-[.1vw] border-b-[.1vw] border-gray-300;
+		@apply bg-slate-50 w-full h-full rounded-b-[.2vw] overflow-hidden border-x-[.1vw] border-b-[.1vw] border-gray-300;
 		.key-inner {
 			@apply h-full flex flex-col items-center;
 			font-size: 0.7vw;
 		}
 		.filler {
-			@apply absolute bottom-0;
+			@apply absolute top-0;
 		}
 		&[data-is-active='true'] {
 			@apply bg-slate-200 mt-[.2vw];
