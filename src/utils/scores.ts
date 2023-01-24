@@ -93,6 +93,12 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/classicman/scores/49154',
 	},
 	{
+		name: 'Liebestraum No.3 (Love Dream)',
+		composer: 'Franz Liszt',
+		url: 'scores/LiebestraumNo3.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/65159',
+	},
+	{
 		name: 'Nocturne Op.9 No.2',
 		composer: 'Frédéric Chopin',
 		url: 'scores/NocturneOp9No2.mid',
@@ -108,7 +114,7 @@ export const scores: Score[] = [
 		name: 'Minuet in G Major',
 		composer: 'Christian Petzold',
 		url: 'scores/MinuetInGMajor.mid',
-		musescoreUrl: 'https://musescore.com/user/9292486/scores/2086106',
+		musescoreUrl: 'https://musescore.com/classicman/scores/62312',
 	},
 	{
 		name: 'Canon in D',
