@@ -1,61 +1,31 @@
 // IMPORTED UTILS
-import { isFullScreen, isFullScreenSupported } from './states';
+import { isFullScreen, isFullScreenSupported, orientation } from './states';
 
 // UTILS
-export const canGoFullscreen = () =>
-	typeof document.body.requestFullscreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.body.mozRequestFullScreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.body.webkitRequestFullscreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.body.msRequestFullscreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.exitFullscreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.mozCancelFullScreen !== 'undefined' ||
-	// @ts-ignore
-	typeof document.webkitExitFullscreen !== 'undefined';
-export const requestFullScreen = async () => {
+export const canGoFullscreen = () => typeof document.body.requestFullscreen !== 'undefined';
+export const requestFullscreen = async () => {
 	try {
 		if (!!document.fullscreenElement) return;
-		const requestFullScreen = (
-			document.body.requestFullscreen ||
-			// @ts-ignore
-			document.body.mozRequestFullScreen ||
-			// @ts-ignore
-			document.body.webkitRequestFullscreen ||
-			// @ts-ignore
-			document.body.msRequestFullscreen ||
-			(() => {})
-		).bind(document.body);
-		await requestFullScreen();
+		await document.body.requestFullscreen();
 		await window.screen.orientation.lock('landscape');
 	} catch {}
 };
-export const exitFullScreen = async () => {
+export const exitFullscreen = async () => {
 	try {
 		if (!document.fullscreenElement) return;
-		const exitFullScreen = (
-			document.exitFullscreen ||
-			// @ts-ignore
-			document.mozCancelFullScreen ||
-			// @ts-ignore
-			document.webkitExitFullscreen ||
-			// @ts-ignore
-			document.msExitFullscreen ||
-			(() => {})
-		).bind(document);
-		await exitFullScreen();
+		await document.exitFullscreen();
 		window.screen.orientation.unlock();
 	} catch {}
 };
 export const toggleIsFullScreen = () => {
-	if (document.fullscreenElement) exitFullScreen();
-	else requestFullScreen();
+	if (document.fullscreenElement) exitFullscreen();
+	else requestFullscreen();
 };
 export const observeFullScreen = () => isFullScreen.set(!!document.fullscreenElement);
+export const observeOrientation = () =>
+	orientation.set(window.screen.orientation.type.match(/portrait/gi) ? 'portrait' : 'landscape');
 export const initializeSettingStates = () => {
 	observeFullScreen();
+	observeOrientation();
 	isFullScreenSupported.set(canGoFullscreen());
 };

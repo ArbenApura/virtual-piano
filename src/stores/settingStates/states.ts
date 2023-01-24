@@ -1,3 +1,5 @@
+// IMPORTED TYPES
+import type { Orientation } from './types';
 // IMPORTED LIB-UTILS
 import { writable } from 'svelte/store';
 
@@ -10,6 +12,7 @@ export const visibility = {
 	visualizer: writable<boolean>(true),
 	playerDetails: writable<boolean>(true),
 };
+export const orientation = writable<Orientation>('landscape');
 export const isFullScreen = writable<boolean>(false);
 export const isFullScreenSupported = writable<boolean>(false);
-export const settingStates = { visibility, isFullScreen, isFullScreenSupported };
+export const settingStates = { visibility, orientation, isFullScreen, isFullScreenSupported };
