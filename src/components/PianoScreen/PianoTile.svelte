@@ -1,82 +1,44 @@
 <script lang="ts">
 	// IMPORTED TYPES
-	import type { PianoKey } from '$stores/pianoStates';
+	import type { NoteState } from '$stores/pianoStates';
 	// IMPORTED UTILS
-	import { noteList } from '$stores/pianoStates';
 	import { visibility } from '$stores/settingStates';
 
 	// PROPS
-	export let pianoKey: PianoKey;
-	const { note, type, bind } = pianoKey;
+	export let note: NoteState;
+
+	// STORE STATES
+	const { highlight } = visibility;
 
 	// STATES
-	const { isPressing, boundaries } = noteList[note];
+	const { isPressing, boundaries, type } = note;
 
 	// REACTIVE STATES
 	$: boundary = (type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
 </script>
 
-<div
-	class="highlight-tile {type}-tile"
-	style="width: {boundary.width}px; left: {boundary.x}px"
-	data-is-active={$isPressing}
-/>
-
-<div class="info-tile" style="width: {boundary.width}px; left: {boundary.x}px;">
-	{#if type === 'white'}
-		{#if $visibility.screenHint.note}
-			<small>{note}</small>
-		{/if}
-		{#if $visibility.screenHint.note && $visibility.screenHint.bind}
-			<hr />
-		{/if}
-		{#if $visibility.screenHint.bind}
-			<small>{bind}</small>
-		{/if}
-	{/if}
-	{#if $visibility.screenHint.dot || $isPressing}
-		<span class="{type}-dot" data-is-active={$isPressing} />
-	{/if}
-</div>
+{#if $highlight}
+	<div
+		class="highlight-tile {type}-tile"
+		style="width: {boundary.width}px; left: {boundary.x}px"
+		data-is-active={$isPressing}
+	/>
+	<div
+		class="dot-tile"
+		style="width: {boundary.width}px; left: {boundary.x}px"
+		data-is-active={$isPressing}
+	>
+		<span class="dot {type}-dot" />
+		<span class="dot {type}-dot" />
+	</div>
+{/if}
 
 <style lang="scss">
-	@import '$styles';
-	.highlight-tile,
-	.info-tile {
-		@apply absolute top-0 h-full;
-	}
-	.info-tile {
-		@apply flex-col z-[100];
-		@include flex-center;
-		small,
-		hr,
-		span {
-			@apply opacity-40;
-		}
-		small {
-			@apply text-slate-50 text-[.7vw] text-center;
-		}
-		hr {
-			@apply w-[30%] my-[.2vw];
-		}
-		span {
-			@apply absolute bottom-[1vw] w-[.4vw] h-[.8vw] rounded-full;
-			&.white-dot {
-				@apply bg-slate-50;
-			}
-			&.black-dot {
-				@apply bg-gray-500;
-			}
-			&[data-is-active='true'] {
-				@apply opacity-100;
-				&.black-dot {
-					@apply bg-[#000];
-				}
-			}
-		}
+	.dot-tile,
+	.highlight-tile {
+		@apply absolute top-0 h-full opacity-0;
 	}
 	.highlight-tile {
-		@apply opacity-0;
 		&::before,
 		&::after {
 			@apply absolute w-full h-full opacity-0;
@@ -102,18 +64,27 @@
 			background-size: cover;
 			background-position: bottom;
 		}
-		&.white-tile {
-			@apply z-10;
-		}
-		&.black-tile {
-			@apply z-20;
-		}
 		&[data-is-active='true'] {
 			@apply opacity-100;
 			&::before {
 				@apply bg-transparent;
 				transition: background-color 0.5s;
 			}
+		}
+	}
+	.dot-tile {
+		@apply flex flex-col justify-between items-center py-[.4vw] z-[60];
+		.dot {
+			@apply w-[.8vw] h-[.4vw] rounded-full;
+			&.white-dot {
+				@apply bg-slate-50;
+			}
+			&.black-dot {
+				@apply bg-[#000];
+			}
+		}
+		&[data-is-active='true'] {
+			@apply opacity-100;
 		}
 	}
 </style>

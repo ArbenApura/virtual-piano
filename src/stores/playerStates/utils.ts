@@ -2,16 +2,14 @@
 import type { Track } from '@tonejs/midi';
 // IMPORTED TYPES
 import type { Note } from '$stores/pianoStates';
-import type { Score, DifficultySource } from './types';
 // IMPORTED LIB-UTILS
 import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
-import { noteList } from '$stores/pianoStates/states';
-import { playerStates, timeouts, name, difficulty, isPlaying } from './states';
+import { noteList, pianoStates } from '$stores/pianoStates/states';
+import { playerStates, timeouts, name, composer, isPlaying, maxVelocity } from './states';
 import { sleep } from '$utils/helpers';
 import { scores } from '$utils/scores';
-import { pianoStates } from '../pianoStates/states';
 
 // UTILS
 export const clearTimeouts = () => {
@@ -21,25 +19,30 @@ export const clearTimeouts = () => {
 };
 export const addTimeout = (timeout: NodeJS.Timeout) =>
 	timeouts.update((timeouts) => [...timeouts, timeout]);
+export const getMaxVelocity = (tracks: Track[]) => {
+	let max = 0;
+	tracks.map((track) => track.notes.map((note) => note.velocity > max && (max = note.velocity)));
+	return max;
+};
 export const getScore = (name: string) => {
 	for (let score of scores) if (score.name === name) return score;
 	throw new Error('Score was not found!');
 };
-export const getDifficulty = (score: Score) => {
-	if (!(get(difficulty) in score.difficulty)) throw new Error('Difficulty was not found!');
-	return score.difficulty[get(difficulty)] as DifficultySource;
-};
 export const playTrack = (track: Track) => {
 	const speed = 1000 / get(playerStates.speed);
 	track.notes.map((note) => {
+		const piano = get(pianoStates.piano);
 		const timeout = setTimeout(() => {
 			const name = note.name.replace('#', 'S') as Note;
 			if (name in noteList) {
+				noteList[name].velocity.set(note.velocity);
 				noteList[name].isPressing.set(true);
-				setTimeout(() => noteList[name].isPressing.set(false), note.duration * speed);
+				setTimeout(() => {
+					noteList[name].velocity.set(1);
+					noteList[name].isPressing.set(false);
+				}, note.duration * speed);
 			} else {
-				const piano = get(pianoStates.piano);
-				piano.triggerAttack(note.name);
+				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
 			}
 		}, note.time * speed);
@@ -49,40 +52,28 @@ export const playTrack = (track: Track) => {
 export const playScore = async () => {
 	await sleep(1000);
 	const score = getScore(get(name));
-	const difficulty = getDifficulty(score);
-	const midi = await Midi.fromUrl(difficulty.url);
+	const midi = await Midi.fromUrl(score.url);
+	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
 	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000));
 };
-export const toggleIsPlaying = () =>
-	isPlaying.update((isPlaying) => {
-		if (!isPlaying) {
-			difficulty.set('advanced');
-			switch (get(name)) {
-				case 'Moonlight Sonata (3rdMovement)':
-					name.set('Nocturne Op.9 No.2');
-					break;
-				case 'Nocturne Op.9 No.2':
-					name.set('Turkish March (Ronda Alla Turca)');
-					difficulty.set('intermediate');
-					break;
-				case 'Turkish March (Ronda Alla Turca)':
-					name.set('Flight of the Bumblebee');
-					break;
-				case 'Flight of the Bumblebee':
-					name.set('Habanera from Carmen');
-					difficulty.set('intermediate');
-					break;
-				case 'Habanera from Carmen':
-					name.set('Dance of the sugar plum fairy');
-					break;
-				case 'Dance of the sugar plum fairy':
-					name.set('Moonlight Sonata (3rdMovement)');
-					break;
-				default:
-					name.set('Moonlight Sonata (3rdMovement)');
-			}
+export const changeScore = () => {
+	for (let i = 0; i < scores.length; i++) {
+		if (scores[i].name !== get(name)) continue;
+		if (i + 1 === scores.length) {
+			name.set(scores[0].name);
+			composer.set(scores[0].composer);
+		} else {
+			name.set(scores[i + 1].name);
+			composer.set(scores[i + 1].composer);
 		}
-		return !isPlaying;
-	});
-export const initializePlayerStates = () => {};
+		break;
+	}
+};
+export const toggleIsPlaying = () => isPlaying.update((v) => !v);
+export const initializePlayerStates = () => {
+	if (!get(name)) {
+		name.set(scores[0].name);
+		composer.set(scores[0].composer);
+	}
+};

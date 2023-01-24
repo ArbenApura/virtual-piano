@@ -1,7 +1,21 @@
 // IMPORTED UTILS
-import { isFullScreen } from './states';
+import { isFullScreen, isFullScreenSupported } from './states';
 
 // UTILS
+export const canGoFullscreen = () =>
+	typeof document.body.requestFullscreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.body.mozRequestFullScreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.body.webkitRequestFullscreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.body.msRequestFullscreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.exitFullscreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.mozCancelFullScreen !== 'undefined' ||
+	// @ts-ignore
+	typeof document.webkitExitFullscreen !== 'undefined';
 export const requestFullScreen = async () => {
 	try {
 		if (!!document.fullscreenElement) return;
@@ -41,4 +55,7 @@ export const toggleIsFullScreen = () => {
 	else requestFullScreen();
 };
 export const observeFullScreen = () => isFullScreen.set(!!document.fullscreenElement);
-export const initializeSettingStates = () => {};
+export const initializeSettingStates = () => {
+	observeFullScreen();
+	isFullScreenSupported.set(canGoFullscreen());
+};

@@ -1,28 +1,31 @@
 <script lang="ts">
-	// IMPORTED TYPES
-	import type { Note } from '$stores/pianoStates';
 	// IMPORTED LIB-UTILS
 	import { get } from 'svelte/store';
 	import { swipe } from 'svelte-gestures';
 	// IMPORTED UTILS
-	import { pianoClusters } from '$utils/pianoKeys';
+	import { pianoClusters, pianoNotes } from '$utils/pianoKeys';
 	import { noteList } from '$stores/pianoStates';
+	import { visibility } from '$stores/settingStates';
 	// IMPORTED COMPONENTS
 	import PianoCluster from './PianoCluster.svelte';
+
+	// STORE STATES
+	const { keyboard } = visibility;
 
 	// STATES
 	let isSwiping = false;
 
 	// UTILS
+	const releaseAll = () => pianoNotes.map((key) => noteList[key].isPressing.set(false));
 	const detectBoundaries = async (x: number, y: number) => {
-		Object.keys(noteList).map((key) => {
-			const note = noteList[key as Note];
+		pianoNotes.map((key) => {
+			const note = noteList[key];
 			const boundaries = get(note.boundaries);
 			if (note.type === 'white') {
 				note.isPressing.set(
 					(x > boundaries[0].x &&
 						x < boundaries[0].x + boundaries[0].width &&
-						y > boundaries[1].y) ||
+						y > boundaries[0].y) ||
 						(x > boundaries[1].x &&
 							x < boundaries[1].x + boundaries[1].width &&
 							y > boundaries[1].y),
@@ -37,16 +40,11 @@
 			}
 		});
 	};
-	const releaseAll = () => {
-		Object.keys(noteList).map((key) => {
-			const { isPressing } = noteList[key as Note];
-			isPressing.set(false);
-		});
-	};
 </script>
 
 <div
 	class="keyboard"
+	data-is-visible={$keyboard}
 	use:swipe
 	on:swipeup={() => (isSwiping = false)}
 	on:swipemove={() => (isSwiping = true)}
@@ -65,5 +63,9 @@
 		grid-template-columns: 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr calc(100vw / 35);
 		background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
 			url('$assets/images/bg-wood.png');
+		&[data-is-visible='false'] {
+			@apply h-0 p-0 border-none;
+			visibility: hidden;
+		}
 	}
 </style>

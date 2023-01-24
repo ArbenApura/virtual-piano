@@ -5,7 +5,8 @@
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { resizeCount } from '$stores/mediaStates';
+	import { windowWidth } from '$stores/mediaStates';
+	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let key: PianoKey;
@@ -13,11 +14,14 @@
 	// REFS
 	let keyEl: HTMLDivElement;
 
+	// STORE STATES
+	const { keyboardBindHint } = visibility;
+
 	// STATES
 	const { isPressing, boundaries } = noteList[key.note];
 
 	// REACTIVE STATEMENTS
-	$: $resizeCount && handleBoundary();
+	$: $windowWidth && handleBoundary();
 
 	// UTILS
 	const handleBoundary = () => {
@@ -35,7 +39,9 @@
 
 <div id="{key.note}-filler" class="filler" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="filler-inner">
-		<span>{key.bind}</span>
+		{#if $keyboardBindHint}
+			<span>{key.bind}</span>
+		{/if}
 	</div>
 </div>
 
@@ -49,8 +55,8 @@
 		&[data-is-active='true'] {
 			@apply pt-[.3vw];
 			.filler-inner {
+				@apply bg-slate-200;
 				height: calc(100% + 0.4vw);
-				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
 			}
 		}
 	}

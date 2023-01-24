@@ -1,7 +1,7 @@
 // IMPORTED UTILS
 import { breakpoints } from '$utils/breakpoints';
 // IMPORTED STATES
-import { mediaStates, isMobile, isTouchScreen } from './states';
+import { mediaStates, windowWidth, isMobile, isTouchScreen } from './states';
 
 // UTILS
 export const updateMedia = () => {

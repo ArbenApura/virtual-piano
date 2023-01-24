@@ -5,13 +5,17 @@
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { isTouchScreen, resizeCount } from '$stores/mediaStates';
+	import { isTouchScreen, windowWidth } from '$stores/mediaStates';
+	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let key: PianoKey, isSwiping: boolean;
 
 	// REFS
 	let keyEl: HTMLButtonElement;
+
+	// STORE STATES
+	const { keyboardNoteHint } = visibility;
 
 	// STATES
 	const { isPressing, boundaries } = noteList[key.note];
@@ -22,7 +26,7 @@
 	};
 
 	// REACTIVE STATEMENTS
-	$: $resizeCount && handleUpdate();
+	$: $windowWidth && handleUpdate();
 
 	// UTILS
 	const handleFiller = () => {
@@ -67,7 +71,9 @@
 >
 	<div class="key-inner">
 		<span class="flex-grow" />
-		<span>{key.note}</span>
+		{#if $keyboardNoteHint}
+			<span>{key.note}</span>
+		{/if}
 	</div>
 	<div
 		class="filler"
@@ -77,7 +83,7 @@
 
 <style lang="scss">
 	.key {
-		@apply bg-slate-50  w-full h-full rounded-b-[.2vw] overflow-hidden border-x-[.1vw] border-b-[.1vw] border-gray-300;
+		@apply bg-slate-50 relative w-full h-full rounded-b-[.2vw] overflow-hidden border-x-[.1vw] border-b-[.1vw] border-gray-300;
 		.key-inner {
 			@apply h-full flex flex-col items-center;
 			font-size: 0.7vw;
@@ -86,10 +92,7 @@
 			@apply absolute bottom-0;
 		}
 		&[data-is-active='true'] {
-			@apply mt-[.2vw];
-			.key-inner {
-				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
-			}
+			@apply bg-slate-200 mt-[.2vw];
 		}
 	}
 </style>

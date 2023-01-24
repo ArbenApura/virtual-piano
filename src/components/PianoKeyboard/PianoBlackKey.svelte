@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { isTouchScreen, resizeCount } from '$stores/mediaStates';
+	import { isTouchScreen, windowWidth } from '$stores/mediaStates';
 	import { visibility } from '$stores/settingStates';
 
 	// PROPS
@@ -14,11 +14,14 @@
 	// REFS
 	let keyEl: HTMLButtonElement;
 
+	// STORE STATES
+	const { keyboardBindHint, keyboardNoteHint } = visibility;
+
 	// STATES
 	const { isPressing, boundaries } = noteList[key.note];
 
 	// REACTIVE STATEMENTS
-	$: $resizeCount && handleBoundary();
+	$: $windowWidth && handleBoundary();
 
 	// UTILS
 	const handleBoundary = () => {
@@ -39,7 +42,7 @@
 <button id="{key.note}-key" class="key" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="key-body {key.type}-key">
 		<span class="bind">
-			{#if $visibility.keyboardHint.bind}
+			{#if $keyboardBindHint}
 				{key.bind}
 				{#if key.type === 'black'}
 					<i class="ti ti-plus" />
@@ -48,7 +51,7 @@
 			{/if}
 		</span>
 		<span class="note">
-			{#if $visibility.keyboardHint.note}
+			{#if $keyboardNoteHint}
 				{key.note.replace('S', '#')}
 			{/if}
 		</span>
@@ -66,13 +69,11 @@
 
 <style lang="scss">
 	.key {
-		@apply bg-[#111] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#222];
+		@apply bg-[#222] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#222];
 		height: calc(100% + 0.3vw);
-		box-shadow: 0.6vw -0.1vw 0.6vw rgb(0, 0, 0, 0.3);
 		.key-body {
-			@apply w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.1vw];
+			@apply bg-[#000] w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.05vw];
 			font-size: 0.5vw;
-			background-image: linear-gradient(to bottom, #000, #000, #000, #222, #222);
 			span {
 				@apply py-[.2vw];
 			}
@@ -87,7 +88,7 @@
 			}
 		}
 		.key-bottom {
-			@apply w-full h-[8%] rounded-t-[.2vw] bg-[#000];
+			@apply w-full h-[8%] rounded-t-[.2vw] bg-[#111];
 		}
 		.wrapper {
 			@apply absolute w-full h-full;
@@ -95,6 +96,9 @@
 		&[data-is-active='true'] {
 			@apply h-full mt-0;
 			box-shadow: none;
+			.key-body {
+				@apply bg-[#111] mb-0;
+			}
 			.key-bottom {
 				@apply h-[0%];
 			}

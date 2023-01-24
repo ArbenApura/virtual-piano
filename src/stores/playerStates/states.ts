@@ -1,17 +1,27 @@
 // IMPORTED TYPES
-import type { Speed, Difficulty } from './types';
+import type { Speed } from './types';
 // IMPORTED LIB-UTILS
 import { writable } from 'svelte/store';
 // IMPORTED UTILS
-import { playScore, clearTimeouts } from './utils';
+import { playScore, clearTimeouts, changeScore } from './utils';
 
 // STATES
-export const name = writable<string>('Moonlight Sonata (3rdMovement)');
-export const difficulty = writable<Difficulty>('advanced');
+export const name = writable<string>();
+export const composer = writable<string>();
 export const speed = writable<Speed>(1);
+export const maxVelocity = writable<number>(1);
 export const isPlaying = writable<boolean>();
 export const timeouts = writable<NodeJS.Timeout[]>([]);
-export const playerStates = { name, difficulty, speed, isPlaying, timeouts };
+export const playerStates = { name, composer, speed, maxVelocity, isPlaying, timeouts };
 
 // SUBSCRIPTIONS
-isPlaying.subscribe((isPlaying) => (isPlaying ? playScore() : clearTimeouts()));
+isPlaying.subscribe((isPlaying) => {
+	try {
+		if (!isPlaying) {
+			clearTimeouts();
+			changeScore();
+			speed.set(1);
+			maxVelocity.set(1);
+		} else playScore();
+	} catch {}
+});

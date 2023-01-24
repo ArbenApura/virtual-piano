@@ -1,15 +1,15 @@
-// IMPORTED TYPES
-import type { Visibility } from './types';
 // IMPORTED LIB-UTILS
 import { writable } from 'svelte/store';
 
-// DEFAULT STATES
-const DEFAULT_VISIBILITY: Visibility = {
-	keyboardHint: { note: true, bind: true },
-	screenHint: { note: false, bind: false, dot: false },
-};
-
 // STATES
-export const visibility = writable<Visibility>(DEFAULT_VISIBILITY);
+export const visibility = {
+	keyboard: writable<boolean>(true),
+	keyboardNoteHint: writable<boolean>(true),
+	keyboardBindHint: writable<boolean>(true),
+	highlight: writable<boolean>(true),
+	visualizer: writable<boolean>(true),
+	playerDetails: writable<boolean>(true),
+};
 export const isFullScreen = writable<boolean>(false);
-export const settingStates = { visibility, isFullScreen };
+export const isFullScreenSupported = writable<boolean>(false);
+export const settingStates = { visibility, isFullScreen, isFullScreenSupported };

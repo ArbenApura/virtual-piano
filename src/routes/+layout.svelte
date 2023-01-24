@@ -4,7 +4,7 @@
 	import * as Tone from 'tone';
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
-	import { resizeCount } from '$stores/mediaStates';
+	import { windowWidth } from '$stores/mediaStates';
 	import { observeFullScreen } from '$stores/settingStates';
 	import { noteList } from '$stores/pianoStates';
 	import { pianoKeys } from '$utils/pianoKeys';
@@ -37,6 +37,7 @@
 				noteList[key.note].isPressing.set(false);
 		});
 	};
+	const handleResize = () => windowWidth.set(window.innerWidth);
 
 	// EVENTS
 	Tone.loaded().then(() => {
@@ -58,7 +59,7 @@
 <svelte:window
 	on:keydown={handleKeyDown}
 	on:keyup={handleKeyUp}
-	on:resize={() => resizeCount.update((v) => ++v)}
+	on:resize={handleResize}
 	on:fullscreenchange={observeFullScreen}
 />
 

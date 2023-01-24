@@ -1,11 +1,20 @@
 <script lang="ts">
 	// IMPORTED UTILS
-	import { pianoKeys } from '$utils/pianoKeys';
-	import { isFullScreen, toggleIsFullScreen } from '$stores/settingStates';
-	import { toggleIsPlaying } from '$stores/playerStates';
+	import {
+		visibility,
+		isFullScreen,
+		toggleIsFullScreen,
+		isFullScreenSupported,
+	} from '$stores/settingStates';
+	import { name, composer, isPlaying, toggleIsPlaying } from '$stores/playerStates';
+	import { noteList } from '$stores/pianoStates';
+	import { pianoNotes } from '$utils/pianoKeys';
 	// IMPORTED COMPONENTS
 	import PianoTile from './PianoTile.svelte';
-	import Visualizer from './Visualizer.svelte';
+	import VisualizerTile from './VisualizerTile.svelte';
+
+	// STORE STATES
+	const { playerDetails, visualizer } = visibility;
 </script>
 
 <div class="screen">
@@ -15,20 +24,32 @@
 			<p>Virtual Piano</p>
 		</div>
 	</button>
-	<button class="fullscreen-toggler" on:click={toggleIsFullScreen}>
-		<i class="ti ti-{$isFullScreen ? 'minimize' : 'maximize'}" />
-	</button>
+	{#if $playerDetails}
+		<small class="piece-name" data-is-active={$isPlaying}>{$name}</small>
+		<small class="piece-composer" data-is-active={$isPlaying}>{$composer}</small>
+	{/if}
+	{#if $isFullScreenSupported}
+		<button class="fullscreen-toggler" on:click={toggleIsFullScreen}>
+			<i class="ti ti-{$isFullScreen ? 'minimize' : 'maximize'}" />
+		</button>
+	{/if}
 	<div class="tiles">
-		{#each pianoKeys as pianoKey}
-			<PianoTile {pianoKey} />
+		{#each pianoNotes as key}
+			<PianoTile note={noteList[key]} />
 		{/each}
 	</div>
+	{#if $visualizer}
+		<div class="visualizer">
+			{#each pianoNotes as key}
+				<VisualizerTile note={noteList[key]} />
+			{/each}
+		</div>
+	{/if}
 	<div class="lines">
-		{#each Array(9).fill(null) as _}
+		{#each Array(9).fill(0) as _}
 			<div />
 		{/each}
 	</div>
-	<Visualizer />
 </div>
 
 <style lang="scss">
@@ -46,21 +67,36 @@
 			@apply opacity-50 bg-gray-900;
 		}
 		&::after {
-			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-75 z-50;
+			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-80 z-50;
 		}
 		.brand {
 			@apply absolute z-[200] p-2;
 			@include flex-center;
 			img {
-				@apply w-[40px] mr-2;
+				@apply w-[35px] mr-1;
 			}
 			.text {
 				@apply flex-col;
 				@include flex-center;
 				p {
-					@apply text-slate-50 text-base;
+					@apply text-slate-50 text-[16px];
 				}
 			}
+		}
+		.piece-name,
+		.piece-composer {
+			@apply absolute bottom-[1vw] text-slate-50 opacity-0 z-[200] transition-none;
+			font-size: clamp(8px, 0.8vw, 0.8vw);
+			&[data-is-active='true'] {
+				@apply opacity-25;
+				transition: opacity 0.5s;
+			}
+		}
+		.piece-name {
+			@apply right-[1.8vw];
+		}
+		.piece-composer {
+			@apply left-[1.8vw];
 		}
 		.fullscreen-toggler {
 			@apply absolute top-4 right-4 z-[200];
@@ -72,8 +108,11 @@
 			@apply relative w-full flex;
 			height: calc(100%);
 		}
+		.visualizer {
+			@apply absolute top-[50%] w-full h-[15vw] translate-y-[-50%] flex items-center z-[60];
+		}
 		.lines {
-			@apply flex items-stretch z-40;
+			@apply flex items-stretch z-[70];
 			div {
 				@apply border-r-[1px] border-gray-900;
 				&:nth-child(2n + 1) {

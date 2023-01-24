@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 import { updateMedia } from './utils';
 
 // STATES
-export const resizeCount = writable<number>(0);
+export const windowWidth = writable<number>(0);
 export const isMobile = writable<boolean>(false);
 export const isTouchScreen = writable<boolean>(false);
 export const isXS = writable<boolean>(false);
@@ -22,7 +22,7 @@ export const isMDUp = writable<boolean>(false);
 export const isLGUp = writable<boolean>(false);
 export const isXLUp = writable<boolean>(false);
 export const mediaStates = {
-	resizeCount,
+	windowWidth,
 	isMobile,
 	isTouchScreen,
 	isXS,
@@ -43,4 +43,4 @@ export const mediaStates = {
 };
 
 // SUBSCRIPTIONS
-resizeCount.subscribe(updateMedia);
+windowWidth.subscribe(updateMedia);
