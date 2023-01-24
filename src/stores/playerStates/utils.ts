@@ -6,9 +6,8 @@ import type { Note } from '$stores/pianoStates';
 import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
-import { noteList, pianoStates } from '$stores/pianoStates/states';
+import { noteList, pianoStates } from '$stores/pianoStates';
 import { playerStates, timeouts, name, composer, isPlaying, maxVelocity } from './states';
-import { sleep } from '$utils/helpers';
 import { scores } from '$utils/scores';
 
 // UTILS
@@ -28,9 +27,17 @@ export const getScore = (name: string) => {
 	for (let score of scores) if (score.name === name) return score;
 	throw new Error('Score was not found!');
 };
+export const getMidi = async () => {
+	const score = getScore(get(name));
+	const midi = await Midi.fromUrl(score.url);
+	return midi;
+};
 export const playTrack = (track: Track) => {
 	const speed = 1000 / get(playerStates.speed);
+	const delay = get(playerStates.delay);
 	track.notes.map((note) => {
+		const isPlaying = get(playerStates.isPlaying);
+		if (!isPlaying) return;
 		const piano = get(pianoStates.piano);
 		const timeout = setTimeout(() => {
 			const name = note.name.replace('#', 'S') as Note;
@@ -45,14 +52,12 @@ export const playTrack = (track: Track) => {
 				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
 			}
-		}, note.time * speed);
+		}, note.time * speed + delay);
 		addTimeout(timeout);
 	});
 };
 export const playScore = async () => {
-	await sleep(1000);
-	const score = getScore(get(name));
-	const midi = await Midi.fromUrl(score.url);
+	const midi = await getMidi();
 	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
 	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000));

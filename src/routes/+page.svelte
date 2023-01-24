@@ -82,11 +82,8 @@
 	.page {
 		@apply absolute w-full h-full flex flex-col;
 		.piano-screen {
-			@apply flex-grow relative;
+			@apply flex-grow relative bg-fixed bg-cover bg-bottom;
 			background-image: var(--bg-image);
-			background-attachment: fixed;
-			background-size: cover;
-			background-position: bottom;
 		}
 	}
 </style>

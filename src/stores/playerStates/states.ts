@@ -9,10 +9,11 @@ import { playScore, clearTimeouts, changeScore } from './utils';
 export const name = writable<string>();
 export const composer = writable<string>();
 export const speed = writable<Speed>(1);
+export const delay = writable<number>(1000);
 export const maxVelocity = writable<number>(1);
 export const isPlaying = writable<boolean>();
 export const timeouts = writable<NodeJS.Timeout[]>([]);
-export const playerStates = { name, composer, speed, maxVelocity, isPlaying, timeouts };
+export const playerStates = { name, composer, speed, delay, maxVelocity, isPlaying, timeouts };
 
 // SUBSCRIPTIONS
 isPlaying.subscribe((isPlaying) => {

@@ -3,18 +3,6 @@ import type { Score } from '$stores/playerStates';
 
 export const scores: Score[] = [
 	{
-		name: 'Nocturne Op.9 No.2',
-		composer: 'Frédéric Chopin',
-		url: 'scores/NocturneOp9No2.mid',
-		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
-	},
-	{
-		name: 'Für Elise',
-		composer: 'Ludwig van Beethoven',
-		url: 'scores/FurElise.mid',
-		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
-	},
-	{
 		name: 'Turkish March (Ronda Alla Turca)',
 		composer: 'Wolfgang Amadeus Mozart',
 		url: 'scores/TurkishMarch.mid',
@@ -57,6 +45,30 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/user/9141191/scores/5498538',
 	},
 	{
+		name: 'Flight of the Bumblebee',
+		composer: 'Nikolai Rimsky-Korsakov',
+		url: 'scores/FlightOfTheBumblebee.mid',
+		musescoreUrl: 'https://musescore.com/user/2673691/scores/2597411',
+	},
+	{
+		name: 'Etude Op.10 No.4 (Torrent)',
+		composer: 'Frédéric Chopin',
+		url: 'scores/ChopinEtudeOp10No4.mid',
+		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497268',
+	},
+	{
+		name: 'Fantaisie-impromptu Op.66',
+		composer: 'Frédéric Chopin',
+		url: 'scores/FantaisieImpromptuOp66.mid',
+		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
+	},
+	{
+		name: 'Waltz of the Flowers',
+		composer: 'Pyotr Ilyich Tchaikovsky',
+		url: 'scores/WaltzOfTheFlowers.mid',
+		musescoreUrl: 'https://musescore.com/user/124709/scores/1131706',
+	},
+	{
 		name: 'Moonlight Sonata (3rdMovement)',
 		composer: 'Ludwig van Beethoven',
 		url: 'scores/MoonlightSonata3rdMovement.mid',
@@ -81,28 +93,16 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/classicman/scores/49154',
 	},
 	{
-		name: 'Fantaisie-impromptu Op.66',
+		name: 'Nocturne Op.9 No.2',
 		composer: 'Frédéric Chopin',
-		url: 'scores/FantaisieImpromptuOp66.mid',
-		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
+		url: 'scores/NocturneOp9No2.mid',
+		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
 	},
 	{
-		name: 'Etude Op.10 No.4 (Torrent)',
-		composer: 'Frédéric Chopin',
-		url: 'scores/ChopinEtudeOp10No4.mid',
-		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497268',
-	},
-	{
-		name: 'Flight of the Bumblebee',
-		composer: 'Nikolai Rimsky-Korsakov',
-		url: 'scores/FlightOfTheBumblebee.mid',
-		musescoreUrl: 'https://musescore.com/user/2673691/scores/2597411',
-	},
-	{
-		name: 'Waltz of the Flowers',
-		composer: 'Pyotr Ilyich Tchaikovsky',
-		url: 'scores/WaltzOfTheFlowers.mid',
-		musescoreUrl: 'https://musescore.com/user/124709/scores/1131706',
+		name: 'Für Elise',
+		composer: 'Ludwig van Beethoven',
+		url: 'scores/FurElise.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
 	},
 	{
 		name: 'Minuet in G Major',
