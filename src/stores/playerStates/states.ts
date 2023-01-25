@@ -21,7 +21,6 @@ isPlaying.subscribe((isPlaying) => {
 		if (!isPlaying) {
 			clearTimeouts();
 			changeScore();
-			speed.set(1);
 			maxVelocity.set(1);
 		} else playScore();
 	} catch {}

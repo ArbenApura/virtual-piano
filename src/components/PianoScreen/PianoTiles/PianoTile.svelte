@@ -45,8 +45,7 @@
 			content: '';
 		}
 		&::before {
-			@apply opacity-75 z-20;
-			background-color: rgba(255, 255, 255, 0.4);
+			@apply bg-slate-50 bg-opacity-40 opacity-75 z-20;
 			background-image: linear-gradient(
 				to top,
 				transparent,
@@ -58,11 +57,7 @@
 			);
 		}
 		&::after {
-			@apply opacity-100 z-10;
-			background-image: var(--bg-image);
-			background-attachment: fixed;
-			background-size: cover;
-			background-position: bottom;
+			@apply bg-fixed bg-cover bg-bottom opacity-100 z-10;
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;

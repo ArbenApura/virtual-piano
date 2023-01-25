@@ -9,6 +9,7 @@ import { Midi } from '@tonejs/midi';
 import { noteList, pianoStates } from '$stores/pianoStates';
 import { playerStates, timeouts, name, composer, isPlaying, maxVelocity } from './states';
 import { scores } from '$utils/scores';
+import { sleep } from '$utils/helpers';
 
 // UTILS
 export const clearTimeouts = () => {
@@ -32,14 +33,15 @@ export const getMidi = async () => {
 	const midi = await Midi.fromUrl(score.url);
 	return midi;
 };
-export const playTrack = (track: Track) => {
+export const playTrack = async (track: Track) => {
 	const speed = 1000 / get(playerStates.speed);
 	const delay = get(playerStates.delay);
+	const piano = get(pianoStates.piano);
+	await sleep(delay);
 	track.notes.map((note) => {
-		const isPlaying = get(playerStates.isPlaying);
-		if (!isPlaying) return;
-		const piano = get(pianoStates.piano);
 		const timeout = setTimeout(() => {
+			const isPlaying = get(playerStates.isPlaying);
+			if (!isPlaying) return;
 			const name = note.name.replace('#', 'S') as Note;
 			if (name in noteList) {
 				noteList[name].velocity.set(note.velocity);
@@ -52,16 +54,17 @@ export const playTrack = (track: Track) => {
 				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
 			}
-		}, note.time * speed + delay);
+		}, note.time * speed);
 		addTimeout(timeout);
 	});
 };
 export const playScore = async () => {
+	const speed = 1000 / get(playerStates.speed);
 	const delay = get(playerStates.delay);
 	const midi = await getMidi();
 	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
-	addTimeout(setTimeout(clearTimeouts, midi.duration * 1000 + delay));
+	addTimeout(setTimeout(clearTimeouts, midi.duration * speed + delay));
 };
 export const changeScore = () => {
 	for (let i = 0; i < scores.length; i++) {

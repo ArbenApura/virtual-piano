@@ -69,7 +69,7 @@
 			@apply opacity-100;
 			transition: height 100ms;
 			.bar {
-				transition: height 100ms;
+				transition: height 100ms ease;
 			}
 		}
 	}
