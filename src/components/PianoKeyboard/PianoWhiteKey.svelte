@@ -78,7 +78,7 @@
 			font-size: 0.7vw;
 		}
 		.filler {
-			@apply absolute top-0;
+			@apply absolute top-[.5vw];
 		}
 		&[data-is-active='true'] {
 			@apply bg-slate-200 mt-[.2vw];

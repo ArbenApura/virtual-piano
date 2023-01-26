@@ -9,12 +9,6 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
 	},
 	{
-		name: 'Für Elise',
-		composer: 'Ludwig van Beethoven',
-		url: 'scores/FurElise.mid',
-		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
-	},
-	{
 		name: 'Liebestraum No.3 (Love Dream)',
 		composer: 'Franz Liszt',
 		url: 'scores/LiebestraumNo3.mid',
@@ -93,22 +87,28 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
 	},
 	{
-		name: 'Habanera from Carmen',
-		composer: 'Georges Bizet',
-		url: 'scores/HabaneraFromCarmen.mid',
-		musescoreUrl: 'https://musescore.com/user/65436/scores/440201',
-	},
-	{
 		name: 'Dance of the sugar plum fairy',
 		composer: 'Pyotr Ilyich Tchaikovsky',
 		url: 'scores/DanceOfTheSugarPlumFairy.mid',
 		musescoreUrl: 'https://musescore.com/user/3435661/scores/2899321',
 	},
 	{
+		name: 'Habanera from Carmen',
+		composer: 'Georges Bizet',
+		url: 'scores/HabaneraFromCarmen.mid',
+		musescoreUrl: 'https://musescore.com/user/65436/scores/440201',
+	},
+	{
 		name: 'In the Hall of the Mountain King',
 		composer: 'Edvard Grieg',
 		url: 'scores/InTheHallOfTheMountainKing.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/49154',
+	},
+	{
+		name: 'Für Elise',
+		composer: 'Ludwig van Beethoven',
+		url: 'scores/FurElise.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
 	},
 	{
 		name: 'Minuet in G Major',

@@ -7,18 +7,21 @@
 	import { windowWidth } from '$stores/mediaStates';
 	import { observeFullScreen, observeOrientation } from '$stores/settingStates';
 	import { noteList } from '$stores/pianoStates';
+	import { isOpen as isMenuOpen } from '$stores/menuStates';
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { filterKey } from '$utils/helpers';
 	// IMPORTED COMPONENTS
 	import PianoScreen from '$components/PianoScreen';
 	import PianoKeyboard from '$components/PianoKeyboard';
 	import OrientationNotice from '$components/OrientationNotice/OrientationNotice.svelte';
+	import MenuScreen from '$components/MenuScreen/MenuScreen.svelte';
 
 	// STATES
 	let isShift = false;
 
 	// UTILS
 	const handleKeyDown = (event: KeyboardEvent) => {
+		if ($isMenuOpen) return;
 		if (event.key === 'Shift') isShift = true;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -32,6 +35,7 @@
 		});
 	};
 	const handleKeyUp = (event: KeyboardEvent) => {
+		if ($isMenuOpen) return;
 		if (event.key === 'Shift') isShift = false;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -68,8 +72,9 @@
 
 <OrientationNotice>
 	<div class="page">
-		<div class="piano-screen">
+		<div class="body">
 			<PianoScreen />
+			<MenuScreen />
 		</div>
 		<PianoKeyboard />
 	</div>
@@ -80,8 +85,8 @@
 		--bg-image: url('$assets/images/bg-1.png');
 	}
 	.page {
-		@apply absolute w-full h-full flex flex-col;
-		.piano-screen {
+		@apply absolute w-full h-full flex flex-col overflow-hidden;
+		.body {
 			@apply flex-grow relative bg-fixed bg-cover bg-bottom;
 			background-image: var(--bg-image);
 		}
