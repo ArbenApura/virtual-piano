@@ -7,7 +7,7 @@ import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
 import { noteList, pianoStates } from '$stores/pianoStates';
-import { playerStates, timeouts, name, composer, isPlaying, maxVelocity } from './states';
+import { playerStates, timeouts, name, composer, duration, isPlaying, maxVelocity } from './states';
 import { scores } from '$utils/scores';
 import { sleep } from '$utils/helpers';
 
@@ -62,9 +62,11 @@ export const playScore = async () => {
 	const speed = 1000 / get(playerStates.speed);
 	const delay = get(playerStates.delay);
 	const midi = await getMidi();
+	const totalDuration = midi.duration * speed + delay;
+	duration.set(totalDuration);
 	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
-	addTimeout(setTimeout(clearTimeouts, midi.duration * speed + delay));
+	addTimeout(setTimeout(clearTimeouts, totalDuration));
 };
 export const changeScore = () => {
 	for (let i = 0; i < scores.length; i++) {
@@ -80,6 +82,12 @@ export const changeScore = () => {
 	}
 };
 export const toggleIsPlaying = () => isPlaying.update((v) => !v);
+export const resetStates = () => {
+	clearTimeouts();
+	changeScore();
+	maxVelocity.set(1);
+	duration.set(0);
+};
 export const initializePlayerStates = () => {
 	if (!get(name)) {
 		name.set(scores[0].name);

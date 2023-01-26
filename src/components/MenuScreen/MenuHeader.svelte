@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED UTILS
-	import { isFullScreen, toggleIsFullScreen } from '$stores/settingStates';
+	import { isFullScreen, toggleIsFullScreen } from '$stores/settingsStates';
 	import { toggleIsPlaying } from '$stores/playerStates';
 	import {
 		isOpen,

@@ -6,7 +6,7 @@
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
 	import { isTouchScreen, windowWidth } from '$stores/mediaStates';
-	import { visibility } from '$stores/settingStates';
+	import { visibility } from '$stores/settingsStates';
 
 	// PROPS
 	export let key: PianoKey, isSwiping: boolean;

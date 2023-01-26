@@ -5,7 +5,7 @@
 	// IMPORTED UTILS
 	import { pianoClusters, pianoNotes } from '$utils/pianoKeys';
 	import { noteList } from '$stores/pianoStates';
-	import { visibility } from '$stores/settingStates';
+	import { visibility } from '$stores/settingsStates';
 	// IMPORTED COMPONENTS
 	import PianoCluster from './PianoCluster.svelte';
 

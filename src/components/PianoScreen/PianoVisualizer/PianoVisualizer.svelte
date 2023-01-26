@@ -1,22 +1,16 @@
 <script lang="ts">
 	// IMPORTED UTILS
-	import { visibility } from '$stores/settingStates';
 	import { noteList } from '$stores/pianoStates';
 	import { pianoNotes } from '$utils/pianoKeys';
 	// IMPORTED COMPONENTS
 	import VisualizerTile from './VisualizerTile.svelte';
-
-	// STORE STATES
-	const { visualizer } = visibility;
 </script>
 
-{#if $visualizer}
-	<div class="visualizer">
-		{#each pianoNotes as key}
-			<VisualizerTile note={noteList[key]} />
-		{/each}
-	</div>
-{/if}
+<div class="visualizer">
+	{#each pianoNotes as key}
+		<VisualizerTile note={noteList[key]} />
+	{/each}
+</div>
 
 <style lang="scss">
 	.visualizer {

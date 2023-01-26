@@ -5,7 +5,7 @@
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
 	import { windowWidth } from '$stores/mediaStates';
-	import { observeFullScreen, observeOrientation } from '$stores/settingStates';
+	import { observeFullScreen, observeOrientation } from '$stores/settingsStates';
 	import { noteList } from '$stores/pianoStates';
 	import { isOpen as isMenuOpen } from '$stores/menuStates';
 	import { pianoKeys } from '$utils/pianoKeys';

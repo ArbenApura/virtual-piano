@@ -2,7 +2,7 @@
 	// IMPORTED LIB-UTILS
 	import { fade } from 'svelte/transition';
 	// IMPORTED UTILS
-	import { orientation } from '$stores/settingStates';
+	import { orientation } from '$stores/settingsStates';
 
 	// STATES
 	let isOpen = false;

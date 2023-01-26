@@ -1,11 +1,10 @@
 // IMPORTED LIB-UTILS
 import { writable } from 'svelte/store';
 // IMPORTED UTILS
-import { mediaStates, initializeMediaStates } from './mediaStates';
-import { pianoStates, initializePianoStates } from './pianoStates';
-import { playerStates, initializePlayerStates } from './playerStates';
-import { settingStates, initializeSettingStates } from './settingStates';
-export { mediaStates, pianoStates, playerStates, settingStates };
+import { initializeMediaStates } from './mediaStates';
+import { initializePianoStates } from './pianoStates';
+import { initializePlayerStates } from './playerStates';
+import { initializeSettingStates } from './settingsStates';
 
 // STATES
 export const isInitialized = writable<boolean>(false);

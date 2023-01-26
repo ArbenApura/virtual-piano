@@ -1,14 +1,9 @@
 <script lang="ts">
 	// IMPORTED TYPES
 	import type { NoteState } from '$stores/pianoStates';
-	// IMPORTED UTILS
-	import { visibility } from '$stores/settingStates';
 
 	// PROPS
 	export let note: NoteState;
-
-	// STORE STATES
-	const { highlight } = visibility;
 
 	// STATES
 	const { isPressing, boundaries, type } = note;
@@ -17,21 +12,19 @@
 	$: boundary = (type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
 </script>
 
-{#if $highlight}
-	<div
-		class="highlight-tile {type}-tile"
-		style="width: {boundary.width}px; left: {boundary.x}px"
-		data-is-active={$isPressing}
-	/>
-	<div
-		class="dot-tile"
-		style="width: {boundary.width}px; left: {boundary.x}px"
-		data-is-active={$isPressing}
-	>
-		<span class="dot {type}-dot" />
-		<span class="dot {type}-dot" />
-	</div>
-{/if}
+<div
+	class="highlight-tile {type}-tile"
+	style="width: {boundary.width}px; left: {boundary.x}px"
+	data-is-active={$isPressing}
+/>
+<div
+	class="dot-tile"
+	style="width: {boundary.width}px; left: {boundary.x}px"
+	data-is-active={$isPressing}
+>
+	<span class="dot {type}-dot" />
+	<span class="dot {type}-dot" />
+</div>
 
 <style lang="scss">
 	.dot-tile,
@@ -58,6 +51,7 @@
 		}
 		&::after {
 			@apply bg-fixed bg-cover bg-bottom opacity-100 z-10;
+			background-image: var(--bg-image);
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;

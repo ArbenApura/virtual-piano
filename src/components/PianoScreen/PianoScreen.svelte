@@ -1,16 +1,33 @@
 <script lang="ts">
+	// IMPORTED UTILS
+	import { visibility } from '$stores/settingsStates';
 	// IMPORTED COMPONENTS
-	import PianoDisplay from './PianoDisplay.svelte';
+	import PianoDetails from './PianoDetails.svelte';
 	import PianoTiles from './PianoTiles/PianoTiles.svelte';
 	import PianoVisualizer from './PianoVisualizer/PianoVisualizer.svelte';
+	import PianoProgress from './PianoProgress.svelte';
 	import PianoLines from './PianoLines.svelte';
+
+	// STORE STATES
+	const { lines, highlight, visualizer, progress, playerDetails } = visibility;
 </script>
 
 <div class="screen">
-	<PianoDisplay />
-	<PianoTiles />
-	<PianoVisualizer />
-	<PianoLines />
+	{#if $playerDetails}
+		<PianoDetails />
+	{/if}
+	{#if $highlight}
+		<PianoTiles />
+	{/if}
+	{#if $visualizer}
+		<PianoVisualizer />
+	{/if}
+	{#if $progress}
+		<PianoProgress />
+	{/if}
+	{#if $lines}
+		<PianoLines />
+	{/if}
 </div>
 
 <style lang="scss">
@@ -19,9 +36,8 @@
 		@apply w-full h-full relative border-b-[1px] border-gray-900;
 		&::before,
 		&::after {
-			@apply absolute top-0 w-full;
+			@apply absolute top-0 w-full h-full;
 			content: '';
-			height: calc(100%);
 		}
 		&::before {
 			@apply opacity-50 bg-gray-900;
