@@ -24,7 +24,7 @@
 	];
 </script>
 
-<div class="header">
+<div class="header" data-is-open={$isOpen}>
 	{#if $isOpen}
 		<div class="heading">
 			{#each entries as entry}
@@ -58,8 +58,11 @@
 <style lang="scss">
 	@import '$styles';
 	.header {
-		@apply text-slate-50 p-3;
+		@apply p-3;
 		@include flex-start-center;
+		&[data-is-open='true'] {
+			@apply bg-gray-900 border-b border-gray-800;
+		}
 		.brand {
 			@apply flex-grow gap-2;
 			@include flex-start-center;

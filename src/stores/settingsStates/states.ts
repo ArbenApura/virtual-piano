@@ -11,7 +11,6 @@ export const visibility = {
 	lines: writable<boolean>(true),
 	highlight: writable<boolean>(true),
 	visualizer: writable<boolean>(true),
-	visualizerAnimation: writable<boolean>(true),
 	playerDetails: writable<boolean>(true),
 	progress: writable<boolean>(true),
 };

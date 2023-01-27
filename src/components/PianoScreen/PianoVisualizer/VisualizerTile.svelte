@@ -3,16 +3,12 @@
 	import type { NoteState } from '$stores/pianoStates';
 	// IMPORTED UTILS
 	import { maxVelocity } from '$stores/playerStates';
-	import { visibility } from '$stores/settingsStates';
 
 	// PROPS
 	export let note: NoteState;
-
-	// STORE STATES
-	const { visualizerAnimation } = visibility;
+	const { boundaries, isPressing, velocity } = note;
 
 	// STATES
-	const { boundaries, isPressing, velocity } = note;
 	let isFlipped = false;
 
 	// REACTIVE STATES
@@ -26,7 +22,6 @@
 <div
 	class="tile {note.type}-tile"
 	style="width: {boundary.width}px; height: {height}%; left: {boundary.x}px;"
-	data-is-animation-on={$visualizerAnimation}
 	data-is-active={$isPressing}
 	data-is-flipped={isFlipped}
 >
@@ -38,8 +33,10 @@
 <style lang="scss">
 	.tile {
 		@apply absolute flex items-center gap-[1px] opacity-50;
+		transition: height 300ms;
 		.bar {
 			@apply relative w-full min-h-[2px] h-0 flex items-center;
+			transition: 100ms ease;
 		}
 		&.white-tile .bar {
 			@apply bg-slate-50;
@@ -71,17 +68,9 @@
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;
+			transition: height 100ms;
 			.bar {
 				@apply rounded-full;
-			}
-		}
-		&[data-is-animation-on='true'] {
-			transition: height 300ms;
-			.bar {
-				transition: 100ms ease;
-			}
-			&[data-is-active='true'] {
-				transition: height 100ms;
 			}
 		}
 	}
