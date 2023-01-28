@@ -5,14 +5,14 @@ import { writable } from 'svelte/store';
 
 // STATES
 export const visibility = {
-	keyboard: writable<boolean>(true),
-	keyboardNoteHint: writable<boolean>(true),
-	keyboardBindHint: writable<boolean>(true),
-	lines: writable<boolean>(true),
-	highlight: writable<boolean>(true),
-	visualizer: writable<boolean>(true),
+	keyboard: writable<boolean>(false),
+	keyboardNoteHint: writable<boolean>(false),
+	keyboardBindHint: writable<boolean>(false),
+	lines: writable<boolean>(false),
+	highlight: writable<boolean>(false),
+	visualizer: writable<boolean>(false),
 	playerDetails: writable<boolean>(true),
-	progress: writable<boolean>(true),
+	progress: writable<boolean>(false),
 };
 export const orientation = writable<Orientation>('landscape');
 export const isFullScreen = writable<boolean>(false);

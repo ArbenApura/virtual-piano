@@ -9,7 +9,7 @@ import { playScore, resetStates } from './utils';
 export const name = writable<string>();
 export const composer = writable<string>();
 export const speed = writable<Speed>(1);
-export const delay = writable<number>(1000);
+export const delay = writable<number>(4000);
 export const duration = writable<number>(0);
 export const maxVelocity = writable<number>(1);
 export const isPlaying = writable<boolean>();

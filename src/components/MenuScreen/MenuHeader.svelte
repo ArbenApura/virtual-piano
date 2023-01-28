@@ -64,7 +64,8 @@
 			@apply bg-gray-900 border-b border-gray-800;
 		}
 		.brand {
-			@apply flex-grow gap-2 opacity-50 hover:opacity-100;
+			// @apply flex-grow gap-2 opacity-50 hover:opacity-100;
+			@apply flex-grow gap-2 opacity-50;
 			@include flex-start-center;
 			img {
 				@apply w-[30px];

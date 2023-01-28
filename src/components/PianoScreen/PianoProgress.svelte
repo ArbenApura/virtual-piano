@@ -27,7 +27,8 @@
 		&::before {
 			@apply bg-slate-50 absolute top-0 w-full h-full;
 			content: '';
-			animation: pulse 4s alternate infinite ease-in-out;
+			animation: pulse 8s alternate infinite ease-in-out;
+			// animation: pulse 4s alternate infinite ease-in-out;
 		}
 		&[data-is-playing='true'] {
 			animation: progress;
