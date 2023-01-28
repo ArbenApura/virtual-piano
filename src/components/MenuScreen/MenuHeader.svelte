@@ -13,14 +13,14 @@
 
 	// STATES
 	$: entries = [
+		{ name: 'about', icon: 'ti ti-info-circle', onClick: openAbout },
 		{
 			name: 'fullscreen',
 			icon: `ti ti-${$isFullScreen ? 'minimize' : 'maximize'}`,
 			onClick: toggleIsFullScreen,
 		},
-		{ name: 'about', icon: 'ti ti-info-circle', onClick: openAbout },
-		{ name: 'scores', icon: 'ti ti-vinyl', onClick: openScores },
-		{ name: 'settings', icon: 'ti ti-settings-2', onClick: openSettings },
+		// { name: 'scores', icon: 'ti ti-vinyl', onClick: openScores },
+		// { name: 'settings', icon: 'ti ti-settings-2', onClick: openSettings },
 	];
 </script>
 
@@ -64,7 +64,7 @@
 			@apply bg-gray-900 border-b border-gray-800;
 		}
 		.brand {
-			@apply flex-grow gap-2;
+			@apply flex-grow gap-2 opacity-50 hover:opacity-100;
 			@include flex-start-center;
 			img {
 				@apply w-[30px];
@@ -81,12 +81,10 @@
 			@apply gap-3;
 			@include flex-center;
 			button {
+				@apply opacity-50 hover:opacity-100;
 				@include flex-center;
 				i {
 					@apply text-[25px];
-				}
-				&:hover {
-					@apply opacity-75;
 				}
 			}
 		}

@@ -8,21 +8,26 @@
 </script>
 
 <div class="body">
-	{#if $currentTab === 'about'}
-		<AboutTab />
-	{:else if $currentTab === 'scores'}
-		<ScoresTab />
-	{:else if $currentTab === 'settings'}
-		<SettingsTab />
-	{/if}
+	<div class="body-inner">
+		{#if $currentTab === 'about'}
+			<AboutTab />
+		{:else if $currentTab === 'scores'}
+			<ScoresTab />
+		{:else if $currentTab === 'settings'}
+			<SettingsTab />
+		{/if}
+	</div>
 </div>
 
 <style lang="scss">
 	@import '$styles';
 	.body {
-		@apply w-full max-w-[1280px] mx-auto p-4 overflow-auto;
-		@include screen-down('sm') {
-			@apply p-2;
+		@apply overflow-auto;
+		.body-inner {
+			@apply w-full max-w-[1280px] mx-auto p-4;
+			@include screen-down('sm') {
+				@apply p-2;
+			}
 		}
 	}
 </style>
