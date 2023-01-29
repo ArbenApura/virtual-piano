@@ -86,6 +86,8 @@
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
+		width: 1280px;
+		height: 720px;
 		.body {
 			@apply flex-grow relative bg-fixed bg-cover bg-bottom;
 			background-image: var(--bg-image);
