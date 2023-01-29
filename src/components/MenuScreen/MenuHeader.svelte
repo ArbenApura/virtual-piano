@@ -1,19 +1,12 @@
 <script lang="ts">
 	// IMPORTED UTILS
-	import { isFullScreen, toggleIsFullScreen } from '$stores/settingsStates';
+	import { isFullScreen, toggleIsFullScreen, toggleLayout } from '$stores/settingsStates';
 	import { toggleIsPlaying } from '$stores/playerStates';
-	import {
-		isOpen,
-		currentTab,
-		closeMenu,
-		openSettings,
-		openScores,
-		openAbout,
-	} from '$stores/menuStates';
+	import { isOpen, currentTab, closeMenu } from '$stores/menuStates';
 
 	// STATES
 	$: entries = [
-		{ name: 'about', icon: 'ti ti-info-circle', onClick: openAbout },
+		{ name: 'about', icon: 'ti ti-info-circle', onClick: toggleLayout },
 		{
 			name: 'fullscreen',
 			icon: `ti ti-${$isFullScreen ? 'minimize' : 'maximize'}`,
