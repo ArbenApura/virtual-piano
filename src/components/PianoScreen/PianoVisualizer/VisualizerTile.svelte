@@ -35,7 +35,7 @@
 		@apply absolute flex items-center gap-[1px] opacity-50;
 		transition: height 300ms;
 		.bar {
-			@apply relative w-full min-h-[2px] h-0 flex items-center;
+			@apply relative w-full min-h-[2px] h-0 flex items-center rounded-[.4vw];
 			transition: 100ms ease;
 		}
 		&.white-tile .bar {
@@ -69,9 +69,6 @@
 		&[data-is-active='true'] {
 			@apply opacity-100;
 			transition: height 100ms;
-			.bar {
-				@apply rounded-full;
-			}
 		}
 	}
 </style>
