@@ -2,6 +2,36 @@
 import type { Score } from '$stores/playerStates';
 
 export const scores: Score[] = [
+		{
+		name: 'Sonata No.16 K.545 (1st Movement)',
+		composer: 'Wolfgang Amadeus Mozart',
+		url: 'scores/SonataNo16K545.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/77457',
+	},
+	{
+		name: 'Minuet in G Major',
+		composer: 'Christian Petzold',
+		url: 'scores/MinuetInGMajor.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/62312',
+	},
+	{
+		name: 'Für Elise',
+		composer: 'Ludwig van Beethoven',
+		url: 'scores/FurElise.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
+	},
+	{
+		name: 'Moonlight Sonata (1st Movement)',
+		composer: 'Ludwig van Beethoven',
+		url: 'scores/MoonlightSonata1stMovement.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
+	},
+	{
+		name: 'Moonlight Sonata (3rd Movement)',
+		composer: 'Ludwig van Beethoven',
+		url: 'scores/MoonlightSonata3rdMovement.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
+	},
 	{
 		name: 'Nocturne Op.9 No.2',
 		composer: 'Frédéric Chopin',
@@ -81,12 +111,6 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
 	},
 	{
-		name: 'Moonlight Sonata (3rdMovement)',
-		composer: 'Ludwig van Beethoven',
-		url: 'scores/MoonlightSonata3rdMovement.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
-	},
-	{
 		name: 'Dance of the sugar plum fairy',
 		composer: 'Pyotr Ilyich Tchaikovsky',
 		url: 'scores/DanceOfTheSugarPlumFairy.mid',
@@ -105,27 +129,9 @@ export const scores: Score[] = [
 		musescoreUrl: 'https://musescore.com/classicman/scores/49154',
 	},
 	{
-		name: 'Für Elise',
-		composer: 'Ludwig van Beethoven',
-		url: 'scores/FurElise.mid',
-		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
-	},
-	{
-		name: 'Minuet in G Major',
-		composer: 'Christian Petzold',
-		url: 'scores/MinuetInGMajor.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/62312',
-	},
-	{
 		name: 'Canon in D',
 		composer: 'Johann Pachelbel',
 		url: 'scores/CanonInD.mid',
 		musescoreUrl: 'https://musescore.com/user/1809056/scores/1019991',
-	},
-	{
-		name: 'Twinkle Twinkle Little Star (12 Variations)',
-		composer: 'Wolfgang Amadeus Mozart',
-		url: 'scores/TwinkleTwinkleLittleStar12Variations.mid',
-		musescoreUrl: 'https://musescore.com/user/1881896/scores/3198331',
 	},
 ];

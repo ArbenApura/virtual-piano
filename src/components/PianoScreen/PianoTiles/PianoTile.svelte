@@ -50,7 +50,7 @@
 			);
 		}
 		&::after {
-			@apply bg-fixed bg-cover bg-bottom opacity-100 z-10;
+			@apply bg-fixed bg-cover bg-center opacity-100 z-10;
 			background-image: var(--bg-image);
 		}
 		&[data-is-active='true'] {

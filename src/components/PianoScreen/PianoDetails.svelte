@@ -13,7 +13,7 @@
 		@apply absolute bottom-[1vw] text-slate-50 opacity-0 z-[100] transition-none;
 		font-size: clamp(8px, 0.8vw, 0.8vw);
 		&[data-is-active='true'] {
-			@apply opacity-30;
+			@apply opacity-50;
 			transition: opacity 0.5s;
 		}
 	}

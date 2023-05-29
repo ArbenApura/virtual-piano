@@ -82,12 +82,12 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/bg-1.png');
+		--bg-image: url('$assets/images/bg-2.png');
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
 		.body {
-			@apply flex-grow relative bg-fixed bg-cover bg-bottom;
+			@apply flex-grow relative bg-fixed bg-cover bg-center;
 			background-image: var(--bg-image);
 		}
 	}
