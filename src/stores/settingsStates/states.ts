@@ -5,12 +5,12 @@ import { writable } from 'svelte/store';
 
 // STATES
 export const visibility = {
-	keyboard: writable<boolean>(true),
+	keyboard: writable<boolean>(false),
 	keyboardNoteHint: writable<boolean>(true),
 	keyboardBindHint: writable<boolean>(true),
 	lines: writable<boolean>(true),
-	highlight: writable<boolean>(true),
-	visualizer: writable<boolean>(true),
+	highlight: writable<boolean>(false),
+	visualizer: writable<boolean>(false),
 	playerDetails: writable<boolean>(true),
 	progress: writable<boolean>(true),
 };
