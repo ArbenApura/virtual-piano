@@ -2,8 +2,8 @@
 import type { Score } from '$stores/playerStates';
 
 export const scores: Score[] = [
-		{
-		name: 'Sonata No.16 K.545 (1st Movement)',
+	{
+		name: 'Piano Sonata No. 16 in C Major, K. 545 (1st Movement)',
 		composer: 'Wolfgang Amadeus Mozart',
 		url: 'scores/SonataNo16K545.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/77457',

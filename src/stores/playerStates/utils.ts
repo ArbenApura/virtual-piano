@@ -49,7 +49,7 @@ export const playTrack = async (track: Track) => {
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
-				}, note.duration * speed);
+				}, note.duration * speed - 25);
 			} else {
 				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
@@ -69,6 +69,8 @@ export const playScore = async () => {
 	addTimeout(setTimeout(clearTimeouts, totalDuration));
 };
 export const changeScore = () => {
+	get(timeouts).map(clearTimeout);
+	timeouts.set([]);
 	for (let i = 0; i < scores.length; i++) {
 		if (scores[i].name !== get(name)) continue;
 		if (i + 1 === scores.length) {

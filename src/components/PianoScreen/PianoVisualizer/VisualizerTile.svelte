@@ -32,11 +32,11 @@
 
 <style lang="scss">
 	.tile {
-		@apply absolute flex items-center gap-[1px] opacity-50;
-		transition: height 300ms;
+		@apply absolute flex items-center gap-[1px] opacity-40;
+		transition: height 600ms;
 		.bar {
 			@apply relative w-full min-h-[2px] h-0 flex items-center rounded-[.4vw];
-			transition: 100ms ease;
+			transition: 200ms ease;
 		}
 		&.white-tile .bar {
 			@apply bg-slate-50;
@@ -68,7 +68,7 @@
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;
-			transition: height 100ms;
+			transition: height 200ms;
 		}
 	}
 </style>

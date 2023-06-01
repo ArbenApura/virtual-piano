@@ -7,7 +7,6 @@
 	import { windowWidth } from '$stores/mediaStates';
 	import { observeFullScreen, observeOrientation } from '$stores/settingsStates';
 	import { noteList } from '$stores/pianoStates';
-	import { isOpen as isMenuOpen } from '$stores/menuStates';
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { filterKey } from '$utils/helpers';
 	// IMPORTED COMPONENTS
@@ -21,7 +20,6 @@
 
 	// UTILS
 	const handleKeyDown = (event: KeyboardEvent) => {
-		if ($isMenuOpen) return;
 		if (event.key === 'Shift') isShift = true;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -35,7 +33,6 @@
 		});
 	};
 	const handleKeyUp = (event: KeyboardEvent) => {
-		if ($isMenuOpen) return;
 		if (event.key === 'Shift') isShift = false;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -82,10 +79,12 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/bg-2.png');
+		--bg-image: url('$assets/images/bg-3.png');
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
+		width: 1280px;
+		height: 720px;
 		.body {
 			@apply flex-grow relative bg-fixed bg-cover bg-center;
 			background-image: var(--bg-image);

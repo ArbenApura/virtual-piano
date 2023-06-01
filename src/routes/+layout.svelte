@@ -4,3 +4,9 @@
 </script>
 
 <slot />
+
+<style>
+	:global(body) {
+		@apply bg-gray-800;
+	}
+</style>

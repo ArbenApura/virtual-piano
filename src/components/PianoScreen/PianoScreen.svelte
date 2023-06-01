@@ -43,7 +43,7 @@
 			@apply opacity-50 bg-gray-900;
 		}
 		&::after {
-			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-80 z-50;
+			@apply bg-gradient-to-t from-transparent to-gray-900 opacity-50 z-50;
 		}
 	}
 </style>
