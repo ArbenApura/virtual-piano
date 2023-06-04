@@ -3,6 +3,7 @@
 	import YouTubeSVG from '$assets/svgs/youtube.svg';
 	// IMPORTED UTILS
 	import { toggleIsPlaying } from '$stores/playerStates';
+	import { toggleIsAudioOnly } from '$stores/settingsStates';
 </script>
 
 <div class="header">
@@ -10,7 +11,7 @@
 		<img src="piano.svg" alt="logo" />
 		<p class="text-sm">Virtual Piano By Arben</p>
 	</button>
-	<img class="youtube-icon" src={YouTubeSVG} alt="Youtube Icon" />
+	<img class="youtube-icon" src={YouTubeSVG} alt="Youtube Icon" on:dblclick={toggleIsAudioOnly} />
 </div>
 
 <style lang="scss">
@@ -29,7 +30,7 @@
 			}
 		}
 		.youtube-icon {
-			@apply w-[50px] opacity-70 absolute top-[8px] right-[8px];
+			@apply w-[50px] opacity-70 absolute top-[8px] right-[8px] cursor-pointer;
 		}
 	}
 </style>

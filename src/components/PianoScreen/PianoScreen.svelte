@@ -1,6 +1,6 @@
 <script lang="ts">
 	// IMPORTED UTILS
-	import { visibility } from '$stores/settingsStates';
+	import { isAudioOnly, visibility } from '$stores/settingsStates';
 	// IMPORTED COMPONENTS
 	import PianoDetails from './PianoDetails.svelte';
 	import PianoTiles from './PianoTiles/PianoTiles.svelte';
@@ -13,20 +13,22 @@
 </script>
 
 <div class="screen">
+	{#if !$isAudioOnly}
+		{#if $highlight}
+			<PianoTiles />
+		{/if}
+		{#if $visualizer}
+			<PianoVisualizer />
+		{/if}
+		{#if $lines}
+			<PianoLines />
+		{/if}
+	{/if}
 	{#if $playerDetails}
 		<PianoDetails />
 	{/if}
-	{#if $highlight}
-		<PianoTiles />
-	{/if}
-	{#if $visualizer}
-		<PianoVisualizer />
-	{/if}
 	{#if $progress}
 		<PianoProgress />
-	{/if}
-	{#if $lines}
-		<PianoLines />
 	{/if}
 </div>
 

@@ -14,7 +14,14 @@ export const visibility = {
 	playerDetails: writable<boolean>(true),
 	progress: writable<boolean>(true),
 };
+export const isAudioOnly = writable<boolean>(false);
 export const orientation = writable<Orientation>('landscape');
 export const isFullScreen = writable<boolean>(false);
 export const isFullScreenSupported = writable<boolean>(false);
-export const settingsStates = { visibility, orientation, isFullScreen, isFullScreenSupported };
+export const settingsStates = {
+	isAudioOnly,
+	visibility,
+	orientation,
+	isFullScreen,
+	isFullScreenSupported,
+};

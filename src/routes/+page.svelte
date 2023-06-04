@@ -5,7 +5,7 @@
 	// IMPORTED UTILS
 	import { initializeStores } from '$stores/index';
 	import { windowWidth } from '$stores/mediaStates';
-	import { observeFullScreen, observeOrientation } from '$stores/settingsStates';
+	import { isAudioOnly, observeFullScreen, observeOrientation } from '$stores/settingsStates';
 	import { noteList } from '$stores/pianoStates';
 	import { pianoKeys } from '$utils/pianoKeys';
 	import { filterKey } from '$utils/helpers';
@@ -73,7 +73,9 @@
 			<PianoScreen />
 			<MenuScreen />
 		</div>
-		<PianoKeyboard />
+		{#if !$isAudioOnly}
+			<PianoKeyboard />
+		{/if}
 	</div>
 </OrientationNotice>
 

@@ -1,7 +1,8 @@
 // IMPORTED UTILS
-import { isFullScreen, isFullScreenSupported, orientation } from './states';
+import { isAudioOnly, isFullScreen, isFullScreenSupported, orientation } from './states';
 
 // UTILS
+export const toggleIsAudioOnly = () => isAudioOnly.update((value) => !value);
 export const canGoFullscreen = () => typeof document.body.requestFullscreen !== 'undefined';
 export const requestFullscreen = async () => {
 	try {

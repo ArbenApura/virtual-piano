@@ -6,6 +6,7 @@ import type { Note } from '$stores/pianoStates';
 import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
+import { isAudioOnly } from '$stores/settingsStates';
 import { noteList, pianoStates } from '$stores/pianoStates';
 import { playerStates, timeouts, name, composer, duration, isPlaying, maxVelocity } from './states';
 import { scores } from '$utils/scores';
@@ -34,8 +35,8 @@ export const getMidi = async () => {
 	return midi;
 };
 export const playTrack = async (track: Track) => {
-	const speed = 1000 / get(playerStates.speed);
-	const delay = get(playerStates.delay);
+	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
+	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
 	const piano = get(pianoStates.piano);
 	await sleep(delay);
 	track.notes.map((note) => {
