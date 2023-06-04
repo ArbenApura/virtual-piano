@@ -30,7 +30,7 @@
 			animation: pulse 6s alternate infinite linear;
 		}
 		&[data-is-playing='true'] {
-			animation: progress;
+			animation: progress linear;
 		}
 	}
 </style>
