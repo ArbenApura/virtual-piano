@@ -57,7 +57,7 @@
 			@apply opacity-100;
 			&::before {
 				@apply bg-transparent;
-				transition: background-color 1s;
+				transition: background-color 1.5s;
 			}
 		}
 	}
