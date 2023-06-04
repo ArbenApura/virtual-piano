@@ -60,8 +60,8 @@ export const playTrack = async (track: Track) => {
 	});
 };
 export const playScore = async () => {
-	const speed = 1000 / get(playerStates.speed);
-	const delay = get(playerStates.delay);
+	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
+	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
 	const midi = await getMidi();
 	const totalDuration = midi.duration * speed + delay;
 	duration.set(totalDuration);
