@@ -19,7 +19,7 @@
 			@apply opacity-0;
 		}
 		to {
-			@apply opacity-10;
+			@apply opacity-20;
 		}
 	}
 	.progress-bar {

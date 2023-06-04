@@ -33,7 +33,7 @@
 <style lang="scss">
 	.tile {
 		@apply absolute flex items-center gap-[1px] opacity-40;
-		transition: height 1500ms;
+		transition: height 2000ms;
 		.bar {
 			@apply relative w-full min-h-[2px] h-0 flex items-center rounded-[.4vw];
 			transition: 500ms ease;

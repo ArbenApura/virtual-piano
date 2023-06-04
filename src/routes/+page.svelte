@@ -79,15 +79,19 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/bg-3.png');
+		--bg-image: url('$assets/images/beethoven.png');
+		--bg-position: bottom;
+		--bg-position-x: -10px;
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
 		width: 1280px;
 		height: 720px;
 		.body {
-			@apply flex-grow relative bg-fixed bg-cover bg-center;
+			@apply flex-grow relative bg-fixed bg-cover;
 			background-image: var(--bg-image);
+			background-position: var(--bg-position);
+			background-position-x: var(--bg-position-x);
 		}
 	}
 </style>
