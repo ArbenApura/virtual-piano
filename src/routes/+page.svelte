@@ -81,9 +81,9 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/chopin.png');
+		--bg-image: url('$assets/images/liszt.png');
 		--bg-position: center;
-		--bg-position-x: 0px;
+		--bg-position-x: -70px;
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;

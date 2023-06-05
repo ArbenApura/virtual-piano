@@ -5,19 +5,19 @@ const mozart: Score[] = [
 	{
 		name: 'Piano Sonata No. 16 in C Major, K. 545 (1st Movement)',
 		composer: 'Wolfgang Amadeus Mozart',
-		url: 'scores/SonataNo16K545.mid',
+		url: 'scores/Wolfgang Amadeus Mozart/SonataNo16K545.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/77457',
 	},
 	{
 		name: 'Eine Kleine Nachtmusik',
 		composer: 'Wolfgang Amadeus Mozart',
-		url: 'scores/EineKleineNachtmusik.mid',
+		url: 'scores/Wolfgang Amadeus Mozart/EineKleineNachtmusik.mid',
 		musescoreUrl: 'https://musescore.com/thatonepiano/scores/1354976',
 	},
 	{
 		name: 'Turkish March (Ronda Alla Turca)',
 		composer: 'Wolfgang Amadeus Mozart',
-		url: 'scores/TurkishMarch.mid',
+		url: 'scores/Wolfgang Amadeus Mozart/TurkishMarch.mid',
 		musescoreUrl: 'https://musescore.com/user/73797/scores/142975',
 	},
 ];
@@ -26,19 +26,19 @@ const beethoven: Score[] = [
 	{
 		name: 'Für Elise',
 		composer: 'Ludwig van Beethoven',
-		url: 'scores/FurElise.mid',
+		url: 'scores/Ludwig van Beethoven/FurElise.mid',
 		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
 	},
 	{
 		name: 'Moonlight Sonata (1st Movement)',
 		composer: 'Ludwig van Beethoven',
-		url: 'scores/MoonlightSonata1stMovement.mid',
+		url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
 	},
 	{
 		name: 'Moonlight Sonata (3rd Movement)',
 		composer: 'Ludwig van Beethoven',
-		url: 'scores/MoonlightSonata3rdMovement.mid',
+		url: 'scores/Ludwig van Beethoven/MoonlightSonata3rdMovement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
 	},
 ];
@@ -47,29 +47,41 @@ const chopin: Score[] = [
 	{
 		name: 'Nocturne Op.9 No.2',
 		composer: 'Frédéric Chopin',
-		url: 'scores/NocturneOp9No2.mid',
+		url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
 		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
 	},
 	{
 		name: 'Etude Op.10 No.4 (Torrent)',
 		composer: 'Frédéric Chopin',
-		url: 'scores/ChopinEtudeOp10No4.mid',
+		url: 'scores/Frédéric Chopin/ChopinEtudeOp10No4.mid',
 		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497268',
 	},
 	{
 		name: 'Fantaisie-impromptu Op.66',
 		composer: 'Frédéric Chopin',
-		url: 'scores/FantaisieImpromptuOp66.mid',
+		url: 'scores/Frédéric Chopin/FantaisieImpromptuOp66.mid',
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
 	},
 ];
 
 const liszt: Score[] = [
 	{
-		name: 'Liebestraum No.3 (Love Dream)',
+		name: 'Transcendental Etude No. 4 (Mazeppa)',
 		composer: 'Franz Liszt',
-		url: 'scores/LiebestraumNo3.mid',
-		musescoreUrl: 'https://musescore.com/user/19710/scores/65159',
+		url: 'scores/Franz Liszt/Mazeppa.mid',
+		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603291',
+	},
+	{
+		name: 'Transcendental Etude No. 5 (Feux Follets)',
+		composer: 'Franz Liszt',
+		url: 'scores/Franz Liszt/FeuxFollets.mid',
+		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603306',
+	},
+	{
+		name: 'Transcendental Etude No. 8 (Wilde Jagd)',
+		composer: 'Franz Liszt',
+		url: 'scores/Franz Liszt/WildeJagd.mid',
+		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
 	},
 ];
 
@@ -77,28 +89,22 @@ const bizet: Score[] = [
 	{
 		name: 'Carmen (Overture)',
 		composer: 'Georges Bizet',
-		url: 'scores/CarmenOverture.mid',
+		url: 'scores/Georges Bizet/CarmenOverture.mid',
 		musescoreUrl: 'https://musescore.com/user/171844/scores/5141531',
 	},
 	{
 		name: 'Habanera from Carmen',
 		composer: 'Georges Bizet',
-		url: 'scores/HabaneraFromCarmen.mid',
+		url: 'scores/Georges Bizet/HabaneraFromCarmen.mid',
 		musescoreUrl: 'https://musescore.com/user/65436/scores/440201',
 	},
 ];
 
 const tchaikovsky: Score[] = [
 	{
-		name: 'Waltz of the Flowers',
-		composer: 'Pyotr Ilyich Tchaikovsky',
-		url: 'scores/WaltzOfTheFlowers.mid',
-		musescoreUrl: 'https://musescore.com/user/124709/scores/1131706',
-	},
-	{
 		name: 'Dance of the sugar plum fairy',
 		composer: 'Pyotr Ilyich Tchaikovsky',
-		url: 'scores/DanceOfTheSugarPlumFairy.mid',
+		url: 'scores/Pyotr Ilyich Tchaikovsky/DanceOfTheSugarPlumFairy.mid',
 		musescoreUrl: 'https://musescore.com/user/3435661/scores/2899321',
 	},
 ];
@@ -107,63 +113,17 @@ const offenbach: Score[] = [
 	{
 		name: 'Cancan',
 		composer: 'Jacques Offenbach',
-		url: 'scores/Cancan.mid',
+		url: 'scores/Jacques Offenbach/Cancan.mid',
 		musescoreUrl: 'https://musescore.com/gabriel_j_young/scores/5262237',
-	},
-];
-
-const others: Score[] = [
-	{
-		name: 'Minuet in G Major',
-		composer: 'Christian Petzold',
-		url: 'scores/MinuetInGMajor.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/62312',
-	},
-	{
-		name: 'Hungarian Dance No.5',
-		composer: 'Johannes Brahms',
-		url: 'scores/HungarianDanceNo5.mid',
-		musescoreUrl: 'https://musescore.com/user/31340/scores/48720',
-	},
-	{
-		name: 'Flight of the Bumblebee',
-		composer: 'Nikolai Rimsky-Korsakov',
-		url: 'scores/FlightOfTheBumblebee.mid',
-		musescoreUrl: 'https://musescore.com/user/2673691/scores/2597411',
-	},
-	{
-		name: 'Radetzky March',
-		composer: 'Johann Strauss I',
-		url: 'scores/RadetzkyMarch.mid',
-		musescoreUrl: 'https://musescore.com/user/46336/scores/4879864',
-	},
-	{
-		name: 'Spring (The Four Seasons)',
-		composer: 'Antonio Vivaldi',
-		url: 'scores/SpringTheFourSeasons.mid',
-		musescoreUrl: 'https://musescore.com/user/9141191/scores/5498538',
-	},
-	{
-		name: 'In the Hall of the Mountain King',
-		composer: 'Edvard Grieg',
-		url: 'scores/InTheHallOfTheMountainKing.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/49154',
-	},
-	{
-		name: 'Canon in D',
-		composer: 'Johann Pachelbel',
-		url: 'scores/CanonInD.mid',
-		musescoreUrl: 'https://musescore.com/user/1809056/scores/1019991',
 	},
 ];
 
 export const scores: Score[] = [
 	// ...mozart,
 	// ...beethoven,
-	...chopin,
-	// ...liszt,
+	// ...chopin,
+	...liszt,
 	// ...bizet,
 	// ...tchaikovsky,
 	// ...offenbach,
-	// ...others,
 ];
