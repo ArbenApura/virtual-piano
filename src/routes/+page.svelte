@@ -81,9 +81,9 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/beethoven.png');
-		--bg-position: bottom;
-		--bg-position-x: -10px;
+		--bg-image: url('$assets/images/chopin.png');
+		--bg-position: center;
+		--bg-position-x: 0px;
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
