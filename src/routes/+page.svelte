@@ -81,9 +81,16 @@
 
 <style lang="scss">
 	:root {
-		--bg-image: url('$assets/images/liszt.png');
+		// DEFAULT
 		--bg-position: center;
-		--bg-position-x: -70px;
+		--bg-position-x: 0px;
+
+		// LISZT
+		// --bg-image: url('$assets/images/liszt.png');
+		// --bg-position-x: -70px;
+
+		// DEBUSSY
+		--bg-image: url('$assets/images/debussy.png');
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;

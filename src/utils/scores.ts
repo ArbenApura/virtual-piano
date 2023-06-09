@@ -85,6 +85,27 @@ const liszt: Score[] = [
 	},
 ];
 
+const debussy: Score[] = [
+	{
+		name: 'Suite bergamasque: III. Clair de Lune',
+		composer: 'Claude Debussy',
+		url: 'scores/Claude Debussy/ClairDeLune.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/58553',
+	},
+	{
+		name: 'Preludes, Book I: VIII. La fille aux cheveux de lin',
+		composer: 'Claude Debussy',
+		url: 'scores/Claude Debussy/LaFilleAuxCheveuxDeLin.mid',
+		musescoreUrl: 'https://musescore.com/r_d/scores/5449385',
+	},
+	{
+		name: 'Deux Arabesques: Arabesque No. 1',
+		composer: 'Claude Debussy',
+		url: 'scores/Claude Debussy/ArabesqueNo1.mid',
+		musescoreUrl: 'https://musescore.com/user/24069/scores/5077352',
+	},
+];
+
 const bizet: Score[] = [
 	{
 		name: 'Carmen (Overture)',
@@ -122,7 +143,8 @@ export const scores: Score[] = [
 	// ...mozart,
 	// ...beethoven,
 	// ...chopin,
-	...liszt,
+	...debussy,
+	// ...liszt,
 	// ...bizet,
 	// ...tchaikovsky,
 	// ...offenbach,
