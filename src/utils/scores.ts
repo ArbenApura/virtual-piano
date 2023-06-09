@@ -106,18 +106,24 @@ const debussy: Score[] = [
 	},
 ];
 
-const bizet: Score[] = [
+const bach: Score[] = [
 	{
-		name: 'Carmen (Overture)',
-		composer: 'Georges Bizet',
-		url: 'scores/Georges Bizet/CarmenOverture.mid',
-		musescoreUrl: 'https://musescore.com/user/171844/scores/5141531',
+		name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
+		composer: 'Johann Sebastian Bach',
+		url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
+		musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',
 	},
 	{
-		name: 'Habanera from Carmen',
-		composer: 'Georges Bizet',
-		url: 'scores/Georges Bizet/HabaneraFromCarmen.mid',
-		musescoreUrl: 'https://musescore.com/user/65436/scores/440201',
+		name: 'Well-Tempered Clavier, Book I: Prelude No. 2 in C Minor, BWV 847',
+		composer: 'Johann Sebastian Bach',
+		url: 'scores/Johann Sebastian Bach/PreludeNo2BWV847InCMinor.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/227966',
+	},
+	{
+		name: 'Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
+		composer: 'Johann Sebastian Bach',
+		url: 'scores/Johann Sebastian Bach/Fugue_No._2_BWV_847_in_C_Minor.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/231261',
 	},
 ];
 
@@ -143,9 +149,9 @@ export const scores: Score[] = [
 	// ...mozart,
 	// ...beethoven,
 	// ...chopin,
-	...debussy,
 	// ...liszt,
-	// ...bizet,
+	// ...debussy,
+	...bach,
 	// ...tchaikovsky,
 	// ...offenbach,
 ];

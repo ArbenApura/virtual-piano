@@ -84,23 +84,33 @@
 		// DEFAULT
 		--bg-position: center;
 		--bg-position-x: 0px;
+		--bg-position-y: 0px;
+		--bg-size: cover;
 
 		// LISZT
 		// --bg-image: url('$assets/images/liszt.png');
 		// --bg-position-x: -70px;
 
 		// DEBUSSY
-		--bg-image: url('$assets/images/debussy.png');
+		// --bg-image: url('$assets/images/debussy.png');
+
+		// BACH
+		--bg-image: url('$assets/images/bach.png');
+		--bg-position: top;
+		--bg-position-x: 135px;
+		--bg-size: 1000px;
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
 		width: 1280px;
 		height: 720px;
 		.body {
-			@apply flex-grow relative bg-fixed bg-cover;
+			@apply flex-grow relative bg-fixed;
 			background-image: var(--bg-image);
 			background-position: var(--bg-position);
 			background-position-x: var(--bg-position-x);
+			background-position-y: var(--bg-position-y);
+			background-size: var(--bg-size);
 		}
 	}
 </style>
