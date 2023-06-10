@@ -57,6 +57,7 @@
 			.filler-inner {
 				@apply bg-slate-200;
 				height: calc(100% + 0.4vw);
+				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
 			}
 		}
 	}
