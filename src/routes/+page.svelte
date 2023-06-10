@@ -83,22 +83,10 @@
 	:root {
 		// DEFAULT
 		--bg-position: center;
-		--bg-position-x: 0px;
+		--bg-position-x: -20px;
 		--bg-position-y: 0px;
-		--bg-size: cover;
-
-		// LISZT
-		// --bg-image: url('$assets/images/liszt.png');
-		// --bg-position-x: -70px;
-
-		// DEBUSSY
-		// --bg-image: url('$assets/images/debussy.png');
-
-		// BACH
+		--bg-size: 1320px;
 		--bg-image: url('$assets/images/bach.png');
-		--bg-position: top;
-		--bg-position-x: 135px;
-		--bg-size: 1000px;
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;
