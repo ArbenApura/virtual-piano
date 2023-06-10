@@ -82,6 +82,9 @@
 		}
 		&[data-is-active='true'] {
 			@apply bg-slate-200 mt-[.2vw];
+			.key-inner {
+				box-shadow: inset 1vw 0 1vw -1vw rgba(0, 0, 0, 0.4);
+			}
 		}
 	}
 </style>

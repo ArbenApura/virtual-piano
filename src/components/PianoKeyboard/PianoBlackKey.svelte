@@ -71,6 +71,7 @@
 	.key {
 		@apply bg-[#222] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#222];
 		height: calc(100% + 0.3vw);
+		box-shadow: 0.6vw -0.1vw 0.6vw rgb(0, 0, 0, 0.3);
 		.key-body {
 			@apply bg-[#000] w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.05vw];
 			font-size: 0.5vw;

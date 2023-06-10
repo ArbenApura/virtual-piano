@@ -59,7 +59,7 @@
 <style lang="scss">
 	@import '$styles';
 	.keyboard {
-		@apply relative h-[14vw] pt-[.5vw] pb-[.3vw] border-t-[1px] border-[#160801] grid gap-[1px];
+		@apply relative h-[14vw] pt-[.5vw] pb-[.3vw] border-t-[1px] border-[#160801] grid gap-[1px] z-[1200];
 		grid-template-columns: 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr calc(100vw / 35);
 		background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)),
 			url('$assets/images/bg-wood.png');
