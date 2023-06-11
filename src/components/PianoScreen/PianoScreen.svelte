@@ -7,6 +7,7 @@
 	import PianoVisualizer from './PianoVisualizer/PianoVisualizer.svelte';
 	import PianoProgress from './PianoProgress.svelte';
 	import PianoLines from './PianoLines.svelte';
+	import PianoParticles from './PianoParticles.svelte';
 
 	// STORE STATES
 	const { lines, highlight, visualizer, progress, playerDetails } = visibility;
@@ -30,6 +31,7 @@
 	{#if $progress}
 		<PianoProgress />
 	{/if}
+	<PianoParticles />
 </div>
 
 <style lang="scss">

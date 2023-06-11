@@ -7,6 +7,7 @@ import { writable, get } from 'svelte/store';
 // IMPORTED UTILS
 import { isPlaying } from '$stores/playerStates';
 import { pianoKeys, pianoNotes } from '$utils/pianoKeys';
+import { createParticles } from '$stores/particleStates';
 
 // STATES
 export const piano = writable<Sampler>();
@@ -24,12 +25,14 @@ export const pianoStates = { piano, isSustain, noteList };
 
 // SUBSCRIPTIONS
 pianoNotes.map((key) => {
-	noteList[key].isPressing.subscribe((isPressing) => {
+	const note = noteList[key];
+	note.isPressing.subscribe((isPressing) => {
+		if (isPressing) createParticles(note);
 		const piano = get(pianoStates.piano);
-		const note = key.replace('S', '#');
+		const noteKey = key.replace('S', '#');
 		const velocity = get(noteList[key].velocity);
 		if (!piano) return;
-		if (isPressing) piano.triggerAttack(note, undefined, velocity);
-		else piano.triggerRelease(note, get(isSustain) || !get(isPlaying) ? '+2n' : '+16n');
+		if (isPressing) piano.triggerAttack(noteKey, undefined, velocity);
+		else piano.triggerRelease(noteKey, get(isSustain) || !get(isPlaying) ? '+2n' : '+16n');
 	});
 });
