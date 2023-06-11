@@ -8,6 +8,7 @@ import { writable, get } from 'svelte/store';
 import { isPlaying } from '$stores/playerStates';
 import { pianoKeys, pianoNotes } from '$utils/pianoKeys';
 import { createParticles } from '$stores/particleStates';
+import { isAudioOnly } from '$stores/settingsStates';
 
 // STATES
 export const piano = writable<Sampler>();
@@ -27,7 +28,7 @@ export const pianoStates = { piano, isSustain, noteList };
 pianoNotes.map((key) => {
 	const note = noteList[key];
 	note.isPressing.subscribe((isPressing) => {
-		if (isPressing) createParticles(note);
+		if (isPressing && !get(isAudioOnly)) createParticles(note);
 		const piano = get(pianoStates.piano);
 		const noteKey = key.replace('S', '#');
 		const velocity = get(noteList[key].velocity);

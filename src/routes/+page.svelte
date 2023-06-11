@@ -86,7 +86,7 @@
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
 		--bg-size: 1320px;
-		--bg-image: url('$assets/images/bach.png');
+		--bg-image: url('$assets/images/chopin.png');
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;

@@ -6,10 +6,11 @@ import { get } from 'svelte/store';
 // IMPORTED UTILS
 import { getRandomInt } from '$utils/helpers';
 import { particles, PARTICLE_SIZE, PARTICLE_SET_COUNT } from './states';
+import { isAudioOnly } from '$stores/settingsStates';
 
 // UTILS
 export const createParticles = (note: NoteState) => {
-	if (!get(note.isPressing)) return;
+	if (!get(note.isPressing) || get(isAudioOnly)) return;
 	const sets: Particle[] = [];
 	const boundaries = get(note.boundaries);
 	const boundary = boundaries[1] ? 1 : 0;
@@ -27,7 +28,6 @@ export const createParticles = (note: NoteState) => {
 			color: note.type,
 		};
 		sets.push(particle);
-		console.log(particle);
 	}
 	particles.update((particles) => [...particles, ...sets]);
 	setTimeout(() => createParticles(note), 200);

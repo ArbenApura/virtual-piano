@@ -10,7 +10,7 @@
 		content: '';
 		height: calc(100%);
 		div {
-			@apply border-r-[1px] border-gray-800;
+			@apply border-r-[1px] border-gray-700;
 			&:nth-child(2n + 1) {
 				width: 8.1vw;
 			}

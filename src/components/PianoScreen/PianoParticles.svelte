@@ -24,7 +24,7 @@
 				if (particle.y <= 265 || particle.opacity <= 0) continue;
 				particle.y -= particle.velocity;
 				particle.velocity += particle.velocity / 32 / 2;
-				particle.opacity -= 0.02 / 2;
+				particle.opacity -= 0.02;
 				ctx.fillStyle =
 					particle.color === 'white'
 						? `rgba(255, 255, 255, ${particle.opacity})`

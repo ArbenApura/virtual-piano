@@ -148,10 +148,10 @@ const offenbach: Score[] = [
 export const scores: Score[] = [
 	// ...mozart,
 	// ...beethoven,
-	// ...chopin,
+	...chopin,
 	// ...liszt,
 	// ...debussy,
-	...bach,
+	// ...bach,
 	// ...tchaikovsky,
 	// ...offenbach,
 ];
