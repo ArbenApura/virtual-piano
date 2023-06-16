@@ -56,12 +56,13 @@
 			background-position-x: var(--bg-position-x);
 			background-position-y: var(--bg-position-y);
 			background-size: var(--bg-size);
+			filter: brightness(1);
 		}
 		&[data-is-active='true'] {
 			@apply opacity-100;
 			&::before {
 				@apply bg-transparent;
-				transition: background-color 1.5s;
+				transition: background-color calc(400ms * var(--speed));
 			}
 		}
 	}

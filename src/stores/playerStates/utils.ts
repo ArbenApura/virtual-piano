@@ -1,5 +1,6 @@
 // IMPORTED LIB-TYPES
 import type { Track } from '@tonejs/midi';
+import type { Subdivision } from 'tone/build/esm/core/type/Units';
 // IMPORTED TYPES
 import type { Note } from '$stores/pianoStates';
 // IMPORTED LIB-UTILS
@@ -8,7 +9,18 @@ import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
 import { isAudioOnly } from '$stores/settingsStates';
 import { noteList, pianoStates } from '$stores/pianoStates';
-import { playerStates, timeouts, name, composer, duration, isPlaying, maxVelocity } from './states';
+import {
+	playerStates,
+	timeouts,
+	name,
+	composer,
+	duration,
+	isPlaying,
+	maxVelocity,
+	isChanging,
+	releaseTime,
+	DEFAULT_RELEASE_TIME,
+} from './states';
 import { scores } from '$utils/scores';
 import { sleep } from '$utils/helpers';
 
@@ -38,7 +50,9 @@ export const playTrack = async (track: Track) => {
 	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
 	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
 	const piano = get(pianoStates.piano);
+	isChanging.set(true);
 	await sleep(delay);
+	isChanging.set(false);
 	track.notes.map((note) => {
 		const timeout = setTimeout(() => {
 			const isPlaying = get(playerStates.isPlaying);
@@ -53,7 +67,10 @@ export const playTrack = async (track: Track) => {
 				}, note.duration * speed - 25);
 			} else {
 				piano.triggerAttack(note.name, undefined, note.velocity);
-				setTimeout(() => piano.triggerRelease(note.name, '+16n'), note.duration * speed);
+				setTimeout(
+					() => piano.triggerRelease(note.name, '+' + get(releaseTime)),
+					note.duration * speed,
+				);
 			}
 		}, note.time * speed);
 		addTimeout(timeout);
@@ -77,23 +94,28 @@ export const changeScore = () => {
 		if (i + 1 === scores.length) {
 			name.set(scores[0].name);
 			composer.set(scores[0].composer);
+			releaseTime.set(scores[0].releaseTime || DEFAULT_RELEASE_TIME);
 		} else {
 			name.set(scores[i + 1].name);
 			composer.set(scores[i + 1].composer);
+			releaseTime.set(scores[i + 1].releaseTime || DEFAULT_RELEASE_TIME);
 		}
 		break;
 	}
+	isChanging.set(false);
 };
 export const toggleIsPlaying = () => isPlaying.update((v) => !v);
 export const resetStates = () => {
 	clearTimeouts();
-	changeScore();
 	maxVelocity.set(1);
 	duration.set(0);
+	isChanging.set(true);
+	setTimeout(changeScore, get(isAudioOnly) ? 0 : 4000);
 };
 export const initializePlayerStates = () => {
 	if (!get(name)) {
 		name.set(scores[0].name);
 		composer.set(scores[0].composer);
+		releaseTime.set(scores[0].releaseTime || DEFAULT_RELEASE_TIME);
 	}
 };

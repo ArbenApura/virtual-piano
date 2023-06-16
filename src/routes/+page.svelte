@@ -81,12 +81,27 @@
 
 <style lang="scss">
 	:root {
+		// VARIABLES
+		$composer: 'czerny';
 		// DEFAULT
+		--speed: 4;
 		--bg-position: center;
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
 		--bg-size: 1320px;
-		--bg-image: url('$assets/images/chopin.png');
+		--bg-image: url('$assets/images/#{$composer}.png');
+		--bar-bg-image: var(--bg-image);
+		--bar-bg-size: none;
+		--bar-filter: none;
+		// CUSTOM
+		@if $composer == 'beethoven' {
+			--bar-brightness: brightness(1.25) contrast(1.75) saturate(1.25) hue-rotate(45deg);
+		} @else if $composer == 'czerny' {
+			--bar-bg-size: cover;
+			--bar-filter: brightness(4) contrast(1.25) saturate(1.25);
+		} @else if $composer == 'chopin' {
+			--bar-filter: brightness(3) contrast(1) saturate(1) hue-rotate(0deg);
+		}
 	}
 	.page {
 		@apply absolute w-full h-full flex flex-col overflow-hidden;

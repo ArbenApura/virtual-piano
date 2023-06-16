@@ -2,12 +2,12 @@
 	// IMPORTED ASSETS
 	import YouTubeSVG from '$assets/svgs/youtube.svg';
 	// IMPORTED UTILS
-	import { toggleIsPlaying } from '$stores/playerStates';
+	import { toggleIsPlaying, isChanging } from '$stores/playerStates';
 	import { toggleIsAudioOnly } from '$stores/settingsStates';
 </script>
 
 <div class="header">
-	<button class="brand" on:dblclick={toggleIsPlaying}>
+	<button class="brand" disabled={$isChanging} on:dblclick={toggleIsPlaying}>
 		<img src="piano.svg" alt="logo" />
 		<p class="text-sm">Virtual Piano By Arben</p>
 	</button>

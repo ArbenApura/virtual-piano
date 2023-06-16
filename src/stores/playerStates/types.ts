@@ -1,3 +1,6 @@
+// IMPORTED LIB-TYPES
+import type { Subdivision } from 'tone/build/esm/core/type/Units';
+
 // TYPES
 export type Speed = 0.25 | 0.5 | 0.75 | 1 | 1.25 | 1.5 | 1.75 | 2;
 export type Score = {
@@ -5,4 +8,5 @@ export type Score = {
 	composer: string;
 	url: string;
 	musescoreUrl: string;
+	releaseTime?: Subdivision;
 };

@@ -12,10 +12,10 @@
 	.piece-composer {
 		$pref-font-size: 0.9vw;
 		@apply absolute bottom-[1vw] text-slate-50 opacity-0 z-[100] transition-none;
+		transition: opacity calc(1000ms * var(--speed));
 		font-size: clamp(8px, $pref-font-size, $pref-font-size);
 		&[data-is-active='true'] {
 			@apply opacity-70;
-			transition: opacity 0.5s;
 		}
 	}
 	.piece-name {
