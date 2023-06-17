@@ -110,7 +110,7 @@ export const resetStates = () => {
 	maxVelocity.set(1);
 	duration.set(0);
 	isChanging.set(true);
-	setTimeout(changeScore, get(isAudioOnly) ? 0 : 4000);
+	setTimeout(changeScore, 4000);
 };
 export const initializePlayerStates = () => {
 	if (!get(name)) {
