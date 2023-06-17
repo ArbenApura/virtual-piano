@@ -244,8 +244,8 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	// ...chopin,
-	...czerny,
+	...chopin,
+	// ...czerny,
 	// ...debussy,
 	// ...liszt,
 	// ...mozart,

@@ -55,7 +55,7 @@
 		}
 		&[data-is-visible='true'] {
 			.progress-bar {
-				animation: progress linear;
+				animation: progress linear forwards;
 				&::before {
 					animation: pulse calc(3000ms * var(--speed)) alternate infinite linear;
 				}

@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'czerny';
+		$composer: 'chopin';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -92,15 +92,18 @@
 		--bg-image: url('$assets/images/#{$composer}.png');
 		--bar-bg-image: var(--bg-image);
 		--bar-bg-size: none;
+		--bar-bg-position-x: left;
+		--bar-bg-position-y: top;
 		--bar-filter: none;
 		// CUSTOM
 		@if $composer == 'beethoven' {
-			--bar-brightness: brightness(1.25) contrast(1.75) saturate(1.25) hue-rotate(45deg);
+			--bar-filter: brightness(1.25) contrast(1.75) saturate(1.25) hue-rotate(45deg);
 		} @else if $composer == 'czerny' {
 			--bar-bg-size: cover;
 			--bar-filter: brightness(4) contrast(1.25) saturate(1.25);
 		} @else if $composer == 'chopin' {
-			--bar-filter: brightness(3) contrast(1) saturate(1) hue-rotate(0deg);
+			--bar-bg-image: url('$assets/textures/1.png');
+			--bar-filter: brightness(1) contrast(2);
 		}
 	}
 	.page {

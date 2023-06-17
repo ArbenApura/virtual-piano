@@ -101,6 +101,8 @@
 			transition: height $transition ease;
 			background-image: var(--bar-bg-image);
 			background-size: var(--bar-bg-size);
+			background-position-x: var(--bar-bg-position-x);
+			background-position-y: var(--bar-bg-position-y);
 			filter: var(--bar-filter);
 		}
 		&[data-is-last='true'] .bar {
