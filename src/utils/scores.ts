@@ -56,14 +56,12 @@ const chopin: Score[] = [
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/ChopinEtudeOp10No4.mid',
 		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497268',
-		releaseTime: '32n',
 	},
 	{
 		name: 'Fantaisie-Impromptu in C-Sharp Minor, Op. 66',
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/FantaisieImpromptuOp66.mid',
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
-		releaseTime: '32n',
 	},
 ];
 
@@ -114,6 +112,12 @@ const debussy: Score[] = [
 
 const liszt: Score[] = [
 	{
+		name: 'Hungarian Rhapsody No. 2 "Friska"',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/Hungarian_Rhapsody_No.2_Friska_-_Franz_Liszt.mid',
+		musescoreUrl: 'https://musescore.com/qinthwaites/scores/4664146',
+	},
+	{
 		name: 'Transcendental Etude No. 4 "Mazeppa"',
 		composer: 'Franz Liszt (1811-1886)',
 		url: 'scores/Franz Liszt/Mazeppa.mid',
@@ -125,12 +129,19 @@ const liszt: Score[] = [
 		url: 'scores/Franz Liszt/FeuxFollets.mid',
 		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603306',
 	},
-	{
-		name: 'Transcendental Etude No. 8 "Wilde Jagd"',
-		composer: 'Franz Liszt (1811-1886)',
-		url: 'scores/Franz Liszt/WildeJagd.mid',
-		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
-	},
+
+	// {
+	// 	name: 'Transcendental Etude No. 8 "Wilde Jagd"',
+	// 	composer: 'Franz Liszt (1811-1886)',
+	// 	url: 'scores/Franz Liszt/WildeJagd.mid',
+	// 	musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
+	// },
+	// {
+	// 	name: 'Etude No. 3 in G-Sharp Minor, S. 141/3: La Campanella',
+	// 	composer: 'Franz Liszt (1811-1886)',
+	// 	url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
+	// 	musescoreUrl: 'https://musescore.com/classicman/scores/106022',
+	// },
 ];
 
 const mozart: Score[] = [
@@ -244,10 +255,10 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	...chopin,
+	// ...chopin,
 	// ...czerny,
 	// ...debussy,
-	// ...liszt,
+	...liszt,
 	// ...mozart,
 	// ...offenbach,
 	// ...satie,

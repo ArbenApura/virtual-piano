@@ -9,7 +9,7 @@ import { playScore, resetStates } from './utils';
 import { isInitialized } from '..';
 
 // DEFAULT STATES
-export const DEFAULT_RELEASE_TIME: Subdivision = '16n';
+export const DEFAULT_RELEASE_TIME: Subdivision = '32n';
 
 // STATES
 export const name = writable<string>();
