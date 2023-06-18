@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'liszt';
+		$composer: 'bach';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -107,6 +107,9 @@
 		} @else if $composer == 'liszt' {
 			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
+		} @else if $composer == 'bach' {
+			--bar-bg-image: url('$assets/textures/1.png');
+			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
 		}
 	}
 	.page {

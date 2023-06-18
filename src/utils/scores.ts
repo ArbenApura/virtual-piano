@@ -3,23 +3,29 @@ import type { Score } from '$stores/playerStates';
 
 const bach: Score[] = [
 	{
-		name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
-		composer: 'Johann Sebastian Bach (1685-1750)',
-		url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
-		musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',
-	},
-	{
-		name: 'Well-Tempered Clavier, Book I: Prelude No. 2 in C Minor, BWV 847',
+		name: 'The Well-Tempered Clavier, Book I: Prelude No. 2 in C Minor, BWV 847',
 		composer: 'Johann Sebastian Bach (1685-1750)',
 		url: 'scores/Johann Sebastian Bach/PreludeNo2BWV847InCMinor.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/227966',
 	},
 	{
-		name: 'Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
+		name: 'The Well-Tempered Clavier, Book I: Prelude and Fugue No. 3 in C sharp major, BWV 848',
 		composer: 'Johann Sebastian Bach (1685-1750)',
-		url: 'scores/Johann Sebastian Bach/Fugue_No._2_BWV_847_in_C_Minor.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/231261',
+		url: 'scores/Johann Sebastian Bach/Bach_-_Prelude_and_Fugue_No.3_in_C_sharp_major_BWV_848_.mid',
+		musescoreUrl: 'https://musescore.com/user/55214/scores/154333',
 	},
+	// {
+	// 	name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
+	// 	composer: 'Johann Sebastian Bach (1685-1750)',
+	// 	url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
+	// 	musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',
+	// },
+	// {
+	// 	name: 'Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
+	// 	composer: 'Johann Sebastian Bach (1685-1750)',
+	// 	url: 'scores/Johann Sebastian Bach/Fugue_No._2_BWV_847_in_C_Minor.mid',
+	// 	musescoreUrl: 'https://musescore.com/classicman/scores/231261',
+	// },
 ];
 
 const beethoven: Score[] = [
@@ -129,19 +135,18 @@ const liszt: Score[] = [
 		url: 'scores/Franz Liszt/FeuxFollets.mid',
 		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603306',
 	},
-
-	// {
-	// 	name: 'Transcendental Etude No. 8 "Wilde Jagd"',
-	// 	composer: 'Franz Liszt (1811-1886)',
-	// 	url: 'scores/Franz Liszt/WildeJagd.mid',
-	// 	musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
-	// },
-	// {
-	// 	name: 'Etude No. 3 in G-Sharp Minor, S. 141/3: La Campanella',
-	// 	composer: 'Franz Liszt (1811-1886)',
-	// 	url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
-	// 	musescoreUrl: 'https://musescore.com/classicman/scores/106022',
-	// },
+	{
+		name: 'Transcendental Etude No. 8 "Wilde Jagd"',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/WildeJagd.mid',
+		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
+	},
+	{
+		name: 'Etude No. 3 in G-Sharp Minor, S. 141/3: La Campanella',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/106022',
+	},
 ];
 
 const mozart: Score[] = [
@@ -253,12 +258,12 @@ const others: Score[] = [
 ];
 
 export const scores: Score[] = [
-	// ...bach,
+	...bach,
 	// ...beethoven,
 	// ...chopin,
 	// ...czerny,
 	// ...debussy,
-	...liszt,
+	// ...liszt,
 	// ...mozart,
 	// ...offenbach,
 	// ...satie,
