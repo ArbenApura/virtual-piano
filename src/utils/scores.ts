@@ -3,7 +3,7 @@ import type { Score } from '$stores/playerStates';
 
 const bach: Score[] = [
 	{
-		name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
+		name: 'The Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
 		composer: 'Johann Sebastian Bach (1685-1750)',
 		url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
 		musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',

@@ -84,31 +84,30 @@
 		// VARIABLES
 		$composer: 'bach';
 		// DEFAULT
-		--speed: 4;
+		--speed: 1;
 		--bg-position: center;
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
 		--bg-size: 1320px;
 		--bg-image: url('$assets/images/#{$composer}.png');
-		--bar-bg-image: var(--bg-image);
+		--bar-bg-image: url('$assets/textures/1.png');
 		--bar-bg-size: none;
 		--bar-bg-position-x: left;
 		--bar-bg-position-y: top;
 		--bar-filter: none;
 		// CUSTOM
 		@if $composer == 'beethoven' {
-			--bar-filter: brightness(1.25) contrast(1.75) saturate(1.25) hue-rotate(45deg);
+			--bar-bg-image: var(--bg-image);
+			--bar-filter: brightness(1.5) contrast(2) saturate(1.25) hue-rotate(45deg);
 		} @else if $composer == 'czerny' {
+			--bar-bg-image: var(--bg-image);
 			--bar-bg-size: cover;
-			--bar-filter: brightness(4) contrast(1.25) saturate(1.25);
+			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'chopin' {
-			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1) contrast(2);
 		} @else if $composer == 'liszt' {
-			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
 		} @else if $composer == 'bach' {
-			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
 		}
 	}
