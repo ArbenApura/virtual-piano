@@ -9,7 +9,7 @@ const bach: Score[] = [
 		musescoreUrl: 'https://musescore.com/classicman/scores/227966',
 	},
 	{
-		name: 'The Well-Tempered Clavier, Book I: Prelude and Fugue No. 3 in C sharp major, BWV 848',
+		name: 'The Well-Tempered Clavier, Book I: Prelude and Fugue No. 3 in C-Sharp Major, BWV 848',
 		composer: 'Johann Sebastian Bach (1685-1750)',
 		url: 'scores/Johann Sebastian Bach/Bach_-_Prelude_and_Fugue_No.3_in_C_sharp_major_BWV_848_.mid',
 		musescoreUrl: 'https://musescore.com/user/55214/scores/154333',
