@@ -3,6 +3,12 @@ import type { Score } from '$stores/playerStates';
 
 const bach: Score[] = [
 	{
+		name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
+		composer: 'Johann Sebastian Bach (1685-1750)',
+		url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
+		musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',
+	},
+	{
 		name: 'The Well-Tempered Clavier, Book I: Prelude No. 2 in C Minor, BWV 847',
 		composer: 'Johann Sebastian Bach (1685-1750)',
 		url: 'scores/Johann Sebastian Bach/PreludeNo2BWV847InCMinor.mid',
@@ -14,12 +20,6 @@ const bach: Score[] = [
 		url: 'scores/Johann Sebastian Bach/Bach_-_Prelude_and_Fugue_No.3_in_C_sharp_major_BWV_848_.mid',
 		musescoreUrl: 'https://musescore.com/user/55214/scores/154333',
 	},
-	// {
-	// 	name: 'Well-Tempered Clavier, Book I: Prelude in C Major, BWV 846',
-	// 	composer: 'Johann Sebastian Bach (1685-1750)',
-	// 	url: 'scores/Johann Sebastian Bach/PreludeInCMajorBWV846.mid',
-	// 	musescoreUrl: 'https://musescore.com/user/25338071/scores/5395623',
-	// },
 	// {
 	// 	name: 'Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
 	// 	composer: 'Johann Sebastian Bach (1685-1750)',
