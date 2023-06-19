@@ -94,9 +94,7 @@
 		--bar-bg-size: none;
 		--bar-bg-position-x: left;
 		--bar-bg-position-y: top;
-		--bar-filter-none: brightness(2) grayscale(100%);
-		--bar-filter-melody: none;
-		--bar-filter-accompaniment: none;
+		--bar-filter: none;
 		// CUSTOM
 		@if $composer == 'bach' {
 			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
@@ -111,8 +109,7 @@
 			--bar-bg-size: cover;
 			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'liszt' {
-			--bar-filter-melody: brightness(1.5) contrast(2) hue-rotate(150deg);
-			--bar-filter-accompaniment: brightness(1.5) contrast(2) hue-rotate(0deg);
+			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
 		} @else if $composer == 'rachmaninoff' {
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(0deg);
 		}

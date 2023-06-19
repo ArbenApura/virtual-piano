@@ -1,69 +1,53 @@
 <script lang="ts">
 	// IMPORTED TYPES
-	import type { NoteState, NoteType } from '$stores/pianoStates';
+	import type { NoteState } from '$stores/pianoStates';
 	// IMPORTED LIB-UTILS
-	import { get, writable } from 'svelte/store';
+	import { writable } from 'svelte/store';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { isPlaying, maxVelocity, speed } from '$stores/playerStates';
+	import { maxVelocity } from '$stores/playerStates';
 	import { pianoNotes } from '$utils/pianoKeys';
 
 	// PROPS
 	export let note: NoteState;
-	const { note: key, boundaries, isPressing, velocity, noteType } = note;
+	const { note: key, boundaries, isPressing, velocity } = note;
 
 	// STATES
 	let type: string = note.type;
 	let isFlipped = false;
 	let index = pianoNotes.indexOf(key);
-	let lastNoteType: NoteType = 'none';
-	let timer: NodeJS.Timeout;
-	let {
-		isPrevPressing,
-		isNextPressing,
-		prevVelocity,
-		nextVelocity,
-		prevType,
-		nextType,
-		prevNoteType,
-		nextNoteType,
-	} = (() => {
-		let isPrevPressing = writable(false);
-		let isNextPressing = writable(false);
-		let prevVelocity = writable(0);
-		let nextVelocity = writable(0);
-		let prevType = 'white';
-		let nextType = 'white';
-		let prevNoteType = writable<NoteType>('none');
-		let nextNoteType = writable<NoteType>('none');
-		try {
-			if (index < 0) throw new Error();
-			const prevKey = pianoNotes[index + 1];
-			const nextKey = pianoNotes[index - 1];
-			const prevNote = noteList[prevKey];
-			const nextNote = noteList[nextKey];
-			if (!prevNote || !nextNote) throw new Error();
-			isPrevPressing = prevNote.isPressing;
-			isNextPressing = nextNote.isPressing;
-			prevVelocity = prevNote.velocity;
-			nextVelocity = nextNote.velocity;
-			prevType = prevNote.type;
-			nextType = nextNote.type;
-			prevNoteType = prevNote.noteType;
-			nextNoteType = nextNote.noteType;
-		} finally {
-			return {
-				isPrevPressing,
-				isNextPressing,
-				prevVelocity,
-				nextVelocity,
-				prevType,
-				nextType,
-				prevNoteType,
-				nextNoteType,
-			};
-		}
-	})();
+	let { isPrevPressing, isNextPressing, prevVelocity, nextVelocity, prevType, nextType } =
+		(() => {
+			let isPrevPressing = writable(false);
+			let isNextPressing = writable(false);
+			let prevVelocity = writable(0);
+			let nextVelocity = writable(0);
+			let prevType = 'white';
+			let nextType = 'white';
+			try {
+				if (index < 0) throw new Error();
+				const prevKey = pianoNotes[index + 1];
+				const nextKey = pianoNotes[index - 1];
+				const prevNote = noteList[prevKey];
+				const nextNote = noteList[nextKey];
+				if (!prevNote || !nextNote) throw new Error();
+				isPrevPressing = prevNote.isPressing;
+				isNextPressing = nextNote.isPressing;
+				prevVelocity = prevNote.velocity;
+				nextVelocity = nextNote.velocity;
+				prevType = prevNote.type;
+				nextType = nextNote.type;
+			} finally {
+				return {
+					isPrevPressing,
+					isNextPressing,
+					prevVelocity,
+					nextVelocity,
+					prevType,
+					nextType,
+				};
+			}
+		})();
 
 	// REACTIVE STATES
 	$: boundary = (note.type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
@@ -76,17 +60,6 @@
 
 	// REACTIVE STATEMENTS
 	$: $isPressing && (isFlipped = !isFlipped);
-	$: ($isPressing || $isPrevPressing || $isNextPressing) &&
-		(() => {
-			if (timer) clearTimeout(timer);
-			timer = setTimeout(() => (lastNoteType = 'none'), 1000 * (1 / get(speed)));
-		})();
-	$: (() => {
-		if ($isPressing) lastNoteType = $noteType;
-		else if ($isPrevPressing) lastNoteType = $prevNoteType;
-		else if ($isNextPressing) lastNoteType = $nextNoteType;
-		else if (!$isPlaying) lastNoteType = 'none';
-	})();
 	$: (() =>
 		(type = $isPressing
 			? note.type
@@ -102,7 +75,6 @@
 	style="width: {key === 'C7'
 		? boundary.width / 2
 		: boundary.width}px; height: {height}%; left: {boundary.x}px;"
-	data-last-note-type={lastNoteType}
 	data-direction={$isPressing
 		? 'center'
 		: $isPrevPressing
@@ -131,15 +103,7 @@
 			background-size: var(--bar-bg-size);
 			background-position-x: var(--bar-bg-position-x);
 			background-position-y: var(--bar-bg-position-y);
-		}
-		&[data-last-note-type='none'] .bar {
-			filter: var(--bar-filter-none);
-		}
-		&[data-last-note-type='melody'] .bar {
-			filter: var(--bar-filter-melody);
-		}
-		&[data-last-note-type='accompaniment'] .bar {
-			filter: var(--bar-filter-accompaniment);
+			filter: var(--bar-filter);
 		}
 		&[data-is-last='true'] .bar {
 			&:nth-child(1) {
