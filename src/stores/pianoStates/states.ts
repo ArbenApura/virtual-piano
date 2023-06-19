@@ -1,5 +1,5 @@
 // IMPORTED TYPES
-import type { NoteList, Boundary } from './types';
+import type { NoteList, Boundary, NoteType } from './types';
 // IMPORTED LIB-TYPES
 import type { Sampler } from 'tone';
 // IMPORTED LIB-UTILS
@@ -18,6 +18,7 @@ pianoKeys.map((key) => {
 		isPressing: writable<boolean>(),
 		velocity: writable<number>(1),
 		boundaries: writable<Boundary[]>([]),
+		noteType: writable<NoteType>('none'),
 	};
 });
 export const pianoStates = { piano, isSustain, noteList };

@@ -64,6 +64,7 @@ export type Note =
 	| 'AS6'
 	| 'B6'
 	| 'C7';
+export type NoteType = 'none' | 'melody' | 'accompaniment';
 export type PianoKey = {
 	type: 'white' | 'black';
 	note: Note;
@@ -81,6 +82,7 @@ export type NoteState = PianoKey & {
 	isPressing: Writable<boolean>;
 	velocity: Writable<number>;
 	boundaries: Writable<Boundary[]>;
+	noteType: Writable<NoteType>;
 };
 export type NoteList = {
 	[K in Note]: NoteState;

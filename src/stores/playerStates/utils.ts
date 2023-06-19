@@ -23,6 +23,7 @@ import {
 } from './states';
 import { scores } from '$utils/scores';
 import { sleep } from '$utils/helpers';
+import { pianoNotes } from '$utils/pianoKeys';
 
 // UTILS
 export const clearTimeouts = () => {
@@ -46,7 +47,7 @@ export const getMidi = async () => {
 	const midi = await Midi.fromUrl(score.url);
 	return midi;
 };
-export const playTrack = async (track: Track) => {
+export const playTrack = async (track: Track, index: number) => {
 	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
 	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
 	const piano = get(pianoStates.piano);
@@ -61,6 +62,7 @@ export const playTrack = async (track: Track) => {
 			if (name in noteList) {
 				noteList[name].velocity.set(note.velocity);
 				noteList[name].isPressing.set(true);
+				noteList[name].noteType.set(index === 0 ? 'melody' : 'accompaniment');
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
@@ -105,8 +107,10 @@ export const changeScore = () => {
 	isChanging.set(false);
 };
 export const toggleIsPlaying = () => isPlaying.update((v) => !v);
+export const resetNoteTypes = () => pianoNotes.map((key) => noteList[key].noteType.set('none'));
 export const resetStates = () => {
 	clearTimeouts();
+	resetNoteTypes();
 	maxVelocity.set(1);
 	duration.set(0);
 	isChanging.set(true);
