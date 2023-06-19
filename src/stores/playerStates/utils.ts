@@ -1,6 +1,5 @@
 // IMPORTED LIB-TYPES
 import type { Track } from '@tonejs/midi';
-import type { Subdivision } from 'tone/build/esm/core/type/Units';
 // IMPORTED TYPES
 import type { Note } from '$stores/pianoStates';
 // IMPORTED LIB-UTILS

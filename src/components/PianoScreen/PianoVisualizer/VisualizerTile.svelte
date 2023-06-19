@@ -2,10 +2,10 @@
 	// IMPORTED TYPES
 	import type { NoteState, NoteType } from '$stores/pianoStates';
 	// IMPORTED LIB-UTILS
-	import { writable } from 'svelte/store';
+	import { get, writable } from 'svelte/store';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { isPlaying, maxVelocity } from '$stores/playerStates';
+	import { isPlaying, maxVelocity, speed } from '$stores/playerStates';
 	import { pianoNotes } from '$utils/pianoKeys';
 
 	// PROPS
@@ -17,6 +17,7 @@
 	let isFlipped = false;
 	let index = pianoNotes.indexOf(key);
 	let lastNoteType: NoteType = 'none';
+	let timer: NodeJS.Timeout;
 	let {
 		isPrevPressing,
 		isNextPressing,
@@ -75,6 +76,11 @@
 
 	// REACTIVE STATEMENTS
 	$: $isPressing && (isFlipped = !isFlipped);
+	$: ($isPressing || $isPrevPressing || $isNextPressing) &&
+		(() => {
+			if (timer) clearTimeout(timer);
+			timer = setTimeout(() => (lastNoteType = 'none'), 1000 * (1 / get(speed)));
+		})();
 	$: (() => {
 		if ($isPressing) lastNoteType = $noteType;
 		else if ($isPrevPressing) lastNoteType = $prevNoteType;
