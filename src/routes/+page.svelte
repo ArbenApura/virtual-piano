@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'bach';
+		$composer: 'chopin';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -104,7 +104,8 @@
 			--bar-bg-size: cover;
 			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'chopin' {
-			--bar-filter: brightness(1) contrast(2);
+			--bar-bg-image: url('$assets/textures/2.png');
+			--bar-filter: contrast(2) hue-rotate(40deg);
 		} @else if $composer == 'liszt' {
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
 		} @else if $composer == 'bach' {

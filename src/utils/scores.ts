@@ -20,12 +20,12 @@ const bach: Score[] = [
 		url: 'scores/Johann Sebastian Bach/Bach_-_Prelude_and_Fugue_No.3_in_C_sharp_major_BWV_848_.mid',
 		musescoreUrl: 'https://musescore.com/user/55214/scores/154333',
 	},
-	// {
-	// 	name: 'Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
-	// 	composer: 'Johann Sebastian Bach (1685-1750)',
-	// 	url: 'scores/Johann Sebastian Bach/Fugue_No._2_BWV_847_in_C_Minor.mid',
-	// 	musescoreUrl: 'https://musescore.com/classicman/scores/231261',
-	// },
+	{
+		name: 'The Well-Tempered Clavier, Book I: Fugue No. 2 in C Minor, BWV 847',
+		composer: 'Johann Sebastian Bach (1685-1750)',
+		url: 'scores/Johann Sebastian Bach/Fugue_No._2_BWV_847_in_C_Minor.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/231261',
+	},
 ];
 
 const beethoven: Score[] = [
@@ -51,17 +51,16 @@ const beethoven: Score[] = [
 
 const chopin: Score[] = [
 	{
-		name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
-		composer: 'Frédéric Chopin (1810-1849)',
-		url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
-		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
-		releaseTime: '4n',
-	},
-	{
 		name: 'Etude Op. 10, No. 4 in C-Sharp Minor "Torrent"',
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/ChopinEtudeOp10No4.mid',
 		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497268',
+	},
+	{
+		name: 'Etude Op. 10 No. 12 in C Minor "Revolutionary"',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Etude_in_C_Minor_Revolutionary.mid',
+		musescoreUrl: 'https://musescore.com/user/28966982/scores/5258245',
 	},
 	{
 		name: 'Fantaisie-Impromptu in C-Sharp Minor, Op. 66',
@@ -69,6 +68,25 @@ const chopin: Score[] = [
 		url: 'scores/Frédéric Chopin/FantaisieImpromptuOp66.mid',
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
 	},
+	// {
+	// 	name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
+	// 	composer: 'Frédéric Chopin (1810-1849)',
+	// 	url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
+	// 	musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
+	// 	releaseTime: '4n',
+	// },
+	// {
+	// 	name: 'Etude Op. 25 No. 1 in A Major "Aeolian Harp"',
+	// 	composer: 'Frédéric Chopin (1810-1849)',
+	// 	url: 'scores/Frédéric Chopin/Chopin_Etude_Op._25_No._1_A_MajorAeolian_Harp.mid',
+	// 	musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497288',
+	// },
+	// {
+	// 	name: 'Waltz in E Minor, Op. Posth. (B. 56, KK IVa/15)',
+	// 	composer: 'Frédéric Chopin (1810-1849)',
+	// 	url: 'scores/Frédéric Chopin/Chopin_Waltz_in_E_Minor_B._56_KK_IVa15.mid',
+	// 	musescoreUrl: 'https://musescore.com/user/29902633/scores/5738940',
+	// },
 ];
 
 const czerny: Score[] = [
@@ -258,9 +276,9 @@ const others: Score[] = [
 ];
 
 export const scores: Score[] = [
-	...bach,
+	// ...bach,
 	// ...beethoven,
-	// ...chopin,
+	...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
