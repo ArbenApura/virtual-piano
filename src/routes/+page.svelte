@@ -85,8 +85,8 @@
 		--speed: 1;
 		--bg-position: center;
 		--bg-size: 110%;
-		--bg-image: url('images/monaliza.png');
-		--bar-bg-image: url('textures/1.png');
+		--bg-image: url('$assets/images/monaliza.png');
+		--bar-bg-image: url('$assets/textures/1.png');
 		--bar-bg-size: none;
 		--bar-bg-position-x: left;
 		--bar-bg-position-y: top;
