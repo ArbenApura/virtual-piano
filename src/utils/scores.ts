@@ -68,25 +68,25 @@ const chopin: Score[] = [
 		url: 'scores/Frédéric Chopin/FantaisieImpromptuOp66.mid',
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
 	},
-	// {
-	// 	name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
-	// 	composer: 'Frédéric Chopin (1810-1849)',
-	// 	url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
-	// 	musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
-	// 	releaseTime: '4n',
-	// },
-	// {
-	// 	name: 'Etude Op. 25 No. 1 in A Major "Aeolian Harp"',
-	// 	composer: 'Frédéric Chopin (1810-1849)',
-	// 	url: 'scores/Frédéric Chopin/Chopin_Etude_Op._25_No._1_A_MajorAeolian_Harp.mid',
-	// 	musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497288',
-	// },
-	// {
-	// 	name: 'Waltz in E Minor, Op. Posth. (B. 56, KK IVa/15)',
-	// 	composer: 'Frédéric Chopin (1810-1849)',
-	// 	url: 'scores/Frédéric Chopin/Chopin_Waltz_in_E_Minor_B._56_KK_IVa15.mid',
-	// 	musescoreUrl: 'https://musescore.com/user/29902633/scores/5738940',
-	// },
+	{
+		name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
+		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
+		releaseTime: '4n',
+	},
+	{
+		name: 'Etude Op. 25 No. 1 in A Major "Aeolian Harp"',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Chopin_Etude_Op._25_No._1_A_MajorAeolian_Harp.mid',
+		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497288',
+	},
+	{
+		name: 'Waltz in E Minor, Op. Posth. (B. 56, KK IVa/15)',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Chopin_Waltz_in_E_Minor_B._56_KK_IVa15.mid',
+		musescoreUrl: 'https://musescore.com/user/29902633/scores/5738940',
+	},
 ];
 
 const czerny: Score[] = [
@@ -197,6 +197,27 @@ const offenbach: Score[] = [
 	},
 ];
 
+const rachmaninoff: Score[] = [
+	{
+		name: 'Tableau, Op. 39 No. 6 - Little Red Riding Hood',
+		composer: 'Sergei Rachmaninoff (1873-1943)',
+		url: 'scores/Sergei Rachmaninoff/Tableau_op. 39_no. 6.mid',
+		musescoreUrl: 'https://musescore.com/user/454/scores/21648',
+	},
+	{
+		name: 'Moment Musicaux in E Minor, Op. 16 No. 4',
+		composer: 'Sergei Rachmaninoff (1873-1943)',
+		url: 'scores/Sergei Rachmaninoff/Sergei_Rachmaninoff_Moment_Musicaux_Op._16_No._4_in_E_minor.mid',
+		musescoreUrl: 'https://musescore.com/user/33306646/scores/6058350',
+	},
+	{
+		name: 'Prelude in G Minor, Op. 23 No. 5',
+		composer: 'Sergei Rachmaninoff (1873-1943)',
+		url: 'scores/Sergei Rachmaninoff/Prelude_in_G_Minor_Op._23_No._5.mid',
+		musescoreUrl: 'https://musescore.com/user/3756196/scores/1194906',
+	},
+];
+
 const satie: Score[] = [
 	{
 		name: 'Gymnopédie No. 1',
@@ -278,12 +299,13 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	...chopin,
+	// ...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
 	// ...mozart,
 	// ...offenbach,
+	...rachmaninoff,
 	// ...satie,
 	// ...tchaikovsky,
 	// ...vivaldi,

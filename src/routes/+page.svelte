@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'chopin';
+		$composer: 'rachmaninoff';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -96,20 +96,22 @@
 		--bar-bg-position-y: top;
 		--bar-filter: none;
 		// CUSTOM
-		@if $composer == 'beethoven' {
+		@if $composer == 'bach' {
+			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
+		} @else if $composer == 'beethoven' {
 			--bar-bg-image: var(--bg-image);
 			--bar-filter: brightness(1.5) contrast(2) saturate(1.25) hue-rotate(45deg);
-		} @else if $composer == 'czerny' {
-			--bar-bg-image: var(--bg-image);
-			--bar-bg-size: cover;
-			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'chopin' {
 			--bar-bg-image: url('$assets/textures/2.png');
 			--bar-filter: contrast(2) hue-rotate(40deg);
+		} @else if $composer == 'czerny' {
+			--bar-bg-image: url('$assets/textures/czerny.png');
+			--bar-bg-size: cover;
+			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'liszt' {
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
-		} @else if $composer == 'bach' {
-			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
+		} @else if $composer == 'rachmaninoff' {
+			--bar-filter: brightness(1.5) contrast(2) hue-rotate(0deg);
 		}
 	}
 	.page {
