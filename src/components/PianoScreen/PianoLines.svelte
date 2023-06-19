@@ -12,10 +12,10 @@
 		div {
 			@apply border-r-[1px] border-gray-700;
 			&:nth-child(2n + 1) {
-				width: 8.1vw;
+				width: 8.65vw;
 			}
 			&:nth-child(2n) {
-				width: 10.05vw;
+				width: 10.77vw;
 			}
 		}
 	}

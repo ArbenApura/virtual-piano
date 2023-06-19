@@ -45,7 +45,7 @@ export const getMidi = async () => {
 	const midi = await Midi.fromUrl(score.url);
 	return midi;
 };
-export const playTrack = async (track: Track, index: number) => {
+export const playTrack = async (track: Track) => {
 	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
 	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
 	const piano = get(pianoStates.piano);
@@ -90,15 +90,10 @@ export const changeScore = () => {
 	timeouts.set([]);
 	for (let i = 0; i < scores.length; i++) {
 		if (scores[i].name !== get(name)) continue;
-		if (i + 1 === scores.length) {
-			name.set(scores[0].name);
-			composer.set(scores[0].composer);
-			releaseTime.set(scores[0].releaseTime || DEFAULT_RELEASE_TIME);
-		} else {
-			name.set(scores[i + 1].name);
-			composer.set(scores[i + 1].composer);
-			releaseTime.set(scores[i + 1].releaseTime || DEFAULT_RELEASE_TIME);
-		}
+		let index = i + 1 === scores.length ? 0 : i + 1;
+		name.set(scores[index].name);
+		composer.set(scores[index].composer);
+		releaseTime.set(scores[index].releaseTime || DEFAULT_RELEASE_TIME);
 		break;
 	}
 	isChanging.set(false);
@@ -109,7 +104,7 @@ export const resetStates = () => {
 	maxVelocity.set(1);
 	duration.set(0);
 	isChanging.set(true);
-	setTimeout(changeScore, 4000);
+	setTimeout(changeScore, 1000);
 };
 export const initializePlayerStates = () => {
 	if (!get(name)) {

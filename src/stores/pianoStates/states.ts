@@ -34,7 +34,7 @@ pianoNotes.map((key) => {
 		else
 			piano.triggerRelease(
 				noteKey,
-				get(isSustain) || !get(isPlaying) ? '+2n' : '+' + get(releaseTime),
+				get(isSustain) || !get(isPlaying) ? '+8n' : '+' + get(releaseTime),
 			);
 	});
 });

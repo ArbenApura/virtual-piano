@@ -18,7 +18,7 @@
 				timeout = setTimeout(() => {
 					isVisible = false;
 					tempDuration = 0;
-				}, 4000);
+				}, 1000);
 		  })();
 </script>
 

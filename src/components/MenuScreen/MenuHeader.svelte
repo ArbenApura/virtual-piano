@@ -1,9 +1,7 @@
 <script lang="ts">
-	// IMPORTED ASSETS
-	import YouTubeSVG from '$assets/svgs/youtube.svg';
 	// IMPORTED UTILS
 	import { toggleIsPlaying, isChanging } from '$stores/playerStates';
-	import { toggleIsAudioOnly } from '$stores/settingsStates';
+	import { isFullScreen, toggleIsFullScreen } from '$stores/settingsStates';
 </script>
 
 <div class="header">
@@ -11,7 +9,11 @@
 		<img src="piano.svg" alt="logo" />
 		<p class="text-sm">Virtual Piano By Arben</p>
 	</button>
-	<img class="youtube-icon" src={YouTubeSVG} alt="Youtube Icon" on:dblclick={toggleIsAudioOnly} />
+	<div class="btn-group">
+		<button on:click={toggleIsFullScreen}>
+			<i class={`ti ti-${$isFullScreen ? 'minimize' : 'maximize'}`} />
+		</button>
+	</div>
 </div>
 
 <style lang="scss">
@@ -29,8 +31,16 @@
 				@apply w-[30px];
 			}
 		}
-		.youtube-icon {
-			@apply w-[50px] opacity-70 absolute top-[8px] right-[8px] cursor-pointer;
+		.btn-group {
+			@apply gap-3;
+			@include flex-center;
+			button {
+				@apply opacity-50 hover:opacity-100;
+				@include flex-center;
+				i {
+					@apply text-[25px];
+				}
+			}
 		}
 	}
 </style>
