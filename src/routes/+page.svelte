@@ -82,9 +82,9 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'czerny';
+		$composer: 'liszt';
 		// DEFAULT
-		--speed: 4;
+		--speed: 1;
 		--bg-position: center;
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
@@ -109,7 +109,9 @@
 			--bar-bg-size: cover;
 			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
 		} @else if $composer == 'liszt' {
-			--bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
+			--bar-bg-image: url('$assets/textures/3.png');
+			--bar-filter: brightness(1.5) saturate(2) hue-rotate(30deg);
+			// --bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
 		} @else if $composer == 'rachmaninoff' {
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(0deg);
 		}
