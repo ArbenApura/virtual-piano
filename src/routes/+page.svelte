@@ -84,7 +84,7 @@
 		// VARIABLES
 		$composer: 'mozart';
 		// DEFAULT
-		--speed: 1;
+		--speed: 4;
 		--bg-position: center;
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
