@@ -82,15 +82,15 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'liszt';
+		$composer: 'mozart';
 		// DEFAULT
-		--speed: 4;
+		--speed: 1;
 		--bg-position: center;
 		--bg-position-x: -20px;
 		--bg-position-y: 0px;
 		--bg-size: 1320px;
 		--bg-image: url('$assets/images/#{$composer}.png');
-		--bar-bg-image: url('$assets/textures/1.png');
+		--bar-bg-image: var(--bg-image);
 		--bar-bg-size: none;
 		--bar-bg-position-x: left;
 		--bar-bg-position-y: top;
@@ -99,7 +99,6 @@
 		@if $composer == 'bach' {
 			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
 		} @else if $composer == 'beethoven' {
-			--bar-bg-image: var(--bg-image);
 			--bar-filter: brightness(1.5) contrast(2) saturate(1.25) hue-rotate(45deg);
 		} @else if $composer == 'chopin' {
 			--bar-bg-image: url('$assets/textures/2.png');
@@ -111,9 +110,9 @@
 		} @else if $composer == 'liszt' {
 			--bar-bg-image: url('$assets/textures/3.png');
 			--bar-filter: brightness(1.5) saturate(2) hue-rotate(30deg);
-			// --bar-filter: brightness(1.5) contrast(2) hue-rotate(150deg);
-		} @else if $composer == 'rachmaninoff' {
-			--bar-filter: brightness(1.5) contrast(2) hue-rotate(0deg);
+		} @else if $composer == 'mozart' {
+			--bar-bg-image: url('$assets/textures/1.png');
+			--bar-filter: brightness(1.5) contrast(2);
 		}
 	}
 	.page {

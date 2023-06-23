@@ -25,6 +25,7 @@ export const timeouts = writable<NodeJS.Timeout[]>([]);
 export const playerStates = {
 	name,
 	composer,
+	releaseTime,
 	speed,
 	delay,
 	duration,

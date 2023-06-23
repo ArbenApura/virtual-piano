@@ -45,17 +45,16 @@ export const getMidi = async () => {
 	const midi = await Midi.fromUrl(score.url);
 	return midi;
 };
-export const playTrack = async (track: Track, index: number) => {
+export const playTrack = async (track: Track) => {
 	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
 	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
+	const releaseTime = get(playerStates.releaseTime);
 	const piano = get(pianoStates.piano);
 	isChanging.set(true);
 	await sleep(delay);
 	isChanging.set(false);
 	track.notes.map((note) => {
 		const timeout = setTimeout(() => {
-			const isPlaying = get(playerStates.isPlaying);
-			if (!isPlaying) return;
 			const name = note.name.replace('#', 'S') as Note;
 			if (name in noteList) {
 				noteList[name].velocity.set(note.velocity);
@@ -63,12 +62,12 @@ export const playTrack = async (track: Track, index: number) => {
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
-				}, note.duration * speed - 25);
+				}, note.duration * speed - 50);
 			} else {
 				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(
-					() => piano.triggerRelease(note.name, '+' + get(releaseTime)),
-					note.duration * speed,
+					() => piano.triggerRelease(note.name, '+' + releaseTime),
+					note.duration * speed - 50,
 				);
 			}
 		}, note.time * speed);

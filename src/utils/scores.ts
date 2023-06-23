@@ -30,22 +30,28 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
-		name: 'Bagatelle in A Minor, WoO 59: Für Elise',
+		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
+		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+	},
+	{
+		name: 'Bagatelle in A Minor, WoO 59 "Für Elise"',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/FurElise.mid',
 		musescoreUrl: 'https://musescore.com/user/19710/scores/33816',
-	},
-	{
-		name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
-		composer: 'Ludwig van Beethoven (1770-1827)',
-		url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
 	},
 	{
 		name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": III. Presto agitato',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/MoonlightSonata3rdMovement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
+	},
+	{
+		name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
 	},
 ];
 
@@ -302,8 +308,8 @@ export const scores: Score[] = [
 	// ...chopin,
 	// ...czerny,
 	// ...debussy,
-	...liszt,
-	// ...mozart,
+	// ...liszt,
+	...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,
