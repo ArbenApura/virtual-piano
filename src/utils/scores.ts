@@ -30,7 +30,7 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
-		name: 'Sonata No. 8 in C Minor, Op. 13 "Pathétique": III. Rondo. Allegro',
+		name: 'Piano Sonata No. 8 in C Minor, Op. 13 "Pathétique": III. Rondo. Allegro',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Sonate_No._8_Pathetique_3rd_Movement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/54474',
