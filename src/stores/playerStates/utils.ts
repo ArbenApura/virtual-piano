@@ -6,7 +6,7 @@ import type { Note } from '$stores/pianoStates';
 import { get } from 'svelte/store';
 import { Midi } from '@tonejs/midi';
 // IMPORTED UTILS
-import { isAudioOnly } from '$stores/settingsStates';
+import { isAudioOnly, settingsStates } from '$stores/settingsStates';
 import { noteList, pianoStates } from '$stores/pianoStates';
 import {
 	playerStates,
@@ -46,8 +46,10 @@ export const getMidi = async () => {
 	return midi;
 };
 export const playTrack = async (track: Track) => {
-	const speed = get(isAudioOnly) ? 1000 : 1000 / get(playerStates.speed);
-	const delay = get(isAudioOnly) ? 1000 : get(playerStates.delay);
+	const isAudioOnly = get(settingsStates.isAudioOnly);
+	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
+	const delay = isAudioOnly ? 1000 : get(playerStates.delay);
+	const releaseDelay = isAudioOnly ? 50 : 50 / get(playerStates.speed);
 	const releaseTime = get(playerStates.releaseTime);
 	const piano = get(pianoStates.piano);
 	isChanging.set(true);
@@ -62,12 +64,12 @@ export const playTrack = async (track: Track) => {
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
-				}, note.duration * speed - 50);
+				}, note.duration * speed - releaseDelay);
 			} else {
 				piano.triggerAttack(note.name, undefined, note.velocity);
 				setTimeout(
 					() => piano.triggerRelease(note.name, '+' + releaseTime),
-					note.duration * speed - 50,
+					note.duration * speed - releaseDelay,
 				);
 			}
 		}, note.time * speed);
