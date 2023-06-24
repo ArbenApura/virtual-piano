@@ -30,10 +30,10 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
-		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
+		name: 'Sonata No. 8 in C Minor, Op. 13 "Pathétique": III. Rondo. Allegro',
 		composer: 'Ludwig van Beethoven (1770-1827)',
-		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
-		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+		url: 'scores/Ludwig van Beethoven/Sonate_No._8_Pathetique_3rd_Movement.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/54474',
 	},
 	{
 		name: 'Bagatelle in A Minor, WoO 59 "Für Elise"',
@@ -47,12 +47,18 @@ const beethoven: Score[] = [
 		url: 'scores/Ludwig van Beethoven/MoonlightSonata3rdMovement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
 	},
-	{
-		name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
-		composer: 'Ludwig van Beethoven (1770-1827)',
-		url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
-	},
+	// {
+	// 	name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
+	// 	composer: 'Ludwig van Beethoven (1770-1827)',
+	// 	url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
+	// 	musescoreUrl: 'https://musescore.com/classicman/scores/55352',
+	// },
+	// {
+	// 	name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
+	// 	composer: 'Ludwig van Beethoven (1770-1827)',
+	// 	url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
+	// 	musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+	// },
 ];
 
 const chopin: Score[] = [
@@ -304,12 +310,12 @@ const others: Score[] = [
 
 export const scores: Score[] = [
 	// ...bach,
-	// ...beethoven,
+	...beethoven,
 	// ...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
-	...mozart,
+	// ...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,

@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'mozart';
+		$composer: 'beethoven';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -99,7 +99,7 @@
 		@if $composer == 'bach' {
 			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);
 		} @else if $composer == 'beethoven' {
-			--bar-filter: brightness(1.5) contrast(2) saturate(1.25) hue-rotate(45deg);
+			--bar-filter: brightness(1.5) contrast(2) saturate(2) hue-rotate(45deg);
 		} @else if $composer == 'chopin' {
 			--bar-bg-image: url('$assets/textures/2.png');
 			--bar-filter: contrast(2) hue-rotate(40deg);
