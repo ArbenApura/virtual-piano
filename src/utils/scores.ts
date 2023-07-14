@@ -105,7 +105,7 @@ const czerny: Score[] = [
 	{
 		name: 'Die Kunst der Fingerfertigkeit: Etude Op. 740, No. 17',
 		composer: 'Carl Czerny (1791-1857)',
-		url: 'scores/Carl Czerny/Czerny_etude_6.mid,
+		url: 'scores/Carl Czerny/Czerny_etude_6.mid',
 		musescoreUrl: 'https://musescore.com/user/36645886/scores/6549299',
 		releaseTime: '0',
 	},
