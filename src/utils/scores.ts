@@ -30,6 +30,12 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
+		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
+		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+	},
+	{
 		name: 'Piano Sonata No. 8 in C Minor, Op. 13 "Pathétique": III. Rondo. Allegro',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Sonate_No._8_Pathetique_3rd_Movement.mid',
@@ -47,18 +53,12 @@ const beethoven: Score[] = [
 		url: 'scores/Ludwig van Beethoven/MoonlightSonata3rdMovement.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/33715',
 	},
-	// {
-	// 	name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
-	// 	composer: 'Ludwig van Beethoven (1770-1827)',
-	// 	url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
-	// 	musescoreUrl: 'https://musescore.com/classicman/scores/55352',
-	// },
-	// {
-	// 	name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
-	// 	composer: 'Ludwig van Beethoven (1770-1827)',
-	// 	url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
-	// 	musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
-	// },
+	{
+		name: 'Piano Sonata No. 14 in C-Sharp Minor, Op. 27, No. 2 "Moonlight": I. Adagio ',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/MoonlightSonata1stMovement.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/55352',
+	},
 ];
 
 const chopin: Score[] = [
@@ -180,6 +180,24 @@ const liszt: Score[] = [
 ];
 
 const mozart: Score[] = [
+	{
+		name: 'Requiem in D minor, K. 626: Lacrimosa',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/Lacrimosa_original_transcription_for_piano_-_Mozart.mid',
+		musescoreUrl: 'https://musescore.com/user/24356561/scores/5837604',
+	},
+	{
+		name: 'Symphony No. 40 in G Minor, K.550: I. Molto Allegro',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/W.A.Mozart_-_Symphony_No.40_in_Gm_K550_1st_mvt.mid',
+		musescoreUrl: 'https://musescore.com/user/8066/scores/1470191',
+	},
+	{
+		name: 'Piano Sonata No. 17 in B-Flat Major, K. 570: III. Allegretto',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/Piano_Sonata_No._17_in_B_Major_K._570_-_III._Allegretto_-_W._A._Mozart.mid',
+		musescoreUrl: 'https://musescore.com/user/23407441/scores/5293191',
+	},
 	{
 		name: 'Piano Sonata No. 16 in C Major, K. 545: I. Allegro',
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
@@ -310,9 +328,9 @@ const others: Score[] = [
 
 export const scores: Score[] = [
 	// ...bach,
-	...beethoven,
+	// ...beethoven,
 	// ...chopin,
-	// ...czerny,
+	...czerny,
 	// ...debussy,
 	// ...liszt,
 	// ...mozart,

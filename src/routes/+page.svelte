@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import * as Tone from 'tone';
 	// IMPORTED UTILS
-	import { initializeStores } from '$stores/index';
+	import { initializeStores, isInitialized } from '$stores/index';
 	import { windowWidth } from '$stores/mediaStates';
 	import { isAudioOnly, observeFullScreen, observeOrientation } from '$stores/settingsStates';
 	import { noteList } from '$stores/pianoStates';
@@ -20,6 +20,7 @@
 
 	// UTILS
 	const handleKeyDown = (event: KeyboardEvent) => {
+		if (!$isInitialized) return;
 		if (event.key === 'Shift') isShift = true;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -33,6 +34,7 @@
 		});
 	};
 	const handleKeyUp = (event: KeyboardEvent) => {
+		if (!$isInitialized) return;
 		if (event.key === 'Shift') isShift = false;
 		let eventKey = filterKey(event.key);
 		pianoKeys.map((key) => {
@@ -82,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'beethoven';
+		$composer: 'czerny';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;

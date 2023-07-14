@@ -1,5 +1,8 @@
 // IMPORTED LIB-TYPES
 import type { Track } from '@tonejs/midi';
+import type { Sampler } from 'tone';
+import type { Subdivision } from 'tone/build/esm/core/type/Units';
+import type { Note as ToneNote } from '@tonejs/midi/dist/Note';
 // IMPORTED TYPES
 import type { Note } from '$stores/pianoStates';
 // IMPORTED LIB-UTILS
@@ -45,6 +48,19 @@ export const getMidi = async () => {
 	const midi = await Midi.fromUrl(score.url);
 	return midi;
 };
+export const triggerAttack = (
+	piano: Sampler,
+	note: ToneNote,
+	speed: number,
+	releaseTime: Subdivision,
+	releaseDelay: number,
+) => {
+	piano.triggerAttack(note.name, undefined, note.velocity);
+	setTimeout(
+		() => piano.triggerRelease(note.name, '+' + releaseTime),
+		note.duration * speed - releaseDelay,
+	);
+};
 export const playTrack = async (track: Track) => {
 	const isAudioOnly = get(settingsStates.isAudioOnly);
 	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
@@ -65,13 +81,7 @@ export const playTrack = async (track: Track) => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
 				}, note.duration * speed - releaseDelay);
-			} else {
-				piano.triggerAttack(note.name, undefined, note.velocity);
-				setTimeout(
-					() => piano.triggerRelease(note.name, '+' + releaseTime),
-					note.duration * speed - releaseDelay,
-				);
-			}
+			} else triggerAttack(piano, note, speed, releaseTime, releaseDelay);
 		}, note.time * speed);
 		addTimeout(timeout);
 	});
