@@ -103,10 +103,10 @@ const chopin: Score[] = [
 
 const czerny: Score[] = [
 	{
-		name: 'Etudes De Mecanisme: Etude Op. 849, No. 21',
+		name: 'Die Kunst der Fingerfertigkeit: Etude Op. 740, No. 17',
 		composer: 'Carl Czerny (1791-1857)',
-		url: 'scores/Carl Czerny/Etude_Op_849_No_21_Speed_Chart.mid',
-		musescoreUrl: 'https://musescore.com/user/51219563/scores/8817984',
+		url: 'scores/Carl Czerny/Czerny_etude_6.mid,
+		musescoreUrl: 'https://musescore.com/user/36645886/scores/6549299',
 		releaseTime: '0',
 	},
 	{
@@ -121,6 +121,13 @@ const czerny: Score[] = [
 		composer: 'Carl Czerny (1791-1857)',
 		url: 'scores/Carl Czerny/Czerny_Etude_in_G_minor_Op._740_no._50.mid',
 		musescoreUrl: 'https://musescore.com/user/34051195/scores/6028645',
+		releaseTime: '0',
+	},
+	{
+		name: 'Etudes De Mecanisme: Etude Op. 849, No. 21',
+		composer: 'Carl Czerny (1791-1857)',
+		url: 'scores/Carl Czerny/Etude_Op_849_No_21_Speed_Chart.mid',
+		musescoreUrl: 'https://musescore.com/user/51219563/scores/8817984',
 		releaseTime: '0',
 	},
 ];
