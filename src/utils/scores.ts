@@ -30,6 +30,18 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
+		name: 'Piano Sonata No. 17 in D Minor, Op. 31, No. 2 "Tempest": III. Allegretto',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/Sonate_No._17_Tempest_3rd_Movement.mid',
+		musescoreUrl: 'https://musescore.com/user/19710/scores/49217',
+	},
+	{
+		name: 'Piano Sonata No. 20 in G Major, Op. 49: I. Allegro ma non troppo',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/Beethoven_-_Piano_Sonata_No._20_in_G_Major_Op._49_1st_Movement.mid',
+		musescoreUrl: 'https://musescore.com/user/101036/scores/5653956',
+	},
+	{
 		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
@@ -335,9 +347,9 @@ const others: Score[] = [
 
 export const scores: Score[] = [
 	// ...bach,
-	// ...beethoven,
+	...beethoven,
 	// ...chopin,
-	...czerny,
+	// ...czerny,
 	// ...debussy,
 	// ...liszt,
 	// ...mozart,

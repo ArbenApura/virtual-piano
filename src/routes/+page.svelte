@@ -84,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'czerny';
+		$composer: 'beethoven';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
