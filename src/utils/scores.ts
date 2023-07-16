@@ -347,7 +347,7 @@ const others: Score[] = [
 
 export const scores: Score[] = [
 	// ...bach,
-	...beethoven,
+	// ...beethoven,
 	// ...chopin,
 	// ...czerny,
 	// ...debussy,
@@ -357,6 +357,6 @@ export const scores: Score[] = [
 	// ...rachmaninoff,
 	// ...satie,
 	// ...tchaikovsky,
-	// ...vivaldi,
+	...vivaldi,
 	// ...others,
 ];
