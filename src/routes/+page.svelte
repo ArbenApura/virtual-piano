@@ -84,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'chopin';
+		$composer: 'tchaikovsky';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -115,6 +115,9 @@
 		} @else if $composer == 'mozart' {
 			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1.5) contrast(2);
+		} @else if $composer == 'tchaikovsky' {
+			--bar-bg-image: url('$assets/textures/1.png');
+			--bar-filter: brightness(1.5) contrast(2) hue-rotate(270deg);
 		} @else if $composer == 'vivaldi' {
 			--bar-bg-image: url('$assets/textures/4.png');
 			--bar-filter: brightness(2);
