@@ -30,6 +30,12 @@ const bach: Score[] = [
 
 const beethoven: Score[] = [
 	{
+		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
+		composer: 'Ludwig van Beethoven (1770-1827)',
+		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
+		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+	},
+	{
 		name: 'Piano Sonata No. 17 in D Minor, Op. 31, No. 2 "Tempest": III. Allegretto',
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Sonate_No._17_Tempest_3rd_Movement.mid',
@@ -40,12 +46,6 @@ const beethoven: Score[] = [
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Beethoven_-_Piano_Sonata_No._20_in_G_Major_Op._49_1st_Movement.mid',
 		musescoreUrl: 'https://musescore.com/user/101036/scores/5653956',
-	},
-	{
-		name: 'Symphony No. 5 in C Minor, Op. 67: I. Allegro con brio',
-		composer: 'Ludwig van Beethoven (1770-1827)',
-		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
-		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
 	},
 	{
 		name: 'Piano Sonata No. 8 in C Minor, Op. 13 "Pathétique": III. Rondo. Allegro',
@@ -342,13 +342,14 @@ const others: Score[] = [
 		composer: 'Sheet Music Boss (Arranged by Nigel Tang)',
 		url: 'scores/Others/Rush_E_but_its_as_difficult_as_humanly_possible.mid',
 		musescoreUrl: 'https://musescore.com/user/33616945/scores/9676342',
+		releaseTime: '0',
 	},
 ];
 
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	// ...chopin,
+	...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
@@ -357,6 +358,6 @@ export const scores: Score[] = [
 	// ...rachmaninoff,
 	// ...satie,
 	// ...tchaikovsky,
-	...vivaldi,
+	// ...vivaldi,
 	// ...others,
 ];

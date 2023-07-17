@@ -22,6 +22,7 @@ import {
 	isChanging,
 	releaseTime,
 	DEFAULT_RELEASE_TIME,
+	VELOCITY_REDUCTION,
 } from './states';
 import { scores } from '$utils/scores';
 import { sleep } from '$utils/helpers';
@@ -55,7 +56,7 @@ export const triggerAttack = (
 	releaseTime: Subdivision,
 	releaseDelay: number,
 ) => {
-	piano.triggerAttack(note.name, undefined, note.velocity);
+	piano.triggerAttack(note.name, undefined, note.velocity * VELOCITY_REDUCTION);
 	setTimeout(
 		() => piano.triggerRelease(note.name, '+' + releaseTime),
 		note.duration * speed - releaseDelay,

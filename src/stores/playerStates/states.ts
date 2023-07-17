@@ -10,6 +10,7 @@ import { isInitialized } from '..';
 
 // DEFAULT STATES
 export const DEFAULT_RELEASE_TIME: Subdivision = '32n';
+export const VELOCITY_REDUCTION = 0.75;
 
 // STATES
 export const name = writable<string>();

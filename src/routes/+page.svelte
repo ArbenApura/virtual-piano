@@ -84,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'vivaldi';
+		$composer: 'chopin';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;

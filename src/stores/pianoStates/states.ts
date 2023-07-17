@@ -5,7 +5,7 @@ import type { Sampler } from 'tone';
 // IMPORTED LIB-UTILS
 import { writable, get } from 'svelte/store';
 // IMPORTED UTILS
-import { isPlaying, releaseTime } from '$stores/playerStates';
+import { isPlaying, releaseTime, VELOCITY_REDUCTION } from '$stores/playerStates';
 import { pianoKeys, pianoNotes } from '$utils/pianoKeys';
 
 // STATES
@@ -29,7 +29,7 @@ pianoNotes.map((key) => {
 		const piano = get(pianoStates.piano);
 		if (!piano) return;
 		const noteKey = key.replace('S', '#');
-		const velocity = get(noteList[key].velocity);
+		const velocity = get(noteList[key].velocity) * VELOCITY_REDUCTION;
 		if (isPressing) piano.triggerAttack(noteKey, undefined, velocity);
 		else
 			piano.triggerRelease(
