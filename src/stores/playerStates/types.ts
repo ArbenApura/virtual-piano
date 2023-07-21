@@ -9,4 +9,5 @@ export type Score = {
 	url: string;
 	musescoreUrl: string;
 	releaseTime?: Subdivision;
+	increment?: number;
 };

@@ -38,11 +38,7 @@
 </script>
 
 <div class="filler" data-is-active={$isPressing} bind:this={keyEl}>
-	<div class="filler-inner">
-		{#if $keyboardBindHint}
-			<span>{key.bind}</span>
-		{/if}
-	</div>
+	<div class="filler-inner" />
 </div>
 
 <style lang="scss">

@@ -3,6 +3,13 @@ import type { Writable } from 'svelte/store';
 
 // TYPES
 export type Note =
+	| 'F1'
+	| 'FS1'
+	| 'G1'
+	| 'GS1'
+	| 'A1'
+	| 'AS1'
+	| 'B1'
 	| 'C2'
 	| 'CS2'
 	| 'D2'
@@ -63,7 +70,18 @@ export type Note =
 	| 'A6'
 	| 'AS6'
 	| 'B6'
-	| 'C7';
+	| 'C7'
+	| 'CS7'
+	| 'D7'
+	| 'DS7'
+	| 'E7'
+	| 'F7'
+	| 'FS7'
+	| 'G7'
+	| 'GS7'
+	| 'A7'
+	| 'AS7'
+	| 'B7';
 export type PianoKey = {
 	type: 'white' | 'black';
 	note: Note;

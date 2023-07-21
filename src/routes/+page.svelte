@@ -84,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'tchaikovsky';
+		$composer: 'liszt';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -109,12 +109,19 @@
 			--bar-bg-image: url('$assets/textures/czerny.png');
 			--bar-bg-size: cover;
 			--bar-filter: brightness(4) contrast(1.5) saturate(1.5);
+		} @else if $composer == 'debussy' {
+			--bar-bg-image: url('$assets/textures/7.png');
+			--bar-bg-size: cover;
+			--bar-filter: brightness(2.25);
 		} @else if $composer == 'liszt' {
 			--bar-bg-image: url('$assets/textures/3.png');
 			--bar-filter: brightness(1.5) saturate(2) hue-rotate(30deg);
 		} @else if $composer == 'mozart' {
 			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1.5) contrast(2);
+		} @else if $composer == 'rachmaninoff' {
+			--bar-bg-image: url('$assets/textures/5.png');
+			--bar-filter: brightness(2) hue-rotate(80deg);
 		} @else if $composer == 'tchaikovsky' {
 			--bar-bg-image: url('$assets/textures/1.png');
 			--bar-filter: brightness(1.5) contrast(2) hue-rotate(270deg);

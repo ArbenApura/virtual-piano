@@ -5,7 +5,7 @@
 	import { writable } from 'svelte/store';
 	// IMPORTED UTILS
 	import { noteList } from '$stores/pianoStates';
-	import { maxVelocity } from '$stores/playerStates';
+	import { increment, maxVelocity } from '$stores/playerStates';
 	import { pianoNotes } from '$utils/pianoKeys';
 
 	// PROPS
@@ -52,10 +52,10 @@
 	// REACTIVE STATES
 	$: boundary = (note.type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
 	$: height = (() => {
-		if ($isPressing) return $velocity * 100 + (100 - $maxVelocity * 100);
-		else if ($isPrevPressing) return $prevVelocity * 100 + (100 - $maxVelocity * 100);
-		else if ($isNextPressing) return $nextVelocity * 100 + (100 - $maxVelocity * 100);
-		else 0;
+		if ($isPressing) return calculateHeight($velocity);
+		else if ($isPrevPressing) return calculateHeight($prevVelocity);
+		else if ($isNextPressing) return calculateHeight($nextVelocity);
+		return 0;
 	})();
 
 	// REACTIVE STATEMENTS
@@ -68,13 +68,14 @@
 			: $isNextPressing
 			? nextType
 			: type))();
+
+	// UTILS
+	const calculateHeight = (velocity: number) => velocity * 100 + (100 - $maxVelocity * 100);
 </script>
 
 <div
 	class="tile {type}-tile"
-	style="width: {key === 'C7'
-		? boundary.width / 2
-		: boundary.width}px; height: {height}%; left: {boundary.x}px;"
+	style="width: {boundary.width}px; height: {height + $increment || 100}%; left: {boundary.x}px;"
 	data-direction={$isPressing
 		? 'center'
 		: $isPrevPressing
@@ -82,9 +83,10 @@
 		: $isNextPressing
 		? 'next'
 		: ''}
-	data-is-last={key === 'C7'}
 	data-is-flipped={isFlipped}
 	data-is-active={$isPressing || $isPrevPressing || $isNextPressing}
+	data-is-first={key === 'F1'}
+	data-is-last={key === 'B7'}
 >
 	<span class="bar" />
 	<span class="bar" />
@@ -94,7 +96,7 @@
 <style lang="scss">
 	.tile {
 		$transition: calc(500ms * var(--speed));
-		@apply absolute flex items-center gap-[1px] opacity-40 overflow-hidden;
+		@apply absolute flex items-center gap-[1px] opacity-50 overflow-hidden max-h-[40vh];
 		transition: height $transition ease;
 		.bar {
 			@apply bg-fixed w-full min-h-[2px] h-0 flex items-center rounded-[4px];
@@ -104,6 +106,17 @@
 			background-position-x: var(--bar-bg-position-x);
 			background-position-y: var(--bar-bg-position-y);
 			filter: var(--bar-filter);
+		}
+		&[data-is-first='true'] .bar {
+			&:nth-child(1) {
+				@apply min-h-[14px];
+			}
+			&:nth-child(2) {
+				@apply min-h-[8px];
+			}
+			&:nth-child(3) {
+				@apply min-h-[4px];
+			}
 		}
 		&[data-is-last='true'] .bar {
 			&:nth-child(1) {

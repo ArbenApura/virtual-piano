@@ -17,6 +17,7 @@ import {
 	name,
 	composer,
 	duration,
+	increment,
 	isPlaying,
 	maxVelocity,
 	isChanging,
@@ -52,27 +53,25 @@ export const getMidi = async () => {
 export const triggerAttack = (
 	piano: Sampler,
 	note: ToneNote,
-	speed: number,
+	duration: number,
 	releaseTime: Subdivision,
-	releaseDelay: number,
 ) => {
 	piano.triggerAttack(note.name, undefined, note.velocity * VELOCITY_REDUCTION);
-	setTimeout(
-		() => piano.triggerRelease(note.name, '+' + releaseTime),
-		note.duration * speed - releaseDelay,
-	);
+	setTimeout(() => piano.triggerRelease(note.name, '+' + releaseTime), duration);
 };
 export const playTrack = async (track: Track) => {
 	const isAudioOnly = get(settingsStates.isAudioOnly);
 	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
 	const delay = isAudioOnly ? 1000 : get(playerStates.delay);
-	const releaseDelay = isAudioOnly ? 40 : 80;
+	const releaseDelay = isAudioOnly ? 50 : 100;
 	const releaseTime = get(playerStates.releaseTime);
 	const piano = get(pianoStates.piano);
 	isChanging.set(true);
 	await sleep(delay);
 	isChanging.set(false);
 	track.notes.map((note) => {
+		const tempDuration = note.duration * speed - releaseDelay;
+		const duration = tempDuration < 50 ? 100 : tempDuration;
 		const timeout = setTimeout(() => {
 			const name = note.name.replace('#', 'S') as Note;
 			if (name in noteList) {
@@ -81,8 +80,8 @@ export const playTrack = async (track: Track) => {
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
 					noteList[name].isPressing.set(false);
-				}, note.duration * speed - releaseDelay);
-			} else triggerAttack(piano, note, speed, releaseTime, releaseDelay);
+				}, duration);
+			} else triggerAttack(piano, note, duration, releaseTime);
 		}, note.time * speed);
 		addTimeout(timeout);
 	});
@@ -106,10 +105,12 @@ export const changeScore = () => {
 			name.set(scores[0].name);
 			composer.set(scores[0].composer);
 			releaseTime.set(scores[0].releaseTime || DEFAULT_RELEASE_TIME);
+			increment.set(scores[0].increment || 0);
 		} else {
 			name.set(scores[i + 1].name);
 			composer.set(scores[i + 1].composer);
 			releaseTime.set(scores[i + 1].releaseTime || DEFAULT_RELEASE_TIME);
+			increment.set(scores[i + 1].increment || 0);
 		}
 		break;
 	}
@@ -120,6 +121,7 @@ export const resetStates = () => {
 	clearTimeouts();
 	maxVelocity.set(1);
 	duration.set(0);
+	increment.set(0);
 	isChanging.set(true);
 	setTimeout(changeScore, 4000);
 };
@@ -128,5 +130,6 @@ export const initializePlayerStates = () => {
 		name.set(scores[0].name);
 		composer.set(scores[0].composer);
 		releaseTime.set(scores[0].releaseTime || DEFAULT_RELEASE_TIME);
+		increment.set(scores[0].increment || 0);
 	}
 };

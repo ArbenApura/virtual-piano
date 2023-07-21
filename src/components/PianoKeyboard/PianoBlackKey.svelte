@@ -41,18 +41,16 @@
 
 <button id="{key.note}-key" class="key" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="key-body {key.type}-key">
-		<span class="bind">
-			{#if $keyboardBindHint}
-				{key.bind}
-				{#if key.type === 'black'}
-					<i class="ti ti-plus" />
-					<i class="ti ti-arrow-big-top" />
-				{/if}
-			{/if}
-		</span>
+		<span class="bind" />
 		<span class="note">
 			{#if $keyboardNoteHint}
-				{key.note.replace('S', '#')}
+				{#each key.note.replace('S', '#').split('') as char}
+					{#if char === '#'}
+						<span class="text-[.3vw]">{char}</span>
+					{:else}
+						{char}
+					{/if}
+				{/each}
 			{/if}
 		</span>
 	</div>
@@ -73,7 +71,7 @@
 		height: calc(100% + 0.3vw);
 		box-shadow: 0.6vw -0.1vw 0.6vw rgb(0, 0, 0, 0.3);
 		.key-body {
-			@apply bg-[#000] w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.05vw];
+			@apply bg-[#000] w-full h-full flex flex-col flex-grow text-center rounded-b-[.5vw] mb-[.02vw];
 			font-size: 0.5vw;
 			span {
 				@apply py-[.2vw];
@@ -83,6 +81,9 @@
 				.ti {
 					@apply py-[.1vw];
 				}
+			}
+			.note {
+				@apply text-[.4vw];
 			}
 			&.black-key {
 				@apply text-slate-300 rounded-[.2vw] overflow-hidden;

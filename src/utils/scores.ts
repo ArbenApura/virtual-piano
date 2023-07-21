@@ -163,9 +163,41 @@ const debussy: Score[] = [
 		url: 'scores/Claude Debussy/LaFilleAuxCheveuxDeLin.mid',
 		musescoreUrl: 'https://musescore.com/r_d/scores/5449385',
 	},
+	{
+		name: 'Suite Bergamasque: II. Menuet',
+		composer: 'Claude Debussy (1862–1918)',
+		url: 'scores/Claude Debussy/Debussy_-_Suite_bergamasque_2_Menuet.mid',
+		musescoreUrl: 'https://musescore.com/user/85337/scores/6148173',
+	},
+	{
+		name: 'Rêverie',
+		composer: 'Claude Debussy (1862–1918)',
+		url: 'scores/Claude Debussy/Debussy_Rverie_Piano_solo.mid',
+		musescoreUrl: 'https://musescore.com/user/24069/scores/2749626',
+	},
 ];
 
 const liszt: Score[] = [
+	{
+		name: 'Grandes Études de Paganini, S. 141: Etude No. 3 in G-Sharp Minor "La Campanella"',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
+		musescoreUrl: 'https://musescore.com/classicman/scores/106022',
+		increment: 20,
+	},
+	{
+		name: 'Grandes Études de Paganini, S. 141: Etude No. 6 in A Minor',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/Liszt_Grandes_tudes_de_Paganini_in_A_Minor_Theme_and_Variations_S._141_No._6.mid',
+		musescoreUrl: 'https://musescore.com/user/1839111/scores/2002831',
+		increment: 20,
+	},
+	{
+		name: 'Transcendental Etude No. 8 "Wilde Jagd"',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/WildeJagd.mid',
+		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
+	},
 	{
 		name: 'Hungarian Rhapsody No. 2 "Friska"',
 		composer: 'Franz Liszt (1811-1886)',
@@ -183,18 +215,6 @@ const liszt: Score[] = [
 		composer: 'Franz Liszt (1811-1886)',
 		url: 'scores/Franz Liszt/FeuxFollets.mid',
 		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603306',
-	},
-	{
-		name: 'Transcendental Etude No. 8 "Wilde Jagd"',
-		composer: 'Franz Liszt (1811-1886)',
-		url: 'scores/Franz Liszt/WildeJagd.mid',
-		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603331',
-	},
-	{
-		name: 'Etude No. 3 in G-Sharp Minor, S. 141/3: La Campanella',
-		composer: 'Franz Liszt (1811-1886)',
-		url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
-		musescoreUrl: 'https://musescore.com/classicman/scores/106022',
 	},
 ];
 
@@ -248,19 +268,19 @@ const offenbach: Score[] = [
 
 const rachmaninoff: Score[] = [
 	{
-		name: 'Tableau, Op. 39 No. 6 - Little Red Riding Hood',
+		name: 'Etude Tableau, Op. 39, No. 6 "Little Red Riding Hood"',
 		composer: 'Sergei Rachmaninoff (1873-1943)',
 		url: 'scores/Sergei Rachmaninoff/Tableau_op. 39_no. 6.mid',
 		musescoreUrl: 'https://musescore.com/user/454/scores/21648',
 	},
 	{
-		name: 'Moment Musicaux in E Minor, Op. 16 No. 4',
+		name: 'Moment Musicaux No.4 in E minor, Op. 16',
 		composer: 'Sergei Rachmaninoff (1873-1943)',
 		url: 'scores/Sergei Rachmaninoff/Sergei_Rachmaninoff_Moment_Musicaux_Op._16_No._4_in_E_minor.mid',
 		musescoreUrl: 'https://musescore.com/user/33306646/scores/6058350',
 	},
 	{
-		name: 'Prelude in G Minor, Op. 23 No. 5',
+		name: 'Prelude in G Minor, Op. 23,  No. 5',
 		composer: 'Sergei Rachmaninoff (1873-1943)',
 		url: 'scores/Sergei Rachmaninoff/Prelude_in_G_Minor_Op._23_No._5.mid',
 		musescoreUrl: 'https://musescore.com/user/3756196/scores/1194906',
@@ -352,12 +372,12 @@ export const scores: Score[] = [
 	// ...chopin,
 	// ...czerny,
 	// ...debussy,
-	// ...liszt,
+	...liszt,
 	// ...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,
-	...tchaikovsky,
+	// ...tchaikovsky,
 	// ...vivaldi,
 	// ...others,
 ];

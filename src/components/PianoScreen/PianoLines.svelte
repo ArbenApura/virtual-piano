@@ -1,5 +1,5 @@
 <div class="lines">
-	{#each Array(10).fill(0) as _}
+	{#each Array(12).fill(0) as _}
 		<div />
 	{/each}
 </div>
@@ -12,10 +12,10 @@
 		div {
 			@apply border-r-[1px] border-gray-700;
 			&:nth-child(2n + 1) {
-				width: 8.1vw;
+				width: 7.9vw;
 			}
 			&:nth-child(2n) {
-				width: 10.05vw;
+				width: 6.4vw;
 			}
 		}
 	}

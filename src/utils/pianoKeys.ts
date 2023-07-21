@@ -3,6 +3,15 @@ import type { PianoCluster, PianoKey, Note } from '$stores/pianoStates';
 
 export let pianoClusters: PianoCluster[] = [
 	[
+		{ type: 'white', note: 'F1', bind: '', haveSharp: false },
+		{ type: 'black', note: 'FS1', bind: '', haveSharp: true },
+		{ type: 'white', note: 'G1', bind: '', haveSharp: true },
+		{ type: 'black', note: 'GS1', bind: '', haveSharp: true },
+		{ type: 'white', note: 'A1', bind: '', haveSharp: true },
+		{ type: 'black', note: 'AS1', bind: '', haveSharp: true },
+		{ type: 'white', note: 'B1', bind: '', haveSharp: false },
+	],
+	[
 		{ type: 'white', note: 'C2', bind: '1', haveSharp: true },
 		{ type: 'black', note: 'CS2', bind: '1', haveSharp: true },
 		{ type: 'white', note: 'D2', bind: '2', haveSharp: true },
@@ -82,7 +91,22 @@ export let pianoClusters: PianoCluster[] = [
 		{ type: 'black', note: 'AS6', bind: 'B', haveSharp: true },
 		{ type: 'white', note: 'B6', bind: 'N', haveSharp: false },
 	],
-	[{ type: 'white', note: 'C7', bind: 'M', haveSharp: false }],
+	[
+		{ type: 'white', note: 'C7', bind: 'M', haveSharp: true },
+		{ type: 'black', note: 'CS7', bind: '', haveSharp: true },
+		{ type: 'white', note: 'D7', bind: '', haveSharp: true },
+		{ type: 'black', note: 'DS7', bind: '', haveSharp: true },
+		{ type: 'white', note: 'E7', bind: '', haveSharp: false },
+	],
+	[
+		{ type: 'white', note: 'F7', bind: '', haveSharp: true },
+		{ type: 'black', note: 'FS7', bind: '', haveSharp: true },
+		{ type: 'white', note: 'G7', bind: '', haveSharp: true },
+		{ type: 'black', note: 'GS7', bind: '', haveSharp: true },
+		{ type: 'white', note: 'A7', bind: '', haveSharp: true },
+		{ type: 'black', note: 'AS7', bind: '', haveSharp: true },
+		{ type: 'white', note: 'B7', bind: '', haveSharp: false },
+	],
 ];
 export let pianoKeys: PianoKey[] = [];
 pianoClusters.map((cluster) => cluster.map((key) => pianoKeys.push(key)));

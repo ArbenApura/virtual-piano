@@ -19,6 +19,7 @@ export const releaseTime = writable<Subdivision>(DEFAULT_RELEASE_TIME);
 export const speed = writable<Speed>(0.25);
 export const delay = writable<number>(5000);
 export const duration = writable<number>(0);
+export const increment = writable<number>(0);
 export const maxVelocity = writable<number>(1);
 export const isPlaying = writable<boolean>();
 export const isChanging = writable<boolean>();
@@ -30,6 +31,7 @@ export const playerStates = {
 	speed,
 	delay,
 	duration,
+	increment,
 	maxVelocity,
 	isPlaying,
 	isChanging,
