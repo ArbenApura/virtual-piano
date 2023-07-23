@@ -53,11 +53,10 @@ bpm.subscribe((bpm) => {
 	try {
 		if (!get(isInitialized)) return;
 		const duration = (() => {
-			if (bpm <= 50) return 250;
-			else if (bpm > 50 && bpm <= 75) return 200;
-			else if (bpm > 75 && bpm <= 100) return 150;
-			else if (bpm > 100 && bpm <= 200) return 100;
-			else if (bpm > 200) return 50;
+			if (bpm <= 50) return 200;
+			else if (bpm > 50 && bpm <= 75) return 150;
+			else if (bpm > 75 && bpm <= 100) return 100;
+			return 50;
 		})();
 		document.documentElement.style.setProperty('--bar-active-duration', duration + 'ms');
 	} catch {}
