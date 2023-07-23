@@ -108,7 +108,7 @@
 	data-is-active={$isPressing || $isPrevPressing || $isNextPressing}
 	data-is-first={key === 'F1'}
 	data-is-last={key === 'B7'}
-	data-is-short={duration <= 100}
+	data-is-short={duration <= 200}
 >
 	<span class="bar" />
 	<span class="bar" />
