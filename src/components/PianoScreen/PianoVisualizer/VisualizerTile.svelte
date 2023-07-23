@@ -10,44 +10,59 @@
 
 	// PROPS
 	export let note: NoteState;
-	const { note: key, boundaries, isPressing, velocity } = note;
+	const { note: key, boundaries, isPressing, velocity, duration: currDuration } = note;
 
 	// STATES
 	let type: string = note.type;
 	let isFlipped = false;
+	let duration = 0;
 	let index = pianoNotes.indexOf(key);
-	let { isPrevPressing, isNextPressing, prevVelocity, nextVelocity, prevType, nextType } =
-		(() => {
-			let isPrevPressing = writable(false);
-			let isNextPressing = writable(false);
-			let prevVelocity = writable(0);
-			let nextVelocity = writable(0);
-			let prevType = 'white';
-			let nextType = 'white';
-			try {
-				if (index < 0) throw new Error();
-				const prevKey = pianoNotes[index + 1];
-				const nextKey = pianoNotes[index - 1];
-				const prevNote = noteList[prevKey];
-				const nextNote = noteList[nextKey];
-				if (!prevNote || !nextNote) throw new Error();
-				isPrevPressing = prevNote.isPressing;
-				isNextPressing = nextNote.isPressing;
-				prevVelocity = prevNote.velocity;
-				nextVelocity = nextNote.velocity;
-				prevType = prevNote.type;
-				nextType = nextNote.type;
-			} finally {
-				return {
-					isPrevPressing,
-					isNextPressing,
-					prevVelocity,
-					nextVelocity,
-					prevType,
-					nextType,
-				};
-			}
-		})();
+	let {
+		isPrevPressing,
+		isNextPressing,
+		prevVelocity,
+		nextVelocity,
+		prevDuration,
+		nextDuration,
+		prevType,
+		nextType,
+	} = (() => {
+		let isPrevPressing = writable(false);
+		let isNextPressing = writable(false);
+		let prevVelocity = writable(0);
+		let nextVelocity = writable(0);
+		let prevDuration = writable(0);
+		let nextDuration = writable(0);
+		let prevType = 'white';
+		let nextType = 'white';
+		try {
+			if (index < 0) throw new Error();
+			const prevKey = pianoNotes[index + 1];
+			const nextKey = pianoNotes[index - 1];
+			const prevNote = noteList[prevKey];
+			const nextNote = noteList[nextKey];
+			if (!prevNote || !nextNote) throw new Error();
+			isPrevPressing = prevNote.isPressing;
+			isNextPressing = nextNote.isPressing;
+			prevVelocity = prevNote.velocity;
+			nextVelocity = nextNote.velocity;
+			prevDuration = prevNote.duration;
+			nextDuration = nextNote.duration;
+			prevType = prevNote.type;
+			nextType = nextNote.type;
+		} finally {
+			return {
+				isPrevPressing,
+				isNextPressing,
+				prevVelocity,
+				nextVelocity,
+				prevDuration,
+				nextDuration,
+				prevType,
+				nextType,
+			};
+		}
+	})();
 
 	// REACTIVE STATES
 	$: boundary = (note.type === 'white' ? $boundaries[1] : $boundaries[0]) || { x: 0, width: 0 };
@@ -68,14 +83,20 @@
 			: $isNextPressing
 			? nextType
 			: type))();
+	$: (() => {
+		if ($isPressing) duration = $currDuration;
+		else if ($isPrevPressing) duration = $prevDuration;
+		else if ($isNextPressing) duration = $nextDuration;
+	})();
 
 	// UTILS
-	const calculateHeight = (velocity: number) => velocity * 100 + (100 - $maxVelocity * 100);
+	const calculateHeight = (velocity: number) =>
+		velocity * 100 + (100 - $maxVelocity * 100) + $increment + 30;
 </script>
 
 <div
 	class="tile {type}-tile"
-	style="width: {boundary.width}px; height: {height + $increment || 100}%; left: {boundary.x}px;"
+	style="width: {boundary.width}px; height: {height || 100}%; left: {boundary.x}px;"
 	data-direction={$isPressing
 		? 'center'
 		: $isPrevPressing
@@ -87,6 +108,7 @@
 	data-is-active={$isPressing || $isPrevPressing || $isNextPressing}
 	data-is-first={key === 'F1'}
 	data-is-last={key === 'B7'}
+	data-is-short={duration <= 100}
 >
 	<span class="bar" />
 	<span class="bar" />
@@ -96,7 +118,7 @@
 <style lang="scss">
 	.tile {
 		$transition: calc(500ms * var(--speed));
-		@apply absolute flex items-center gap-[1px] opacity-50 overflow-hidden max-h-[40vh];
+		@apply absolute flex items-center gap-[1px] opacity-50 overflow-hidden max-h-[50vh];
 		transition: height $transition ease;
 		.bar {
 			@apply bg-fixed w-full min-h-[2px] h-0 flex items-center rounded-[4px];
@@ -180,13 +202,16 @@
 			}
 		}
 		&[data-is-active='true'] {
-			$duration: calc(100ms * var(--speed));
+			--duration: calc(var(--bar-active-duration) * var(--speed));
+			&[data-is-short='true'] {
+				--duration: 50ms;
+			}
 			&[data-direction='center'] {
 				@apply opacity-100;
 			}
-			transition: height $duration;
+			transition: height var(--duration) ease-out;
 			.bar {
-				transition: height $duration;
+				transition: height var(--duration) ease-out;
 			}
 		}
 	}

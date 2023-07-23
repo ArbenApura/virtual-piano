@@ -34,6 +34,7 @@ const beethoven: Score[] = [
 		composer: 'Ludwig van Beethoven (1770-1827)',
 		url: 'scores/Ludwig van Beethoven/Beethoven_Symphony_No._5_1st_movement_Piano_solo.mid',
 		musescoreUrl: 'https://musescore.com/hmscomp/scores/128179',
+		releaseTime: '4n',
 	},
 	{
 		name: 'Piano Sonata No. 17 in D Minor, Op. 31, No. 2 "Tempest": III. Allegretto',
@@ -75,6 +76,25 @@ const beethoven: Score[] = [
 
 const chopin: Score[] = [
 	{
+		name: 'Etude Op. 25, No. 1 in A-Flat Major "Aeolian Harp"',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Chopin_Etude_Op._25_No._1_A_MajorAeolian_Harp.mid',
+		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497288',
+	},
+	{
+		name: 'Waltz in E Minor, Op. Posth. (B. 56, KK IVa/15)',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Chopin_Waltz_in_E_Minor_B._56_KK_IVa15.mid',
+		musescoreUrl: 'https://musescore.com/user/29902633/scores/5738940',
+	},
+	{
+		name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/F._Chopin_Nocturne_E_Flat_Major_Op.9_No.2.mid',
+		musescoreUrl: 'https://musescore.com/user/28966982/scores/5178145',
+		releaseTime: '4n',
+	},
+	{
 		name: 'Etude Op. 10, No. 4 in C-Sharp Minor "Torrent"',
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/ChopinEtudeOp10No4.mid',
@@ -91,25 +111,6 @@ const chopin: Score[] = [
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/FantaisieImpromptuOp66.mid',
 		musescoreUrl: 'https://musescore.com/user/263346/scores/1223091',
-	},
-	{
-		name: 'Nocturne in E-Flat Major, Op. 9, No. 2',
-		composer: 'Frédéric Chopin (1810-1849)',
-		url: 'scores/Frédéric Chopin/NocturneOp9No2.mid',
-		musescoreUrl: 'https://musescore.com/user/6662591/scores/4383881',
-		releaseTime: '4n',
-	},
-	{
-		name: 'Etude Op. 25 No. 1 in A Major "Aeolian Harp"',
-		composer: 'Frédéric Chopin (1810-1849)',
-		url: 'scores/Frédéric Chopin/Chopin_Etude_Op._25_No._1_A_MajorAeolian_Harp.mid',
-		musescoreUrl: 'https://musescore.com/j_y_kim/scores/5497288',
-	},
-	{
-		name: 'Waltz in E Minor, Op. Posth. (B. 56, KK IVa/15)',
-		composer: 'Frédéric Chopin (1810-1849)',
-		url: 'scores/Frédéric Chopin/Chopin_Waltz_in_E_Minor_B._56_KK_IVa15.mid',
-		musescoreUrl: 'https://musescore.com/user/29902633/scores/5738940',
 	},
 ];
 
@@ -179,18 +180,23 @@ const debussy: Score[] = [
 
 const liszt: Score[] = [
 	{
+		name: 'Rossini: William Tell Overture, Finale',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/RossiniLiszt_-_William_Tell_Overture_Finale.mid',
+		musescoreUrl: 'https://musescore.com/user/35288416/scores/6243044',
+		releaseTime: '0',
+	},
+	{
 		name: 'Grandes Études de Paganini, S. 141: Etude No. 3 in G-Sharp Minor "La Campanella"',
 		composer: 'Franz Liszt (1811-1886)',
 		url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/106022',
-		increment: 20,
 	},
 	{
 		name: 'Grandes Études de Paganini, S. 141: Etude No. 6 in A Minor',
 		composer: 'Franz Liszt (1811-1886)',
 		url: 'scores/Franz Liszt/Liszt_Grandes_tudes_de_Paganini_in_A_Minor_Theme_and_Variations_S._141_No._6.mid',
 		musescoreUrl: 'https://musescore.com/user/1839111/scores/2002831',
-		increment: 20,
 	},
 	{
 		name: 'Transcendental Etude No. 8 "Wilde Jagd"',
@@ -369,10 +375,10 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	// ...chopin,
+	...chopin,
 	// ...czerny,
 	// ...debussy,
-	...liszt,
+	// ...liszt,
 	// ...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,

@@ -38,15 +38,31 @@
 </script>
 
 <div class="filler" data-is-active={$isPressing} bind:this={keyEl}>
-	<div class="filler-inner" />
+	<div class="filler-inner">
+		<div class="dot" />
+	</div>
 </div>
 
 <style lang="scss">
+	@import '$styles';
 	.filler {
 		.filler-inner {
-			@apply bg-slate-50 w-full h-full rounded-t-[.2vw] overflow-hidden border-x-[.1vw] border-gray-300 pt-[.2vw] text-center;
+			@apply bg-slate-50 w-full h-full rounded-t-[.2vw] overflow-hidden border-x-[.1vw] border-gray-300 pt-[.3vw] text-center flex justify-center;
 			height: calc(100% + 0.3vw);
 			font-size: 0.5vw;
+			.dot {
+				@include box(6px);
+				@apply relative rounded-full border border-gray-300;
+				&::before {
+					content: '';
+					@apply absolute top-0 left-0 w-full h-full rounded-full;
+					background-image: var(--bar-bg-image);
+					background-size: var(--bar-bg-size);
+					background-position-x: var(--bar-bg-position-x);
+					background-position-y: var(--bar-bg-position-y);
+					filter: var(--bar-filter);
+				}
+			}
 		}
 		&[data-is-active='true'] {
 			@apply pt-[.3vw];

@@ -17,6 +17,7 @@ pianoKeys.map((key) => {
 		...key,
 		isPressing: writable<boolean>(),
 		velocity: writable<number>(1),
+		duration: writable<number>(0),
 		boundaries: writable<Boundary[]>([]),
 	};
 });

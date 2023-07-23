@@ -69,7 +69,7 @@
 	.dot-tile {
 		@apply flex flex-col justify-between items-center py-[.4vw] z-[60];
 		.dot {
-			@apply w-[.8vw] h-[.4vw] rounded-full;
+			@apply w-[.6vw] h-[.3vw] rounded-full;
 			&.white-dot {
 				@apply bg-slate-50;
 			}

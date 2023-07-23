@@ -14,6 +14,6 @@
 
 <style lang="scss">
 	.visualizer {
-		@apply absolute top-[50%] w-full h-[20vw] translate-y-[-50%] flex items-center z-[1000];
+		@apply absolute top-[50%] w-full h-[18vw] translate-y-[-50%] flex items-center z-[1000];
 	}
 </style>

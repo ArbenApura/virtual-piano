@@ -41,7 +41,9 @@
 
 <button id="{key.note}-key" class="key" data-is-active={$isPressing} bind:this={keyEl}>
 	<div class="key-body {key.type}-key">
-		<span class="bind" />
+		<div class="filler">
+			<div class="dot" />
+		</div>
 		<span class="note">
 			{#if $keyboardNoteHint}
 				{#each key.note.replace('S', '#').split('') as char}
@@ -66,6 +68,7 @@
 </button>
 
 <style lang="scss">
+	@import '$styles';
 	.key {
 		@apply bg-[#222] relative w-full h-full -mt-[.3vw] rounded-t-[.2vw] rounded-b-none overflow-hidden flex flex-col border-x-[.1vw] border-b-[.1vw] border-[#222];
 		height: calc(100% + 0.3vw);
@@ -76,10 +79,20 @@
 			span {
 				@apply py-[.2vw];
 			}
-			.bind {
-				@apply flex flex-col flex-grow;
-				.ti {
-					@apply py-[.1vw];
+			.filler {
+				@apply flex-grow flex justify-center pt-[.3vw];
+				.dot {
+					@include box(6px);
+					@apply relative rounded-full border border-[#222];
+					&::before {
+						content: '';
+						@apply absolute top-0 left-0 w-full h-full rounded-full;
+						background-image: var(--bar-bg-image);
+						background-size: var(--bar-bg-size);
+						background-position-x: var(--bar-bg-position-x);
+						background-position-y: var(--bar-bg-position-y);
+						filter: var(--bar-filter);
+					}
 				}
 			}
 			.note {

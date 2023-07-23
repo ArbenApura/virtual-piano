@@ -98,6 +98,7 @@ export type Boundary = {
 export type NoteState = PianoKey & {
 	isPressing: Writable<boolean>;
 	velocity: Writable<number>;
+	duration: Writable<number>;
 	boundaries: Writable<Boundary[]>;
 };
 export type NoteList = {
