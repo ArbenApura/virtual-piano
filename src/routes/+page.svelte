@@ -75,16 +75,14 @@
 			<PianoScreen />
 			<MenuScreen />
 		</div>
-		{#if !$isAudioOnly}
-			<PianoKeyboard />
-		{/if}
+		<PianoKeyboard />
 	</div>
 </OrientationNotice>
 
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'mozart';
+		$composer: 'chopin';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;

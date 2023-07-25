@@ -96,7 +96,7 @@
 
 <div
 	class="tile {type}-tile"
-	style="width: {boundary.width}px; height: {height || 100}%; left: {boundary.x}px; --duration: {duration <= 800 ? duration : 800}ms"
+	style="width: {boundary.width}px; height: {height || 100}%; left: {boundary.x}px; --duration: {duration <= 1200 ? duration : 1200}ms"
 	data-direction={$isPressing
 		? 'center'
 		: $isPrevPressing

@@ -5,7 +5,7 @@
 	// IMPORTED UTILS
 	import { pianoClusters, pianoNotes } from '$utils/pianoKeys';
 	import { noteList } from '$stores/pianoStates';
-	import { visibility } from '$stores/settingsStates';
+	import { visibility, isAudioOnly } from '$stores/settingsStates';
 	// IMPORTED COMPONENTS
 	import PianoCluster from './PianoCluster.svelte';
 
@@ -51,9 +51,11 @@
 	on:swipeup={releaseAll}
 	on:swipemove={({ detail: { event } }) => detectBoundaries(event.x, event.y)}
 >
-	{#each pianoClusters as cluster}
-		<PianoCluster {cluster} {isSwiping} />
-	{/each}
+	{#if $isAudioOnly}
+		{#each pianoClusters as cluster}
+			<PianoCluster {cluster} {isSwiping} />
+		{/each}
+	{/if}
 </div>
 
 <style lang="scss">
