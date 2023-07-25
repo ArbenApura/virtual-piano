@@ -96,7 +96,7 @@
 
 <div
 	class="tile {type}-tile"
-	style="width: {boundary.width}px; height: {height || 100}%; left: {boundary.x}px;"
+	style="width: {boundary.width}px; height: {height || 100}%; left: {boundary.x}px; --duration: {duration <= 800 ? duration : 800}ms"
 	data-direction={$isPressing
 		? 'center'
 		: $isPrevPressing
@@ -108,7 +108,6 @@
 	data-is-active={$isPressing || $isPrevPressing || $isNextPressing}
 	data-is-first={key === 'F1'}
 	data-is-last={key === 'B7'}
-	data-is-short={duration <= 300}
 >
 	<span class="bar" />
 	<span class="bar" />
@@ -202,16 +201,12 @@
 			}
 		}
 		&[data-is-active='true'] {
-			--duration: calc(var(--bar-active-duration) * var(--speed));
-			&[data-is-short='true'] {
-				--duration: 50ms;
-			}
 			&[data-direction='center'] {
 				@apply opacity-100;
 			}
-			transition: height var(--duration) ease-out;
+			transition: height var(--duration);
 			.bar {
-				transition: height var(--duration) ease-out;
+				transition: height var(--duration);
 			}
 		}
 	}

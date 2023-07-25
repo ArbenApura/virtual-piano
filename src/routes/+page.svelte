@@ -84,7 +84,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'chopin';
+		$composer: 'mozart';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;
@@ -97,7 +97,6 @@
 		--bar-bg-position-x: left;
 		--bar-bg-position-y: top;
 		--bar-filter: none;
-		--bar-active-duration: 100ms;
 		// CUSTOM
 		@if $composer == 'bach' {
 			--bar-filter: brightness(2) contrast(2.5) grayscale(100%);

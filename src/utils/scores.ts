@@ -116,6 +116,13 @@ const chopin: Score[] = [
 
 const czerny: Score[] = [
 	{
+		name: 'Etudes De Mecanisme: Etude Op. 849, No. 21',
+		composer: 'Carl Czerny (1791-1857)',
+		url: 'scores/Carl Czerny/Etude_Op_849_No_21_Speed_Chart.mid',
+		musescoreUrl: 'https://musescore.com/user/51219563/scores/8817984',
+		releaseTime: '0',
+	},
+	{
 		name: 'Die Kunst der Fingerfertigkeit: Etude Op. 740, No. 17',
 		composer: 'Carl Czerny (1791-1857)',
 		url: 'scores/Carl Czerny/Czerny_etude_6.mid',
@@ -134,13 +141,6 @@ const czerny: Score[] = [
 		composer: 'Carl Czerny (1791-1857)',
 		url: 'scores/Carl Czerny/Czerny_Etude_in_G_minor_Op._740_no._50.mid',
 		musescoreUrl: 'https://musescore.com/user/34051195/scores/6028645',
-		releaseTime: '0',
-	},
-	{
-		name: 'Etudes De Mecanisme: Etude Op. 849, No. 21',
-		composer: 'Carl Czerny (1791-1857)',
-		url: 'scores/Carl Czerny/Etude_Op_849_No_21_Speed_Chart.mid',
-		musescoreUrl: 'https://musescore.com/user/51219563/scores/8817984',
 		releaseTime: '0',
 	},
 ];
@@ -180,13 +180,6 @@ const debussy: Score[] = [
 
 const liszt: Score[] = [
 	{
-		name: 'Rossini: William Tell Overture, Finale',
-		composer: 'Franz Liszt (1811-1886)',
-		url: 'scores/Franz Liszt/RossiniLiszt_-_William_Tell_Overture_Finale.mid',
-		musescoreUrl: 'https://musescore.com/user/35288416/scores/6243044',
-		releaseTime: '0',
-	},
-	{
 		name: 'Grandes Études de Paganini, S. 141: Etude No. 3 in G-Sharp Minor "La Campanella"',
 		composer: 'Franz Liszt (1811-1886)',
 		url: 'scores/Franz Liszt/tude_S._1413_in_G_Minor__La_Campanella___Liszt.mid',
@@ -222,20 +215,27 @@ const liszt: Score[] = [
 		url: 'scores/Franz Liszt/FeuxFollets.mid',
 		musescoreUrl: 'https://musescore.com/user/2749876/scores/2603306',
 	},
+	{
+		name: 'Rossini: William Tell Overture, Finale',
+		composer: 'Franz Liszt (1811-1886)',
+		url: 'scores/Franz Liszt/RossiniLiszt_-_William_Tell_Overture_Finale.mid',
+		musescoreUrl: 'https://musescore.com/user/35288416/scores/6243044',
+		releaseTime: '0',
+	},
 ];
 
 const mozart: Score[] = [
-	{
-		name: 'Requiem in D minor, K. 626: Lacrimosa',
-		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
-		url: 'scores/Wolfgang Amadeus Mozart/Lacrimosa_original_transcription_for_piano_-_Mozart.mid',
-		musescoreUrl: 'https://musescore.com/user/24356561/scores/5837604',
-	},
 	{
 		name: 'Symphony No. 40 in G Minor, K.550: I. Molto Allegro',
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
 		url: 'scores/Wolfgang Amadeus Mozart/W.A.Mozart_-_Symphony_No.40_in_Gm_K550_1st_mvt.mid',
 		musescoreUrl: 'https://musescore.com/user/8066/scores/1470191',
+	},
+	{
+		name: 'Requiem in D minor, K. 626: Lacrimosa',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/Lacrimosa_original_transcription_for_piano_-_Mozart.mid',
+		musescoreUrl: 'https://musescore.com/user/24356561/scores/5837604',
 	},
 	{
 		name: 'Piano Sonata No. 17 in B-Flat Major, K. 570: III. Allegretto',
@@ -375,11 +375,11 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	...chopin,
+	// ...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
-	// ...mozart,
+	...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,

@@ -25,7 +25,6 @@ import {
 	releaseTime,
 	DEFAULT_RELEASE_TIME,
 	VELOCITY_REDUCTION,
-	bpm,
 } from './states';
 import { scores } from '$utils/scores';
 import { sleep } from '$utils/helpers';
@@ -61,18 +60,6 @@ export const triggerAttack = (
 	piano.triggerAttack(note.name, undefined, note.velocity * VELOCITY_REDUCTION);
 	setTimeout(() => piano.triggerRelease(note.name, '+' + releaseTime), duration);
 };
-export const trackBPM = async (tempos: TempoEvent[]) => {
-	const isAudioOnly = get(settingsStates.isAudioOnly);
-	const speed = isAudioOnly ? 1 : get(playerStates.speed);
-	const delay = isAudioOnly ? 1000 : get(playerStates.delay);
-	await sleep(delay);
-	tempos.map((tempo) => {
-		const timeout = setTimeout(() => {
-			bpm.set(Math.round(tempo.bpm));
-		}, tempo.ticks / speed);
-		addTimeout(timeout);
-	});
-};
 export const playTrack = async (track: Track) => {
 	const isAudioOnly = get(settingsStates.isAudioOnly);
 	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
@@ -91,11 +78,11 @@ export const playTrack = async (track: Track) => {
 			if (name in noteList) {
 				noteList[name].velocity.set(note.velocity);
 				noteList[name].duration.set(duration);
-				setTimeout(() => noteList[name].isPressing.set(true));
+				noteList[name].isPressing.set(true);
 				setTimeout(() => {
 					noteList[name].velocity.set(1);
-					noteList[name].isPressing.set(false);
 					noteList[name].duration.set(0);
+					noteList[name].isPressing.set(false);
 				}, duration);
 			} else triggerAttack(piano, note, duration, releaseTime);
 		}, note.time * speed);
@@ -110,7 +97,6 @@ export const playScore = async () => {
 	duration.set(totalDuration);
 	maxVelocity.set(getMaxVelocity(midi.tracks));
 	midi.tracks.map(playTrack);
-	trackBPM(midi.header.tempos);
 	addTimeout(setTimeout(clearTimeouts, totalDuration));
 };
 export const changeScore = () => {
@@ -137,7 +123,6 @@ export const toggleIsPlaying = () => isPlaying.update((v) => !v);
 export const resetStates = () => {
 	clearTimeouts();
 	maxVelocity.set(1);
-	bpm.set(100);
 	duration.set(0);
 	increment.set(0);
 	isChanging.set(true);
