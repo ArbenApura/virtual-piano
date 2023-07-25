@@ -76,6 +76,12 @@ const beethoven: Score[] = [
 
 const chopin: Score[] = [
 	{
+		name: 'Grande Valse Brillante in E-flat Major, Op. 18',
+		composer: 'Frédéric Chopin (1810-1849)',
+		url: 'scores/Frédéric Chopin/Grande_Valse_Brilliante_Analysis.mid',
+		musescoreUrl: 'https://musescore.com/user/50070/scores/5833250',
+	},	
+	{
 		name: 'Waltz Op. 64, No. 2 in C-Sharp Minor',
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/Waltz_Opus_64_No._2_in_C_Minor.mid',
@@ -393,11 +399,11 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	// ...chopin,
+	...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
-	...mozart,
+	// ...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,
