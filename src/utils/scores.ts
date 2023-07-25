@@ -76,11 +76,11 @@ const beethoven: Score[] = [
 
 const chopin: Score[] = [
 	{
-		name: 'Waltz Opus 64, No. 2 in C-Sharp Minor',
+		name: 'Waltz Op. 64, No. 2 in C-Sharp Minor',
 		composer: 'Frédéric Chopin (1810-1849)',
 		url: 'scores/Frédéric Chopin/Waltz_Opus_64_No._2_in_C_Minor.mid',
 		musescoreUrl: 'https://musescore.com/classicman/scores/55375',
-	},
+	},	
 	{
 		name: 'Etude Op. 25, No. 1 in A-Flat Major "Aeolian Harp"',
 		composer: 'Frédéric Chopin (1810-1849)',
@@ -232,18 +232,6 @@ const liszt: Score[] = [
 
 const mozart: Score[] = [
 	{
-		name: 'Allegro in B-Flat Major, K. 400',
-		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
-		url: 'scores/Wolfgang Amadeus Mozart/Allegro_in_B-flat_for_Piano_K._400_Mozart.mid',
-		musescoreUrl: 'https://musescore.com/user/68810080/scores/11376247',
-	},
-	{
-		name: 'Symphony No. 25 in G Minor, K. 183: I. Allegro con brio',
-		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
-		url: 'scores/Wolfgang Amadeus Mozart/Mozart_-_Symphony_No.25_-_Piano_Solo.mid',
-		musescoreUrl: 'https://musescore.com/einzeln/scores/2409341',
-	},
-	{
 		name: 'Symphony No. 40 in G Minor, K. 550: I. Molto Allegro',
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
 		url: 'scores/Wolfgang Amadeus Mozart/W.A.Mozart_-_Symphony_No.40_in_Gm_K550_1st_mvt.mid',
@@ -260,6 +248,18 @@ const mozart: Score[] = [
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
 		url: 'scores/Wolfgang Amadeus Mozart/Piano_Sonata_No._17_in_B_Major_K._570_-_III._Allegretto_-_W._A._Mozart.mid',
 		musescoreUrl: 'https://musescore.com/user/23407441/scores/5293191',
+	},
+	{
+		name: 'Allegro in B-Flat Major, K. 400',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/Allegro_in_B-flat_for_Piano_K._400_Mozart.mid',
+		musescoreUrl: 'https://musescore.com/user/68810080/scores/11376247',
+	},
+	{
+		name: 'Symphony No. 25 in G Minor, K. 183: I. Allegro con brio',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/Mozart_-_Symphony_No.25_-_Piano_Solo.mid',
+		musescoreUrl: 'https://musescore.com/einzeln/scores/2409341',
 	},
 	{
 		name: 'Piano Sonata No. 16 in C Major, K. 545: I. Allegro',
@@ -393,11 +393,11 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	...chopin,
+	// ...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
-	// ...mozart,
+	...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,
