@@ -64,7 +64,7 @@ export const playTrack = async (track: Track) => {
 	const isAudioOnly = get(settingsStates.isAudioOnly);
 	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
 	const delay = isAudioOnly ? 1000 : get(playerStates.delay);
-	const releaseDelay = isAudioOnly ? 50 : 100;
+	const releaseDelay = 50 / get(playerStates.speed);
 	const releaseTime = get(playerStates.releaseTime);
 	const piano = get(pianoStates.piano);
 	isChanging.set(true);
@@ -72,7 +72,7 @@ export const playTrack = async (track: Track) => {
 	isChanging.set(false);
 	track.notes.map((note) => {
 		const tempDuration = note.duration * speed - releaseDelay;
-		const duration = tempDuration < 50 ? 50 : tempDuration;
+		const duration = tempDuration < releaseDelay ? releaseDelay : tempDuration;
 		const timeout = setTimeout(() => {
 			const name = note.name.replace('#', 'S') as Note;
 			if (name in noteList) {
