@@ -79,6 +79,8 @@
 	</div>
 </OrientationNotice>
 
+<div class="texture" />
+
 <style lang="scss">
 	:root {
 		// VARIABLES
@@ -115,9 +117,9 @@
 			--bar-bg-image: url('$assets/textures/3.png');
 			--bar-filter: brightness(2) saturate(2.5) hue-rotate(30deg);
 		} @else if $composer == 'mozart' {
-			--bar-bg-image: url('$assets/textures/1.png');
-			--bar-filter: brightness(2) contrast(2) saturate(1.5);
+			--bar-bg-image: url('$assets/textures/mozart.png');
 			--bar-bg-position-x: 4px;
+			// --bar-filter: brightness(2) contrast(2) saturate(1.5);
 		} @else if $composer == 'rachmaninoff' {
 			--bar-bg-image: url('$assets/textures/5.png');
 			--bar-filter: brightness(2) hue-rotate(80deg);
@@ -141,5 +143,10 @@
 			background-position-y: var(--bg-position-y);
 			background-size: var(--bg-size);
 		}
+	}
+	.texture {
+		@apply hidden fixed w-full h-full z-[20000] bg-no-repeat;
+		background-image: var(--bar-bg-image);
+		filter: var(--bar-filter);
 	}
 </style>
