@@ -118,10 +118,10 @@
 	.tile {
 		$transition: calc(500ms * var(--speed));
 		@apply absolute flex items-center gap-[1px] opacity-50 overflow-hidden max-h-[50vh];
-		transition: height $transition ease-in;
+		transition: height $transition ease;
 		.bar {
 			@apply bg-fixed w-full min-h-[2px] h-0 flex items-center rounded-[4px];
-			transition: height $transition ease-in;
+			transition: height $transition ease;
 			background-image: var(--bar-bg-image);
 			background-size: var(--bar-bg-size);
 			background-position-x: var(--bar-bg-position-x);
