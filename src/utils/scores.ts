@@ -238,12 +238,6 @@ const liszt: Score[] = [
 
 const mozart: Score[] = [
 	{
-		name: 'Symphony No. 40 in G Minor, K. 550: I. Molto Allegro',
-		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
-		url: 'scores/Wolfgang Amadeus Mozart/W.A.Mozart_-_Symphony_No.40_in_Gm_K550_1st_mvt.mid',
-		musescoreUrl: 'https://musescore.com/user/8066/scores/1470191',
-	},
-	{
 		name: 'Requiem in D minor, K. 626: Lacrimosa',
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
 		url: 'scores/Wolfgang Amadeus Mozart/Lacrimosa_original_transcription_for_piano_-_Mozart.mid',
@@ -254,6 +248,12 @@ const mozart: Score[] = [
 		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
 		url: 'scores/Wolfgang Amadeus Mozart/Piano_Sonata_No._17_in_B_Major_K._570_-_III._Allegretto_-_W._A._Mozart.mid',
 		musescoreUrl: 'https://musescore.com/user/23407441/scores/5293191',
+	},
+	{
+		name: 'Symphony No. 40 in G Minor, K. 550: I. Molto Allegro',
+		composer: 'Wolfgang Amadeus Mozart (1756-1791)',
+		url: 'scores/Wolfgang Amadeus Mozart/W.A.Mozart_-_Symphony_No.40_in_Gm_K550_1st_mvt.mid',
+		musescoreUrl: 'https://musescore.com/user/8066/scores/1470191',
 	},
 	{
 		name: 'Allegro in B-Flat Major, K. 400',
@@ -399,11 +399,11 @@ const others: Score[] = [
 export const scores: Score[] = [
 	// ...bach,
 	// ...beethoven,
-	...chopin,
+	// ...chopin,
 	// ...czerny,
 	// ...debussy,
 	// ...liszt,
-	// ...mozart,
+	...mozart,
 	// ...offenbach,
 	// ...rachmaninoff,
 	// ...satie,

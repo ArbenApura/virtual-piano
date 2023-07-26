@@ -82,7 +82,7 @@
 <style lang="scss">
 	:root {
 		// VARIABLES
-		$composer: 'chopin';
+		$composer: 'mozart';
 		// DEFAULT
 		--speed: 4;
 		--bg-position: center;

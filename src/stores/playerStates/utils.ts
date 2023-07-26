@@ -64,7 +64,7 @@ export const playTrack = async (track: Track) => {
 	const isAudioOnly = get(settingsStates.isAudioOnly);
 	const speed = isAudioOnly ? 1000 : 1000 / get(playerStates.speed);
 	const delay = isAudioOnly ? 1000 : get(playerStates.delay);
-	const releaseDelay = 50 / get(playerStates.speed);
+	const releaseDelay = isAudioOnly ? 50 : 50 / get(playerStates.speed);
 	const releaseTime = get(playerStates.releaseTime);
 	const piano = get(pianoStates.piano);
 	isChanging.set(true);
